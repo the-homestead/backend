@@ -1,4 +1,4 @@
-import getBaseDomain from '@homestead/api/lib/get-base-domain';
+import getBaseDomain from 'src/lib/get-base-domain';
 import { Controller, Get } from '@nestjs/common';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import {

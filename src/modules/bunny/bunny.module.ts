@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
 import { LoggerModule } from 'nestjs-pino';
+
+import { ConfigModule } from '@homestead/api/modules/config/config.module';
 
 import { BunnyStorageService } from './services/storage.service';
 
@@ -8,24 +9,22 @@ import { BunnyStorageService } from './services/storage.service';
  * BunnyModule
  *
  * Internal storage handler for all Bunny.net storage zone communication.
- * No controllers are exposed — this module is consumed by other feature
- * modules (e.g. mods, projects) via DI.
+ * No controllers are exposed — consumed by feature modules via DI.
  *
- * Required config keys (resolved via ConfigService under the `bunny` namespace):
- *   bunny.region       — storage region key, e.g. "falkenstein"
- *   bunny.storageZone  — storage zone name as shown in Bunny dashboard
+ * Config is read from AppConfigService under the `bunny` namespace:
+ *   bunny.region       — e.g. "falkenstein"
+ *   bunny.storageZone  — storage zone name from Bunny dashboard
  *   bunny.accessKey    — storage zone password / access key
+ *   bunny.publicUrl    — CDN URL for serving files
  *
- * NOTE: `@bunny.net/storage-sdk` is not yet in package.json — add it:
+ * NOTE: install the SDK first:
  *   pnpm add @bunny.net/storage-sdk
  */
 @Module({
     imports: [
-        // ConfigModule must be globally registered in AppModule.
-        // If it isn't global, import it explicitly here.
+        // Both are @Global but explicit imports keep the dependency graph clear
+        // and satisfy the NestJS typed module checker / eslint-plugin-nestjs-typed.
         ConfigModule,
-        // LoggerModule must be globally registered in AppModule via LoggerModule.forRoot().
-        // If it isn't global, import it explicitly here.
         LoggerModule,
     ],
     providers: [BunnyStorageService],

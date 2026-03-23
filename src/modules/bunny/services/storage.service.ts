@@ -1,13 +1,16 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { type ReadableStream as WebReadableStream } from 'node:stream/web';
 
 import { Injectable, OnModuleInit } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
 import { InjectPinoLogger, PinoLogger } from 'nestjs-pino';
 import * as BunnyStorageSDK from '@bunny.net/storage-sdk';
-import type { StorageZone } from '@bunny.net/storage-sdk';
+import type { StorageRegion, StorageZone } from '@bunny.net/storage-sdk';
 import { ZodError } from 'zod';
 
-import { BUNNY_REGION_MAP } from '../bunny.constants';
+import { AppConfigService } from '@homestead/api/modules/config/config.service';
+import type { BunnyConfig } from '@homestead/api/modules/config/namespaces/bunny.config';
+import { BUNNY_REGION_MAP, type BunnyRegionKey } from '../bunny.constants';
 import { DownloadFileDto, DownloadFileSchema } from '../dto/download-file.dto';
 import { FileMetadataDto, FileMetadataSchema } from '../dto/file-metadata.dto';
 import { ListFilesDto, ListFilesSchema } from '../dto/list-files.dto';
@@ -28,7 +31,7 @@ export class BunnyStorageService implements OnModuleInit {
     constructor(
         @InjectPinoLogger(BunnyStorageService.name)
         private readonly logger: PinoLogger,
-        private readonly config: ConfigService,
+        private readonly config: AppConfigService,
     ) {}
 
     // ---------------------------------------------------------------------------
@@ -36,11 +39,12 @@ export class BunnyStorageService implements OnModuleInit {
     // ---------------------------------------------------------------------------
 
     onModuleInit(): void {
-        const regionKey = this.config.getOrThrow<string>('bunny.region');
-        const zoneName = this.config.getOrThrow<string>('bunny.storageZone');
-        const accessKey = this.config.getOrThrow<string>('bunny.accessKey');
+        const bunnyConfig: BunnyConfig = this.config.bunny;
+        const regionKey: BunnyRegionKey = bunnyConfig.region;
+        const zoneName: string = bunnyConfig.storageZone;
+        const accessKey: string = bunnyConfig.accessKey;
 
-        const region = BUNNY_REGION_MAP[regionKey];
+        const region: StorageRegion | undefined = BUNNY_REGION_MAP[regionKey];
 
         if (!region) {
             const valid = Object.keys(BUNNY_REGION_MAP).join(', ');

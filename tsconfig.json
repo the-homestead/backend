@@ -22,7 +22,9 @@
     "strictBindCallApply": false,
     "noFallthroughCasesInSwitch": false,
     "paths": {
-      "@homestead/api/*": ["./src/*"]
+      "@homestead/api/*": [
+        "./src/*"
+      ]
     },
     "types": [
       "node",

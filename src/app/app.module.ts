@@ -1,21 +1,29 @@
-import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import 'reflect-metadata';
-import { AuthModule } from '../modules/auth/auth.module';
-import { DatabaseModule } from 'src/modules/database/database.module';
+
+import { randomUUID } from 'crypto';
+import { IncomingMessage, ServerResponse } from 'http';
+
+import { Module } from '@nestjs/common';
 import { LoggerModule } from 'nestjs-pino';
 import pino from 'pino';
-import { randomUUID } from 'crypto';
-import { IncomingMessage } from 'http';
-import { ServerResponse } from 'http';
+
+import { AuthModule } from '@homestead/api/modules/auth/auth.module';
+import { BunnyModule } from '@homestead/api/modules/bunny/bunny.module';
+import { ConfigModule } from '@homestead/api/modules/config/config.module';
+import { DatabaseModule } from '@homestead/api/modules/database/database.module';
 import { AuthService } from '@thallesp/nestjs-better-auth';
 
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
 
+// Safe to read before ConfigModule bootstraps — only used for logger transport
+// selection, not for any business logic or secrets.
 const isDev = process.env.NODE_ENV !== 'production';
+
 @Module({
     imports: [
+        // ── Logging ────────────────────────────────────────────────────────────
+        // Must be first so every subsequent module's PinoLogger injections resolve.
         LoggerModule.forRoot({
             pinoHttp: {
                 name: 'homestead',
@@ -25,7 +33,6 @@ const isDev = process.env.NODE_ENV !== 'production';
                     version: '1.0.0',
                     service: 'homestead-api',
                 },
-                // Dev: pretty-print with all the useful bits
                 transport: isDev
                     ? {
                           target: 'pino-pretty',
@@ -40,12 +47,10 @@ const isDev = process.env.NODE_ENV !== 'production';
                       }
                     : undefined,
 
-                // Prod: structured JSON with buffered file output
                 ...(isDev
                     ? {}
                     : {
                           timestamp: () => `,"time":"${new Date().toISOString()}"`,
-                          base: { env: process.env.NODE_ENV, version: '1.0.0' },
                           stream: pino.destination({
                               dest: './logs/app.log',
                               minLength: 4096,
@@ -53,12 +58,13 @@ const isDev = process.env.NODE_ENV !== 'production';
                           }),
                       }),
 
-                genReqId: (req) => (req.headers['x-request-id'] as string) ?? randomUUID(),
+                genReqId: (req: IncomingMessage) =>
+                    (req.headers['x-request-id'] as string) ?? randomUUID(),
 
                 redact: ['req.headers.authorization', 'req.headers.cookie', 'req.cookies'],
 
                 autoLogging: {
-                    ignore: (req) =>
+                    ignore: (req: IncomingMessage) =>
                         typeof req.url === 'string' && ['/health', '/metrics'].includes(req.url),
                 },
 
@@ -74,11 +80,17 @@ const isDev = process.env.NODE_ENV !== 'production';
                 },
             },
         }),
-        ConfigModule.forRoot({
-            envFilePath: [`.env.${process.env.NODE_ENV || 'development'}`, '.env'],
-        }),
-        DatabaseModule, // Initializes TypeORM and makes DataSource/repositories injectable
-        AuthModule, // Integrates Better Auth globally (depends on DatabaseModule)
+
+        // ── Config ─────────────────────────────────────────────────────────────
+        // Global + validates all env vars at startup via EnvSchema.
+        // Provides AppConfigService to every module without local imports.
+        // Replaces the raw ConfigModule.forRoot() that was here before.
+        ConfigModule,
+
+        // ── Features ───────────────────────────────────────────────────────────
+        DatabaseModule, // TypeORM + DataSource, depends on ConfigModule (database.*)
+        AuthModule, // Better Auth globally, depends on DatabaseModule
+        BunnyModule, // Bunny storage handler, depends on ConfigModule (bunny.*)
     ],
     controllers: [AppController],
     providers: [AppService, AuthService],
