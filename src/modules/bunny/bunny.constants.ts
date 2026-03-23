@@ -1,21 +1,16 @@
-import { StorageRegion } from '@bunny.net/storage-sdk';
-
 export const BUNNY_STORAGE_ZONE = 'BUNNY_STORAGE_ZONE' as const;
+export type BunnyRegion = 'de' | 'uk' | 'ny' | 'la' | 'sg' | 'syd' | 'jh' | 'se' | 'br';
 
-/**
- * Maps human-readable region strings (from config) to SDK StorageRegion enums.
- * Extend this as Bunny.net adds new PoPs.
- */
-export const BUNNY_REGION_MAP: Record<string, StorageRegion> = {
-    falkenstein: StorageRegion.Falkenstein,
-    london: StorageRegion.London,
-    new_york: StorageRegion.NewYork,
-    los_angeles: StorageRegion.LosAngeles,
-    singapore: StorageRegion.Singapore,
-    sydney: StorageRegion.Sydney,
-    johannesburg: StorageRegion.Johannesburg,
-    stockholm: StorageRegion.Stockholm,
-    sao_paulo: StorageRegion.SaoPaulo,
-} as const;
+export const BUNNY_REGION_MAP: Record<string, BunnyRegion> = {
+    falkenstein: 'de',
+    london: 'uk',
+    new_york: 'ny',
+    los_angeles: 'la',
+    singapore: 'sg',
+    sydney: 'syd',
+    johannesburg: 'jh',
+    stockholm: 'se',
+    sao_paulo: 'br',
+};
 
 export type BunnyRegionKey = keyof typeof BUNNY_REGION_MAP;

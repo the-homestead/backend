@@ -5,7 +5,7 @@ import { type ReadableStream as WebReadableStream } from 'node:stream/web';
 import { Injectable, OnModuleInit } from '@nestjs/common';
 import { InjectPinoLogger, PinoLogger } from 'nestjs-pino';
 import * as BunnyStorageSDK from '@bunny.net/storage-sdk';
-import type { StorageRegion, StorageZone } from '@bunny.net/storage-sdk';
+import type { StorageZone } from '@bunny.net/storage-sdk';
 import { ZodError } from 'zod';
 
 import { AppConfigService } from '@homestead/api/modules/config/config.service';
@@ -44,7 +44,7 @@ export class BunnyStorageService implements OnModuleInit {
         const zoneName: string = bunnyConfig.storageZone;
         const accessKey: string = bunnyConfig.accessKey;
 
-        const region: StorageRegion | undefined = BUNNY_REGION_MAP[regionKey];
+        const region = BUNNY_REGION_MAP[regionKey] as BunnyStorageSDK.StorageRegion;
 
         if (!region) {
             const valid = Object.keys(BUNNY_REGION_MAP).join(', ');

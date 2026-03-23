@@ -15,6 +15,7 @@ import { AuthService } from '@thallesp/nestjs-better-auth';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { HealthModule } from '../modules/health/health.module';
 
 // Safe to read before ConfigModule bootstraps — only used for logger transport
 // selection, not for any business logic or secrets.
@@ -91,6 +92,7 @@ const isDev = process.env.NODE_ENV !== 'production';
         DatabaseModule, // TypeORM + DataSource, depends on ConfigModule (database.*)
         AuthModule, // Better Auth globally, depends on DatabaseModule
         BunnyModule, // Bunny storage handler, depends on ConfigModule (bunny.*)
+        HealthModule, // /health endpoint with app + dependency health checks
     ],
     controllers: [AppController],
     providers: [AppService, AuthService],
