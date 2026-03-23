@@ -139,19 +139,46 @@
                             <a href="#adminRole" title="src/modules/auth/access/auth.access.ts" ><b>adminRole</b>&nbsp;&nbsp;&nbsp;(src/.../auth.access.ts)</a>
                         </li>
                         <li>
+                            <a href="#appConfig" title="src/modules/config/namespaces/app.config.ts" ><b>appConfig</b>&nbsp;&nbsp;&nbsp;(src/.../app.config.ts)</a>
+                        </li>
+                        <li>
                             <a href="#AppDataSource" title="src/modules/database/data-source.ts" ><b>AppDataSource</b>&nbsp;&nbsp;&nbsp;(src/.../data-source.ts)</a>
                         </li>
                         <li>
                             <a href="#auth" title="src/modules/auth/auth.main.ts" ><b>auth</b>&nbsp;&nbsp;&nbsp;(src/.../auth.main.ts)</a>
                         </li>
                         <li>
+                            <a href="#authConfig" title="src/modules/config/namespaces/auth.config.ts" ><b>authConfig</b>&nbsp;&nbsp;&nbsp;(src/.../auth.config.ts)</a>
+                        </li>
+                        <li>
                             <a href="#authorRole" title="src/modules/auth/access/auth.access.ts" ><b>authorRole</b>&nbsp;&nbsp;&nbsp;(src/.../auth.access.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#BUNNY_REGION_MAP" title="src/modules/bunny/bunny.constants.ts" ><b>BUNNY_REGION_MAP</b>&nbsp;&nbsp;&nbsp;(src/.../bunny.constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#BUNNY_STORAGE_ZONE" title="src/modules/bunny/bunny.constants.ts" ><b>BUNNY_STORAGE_ZONE</b>&nbsp;&nbsp;&nbsp;(src/.../bunny.constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#bunnyConfig" title="src/modules/config/namespaces/bunny.config.ts" ><b>bunnyConfig</b>&nbsp;&nbsp;&nbsp;(src/.../bunny.config.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#databaseConfig" title="src/modules/config/namespaces/database.config.ts" ><b>databaseConfig</b>&nbsp;&nbsp;&nbsp;(src/.../database.config.ts)</a>
                         </li>
                         <li>
                             <a href="#databaseEnvSchema" title="src/modules/database/database.config.ts" ><b>databaseEnvSchema</b>&nbsp;&nbsp;&nbsp;(src/.../database.config.ts)</a>
                         </li>
                         <li>
                             <a href="#developerRole" title="src/modules/auth/access/auth.access.ts" ><b>developerRole</b>&nbsp;&nbsp;&nbsp;(src/.../auth.access.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#DownloadFileSchema" title="src/modules/bunny/dto/download-file.dto.ts" ><b>DownloadFileSchema</b>&nbsp;&nbsp;&nbsp;(src/.../download-file.dto.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#EnvSchema" title="src/modules/config/env.schema.ts" ><b>EnvSchema</b>&nbsp;&nbsp;&nbsp;(src/.../env.schema.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#FileMetadataSchema" title="src/modules/bunny/dto/file-metadata.dto.ts" ><b>FileMetadataSchema</b>&nbsp;&nbsp;&nbsp;(src/.../file-metadata.dto.ts)</a>
                         </li>
                         <li>
                             <a href="#guestRole" title="src/modules/auth/access/auth.access.ts" ><b>guestRole</b>&nbsp;&nbsp;&nbsp;(src/.../auth.access.ts)</a>
@@ -164,6 +191,9 @@
                         </li>
                         <li>
                             <a href="#isDev" title="src/app/app.module.ts" ><b>isDev</b>&nbsp;&nbsp;&nbsp;(src/.../app.module.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#ListFilesSchema" title="src/modules/bunny/dto/list-files.dto.ts" ><b>ListFilesSchema</b>&nbsp;&nbsp;&nbsp;(src/.../list-files.dto.ts)</a>
                         </li>
                         <li>
                             <a href="#moderatorRole" title="src/modules/auth/access/auth.access.ts" ><b>moderatorRole</b>&nbsp;&nbsp;&nbsp;(src/.../auth.access.ts)</a>
@@ -200,6 +230,12 @@
                         </li>
                         <li>
                             <a href="#socialProviders" title="src/modules/auth/auth.main.ts" ><b>socialProviders</b>&nbsp;&nbsp;&nbsp;(src/.../auth.main.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#stripeConfig" title="src/modules/config/namespaces/stripe.config.ts" ><b>stripeConfig</b>&nbsp;&nbsp;&nbsp;(src/.../stripe.config.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#UploadFileSchema" title="src/modules/bunny/dto/upload-file.dto.ts" ><b>UploadFileSchema</b>&nbsp;&nbsp;&nbsp;(src/.../upload-file.dto.ts)</a>
                         </li>
                         <li>
                             <a href="#userRole" title="src/modules/auth/access/auth.access.ts" ><b>userRole</b>&nbsp;&nbsp;&nbsp;(src/.../auth.access.ts)</a>
@@ -798,6 +834,55 @@ Same as vip_one at the permission layer — higher-tier benefits handled at app 
 </div>
                 </td>
             </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/modules/config/namespaces/app.config.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="appConfig"></a>
+                    <span class="name">
+                        <span ><b>appConfig</b></span>
+                        <a href="#appConfig"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>registerAs(
+    &#x27;app&#x27;,
+    (): AppConfig &#x3D;&gt; ({
+        env: (process.env.NODE_ENV as AppConfig[&#x27;env&#x27;]) ?? &#x27;development&#x27;,
+        companyName: process.env.COMPANY_NAME!,
+        host: process.env.HOST!,
+        port: parseInt(process.env.PORT_BACKEND!, 10),
+        timezone: process.env.TZ ?? &#x27;UTC&#x27;,
+        lang: process.env.LANG ?? &#x27;en-US&#x27;,
+        currency: process.env.CURRENCY ?? &#x27;USD&#x27;,
+        country: process.env.COUNTRY ?? &#x27;US&#x27;,
+        registrationEnabled: process.env.REGISTRATION_ENABLED &#x3D;&#x3D;&#x3D; &#x27;true&#x27;,
+        ports: {
+            backend: parseInt(process.env.PORT_BACKEND!, 10),
+            webIam: parseInt(process.env.PORT_WEB_IAM!, 10),
+            webAdmin: parseInt(process.env.PORT_WEB_ADMIN!, 10),
+            webFoundry: parseInt(process.env.PORT_WEB_FOUNDRY!, 10),
+            webHome: parseInt(process.env.PORT_WEB_HOME!, 10),
+        },
+    }),
+)</code>
+                    </td>
+                </tr>
+
 
         </tbody>
     </table>
@@ -1406,6 +1491,203 @@ Same as vip_one at the permission layer — higher-tier benefits handled at app 
         </tbody>
     </table>
 </section>
+    <h3>src/modules/config/namespaces/auth.config.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="authConfig"></a>
+                    <span class="name">
+                        <span ><b>authConfig</b></span>
+                        <a href="#authConfig"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>registerAs(
+    &#x27;auth&#x27;,
+    (): AuthConfig &#x3D;&gt; ({
+        url: process.env.BETTER_AUTH_URL!,
+        apiKey: process.env.BETTER_AUTH_API_KEY!,
+        secret: process.env.BETTER_AUTH_SECRET!,
+        trustedOrigins: (process.env.BETTER_AUTH_TRUSTED_ORIGINS ?? &#x27;&#x27;)
+            .split(&#x27;,&#x27;)
+            .map((o) &#x3D;&gt; o.trim())
+            .filter(Boolean),
+        cookieDomain: process.env.BETTER_AUTH_COOKIE_DOMAIN,
+        providers: {
+            steam: process.env.AUTH_STEAM_SECRET
+                ? { secret: process.env.AUTH_STEAM_SECRET }
+                : undefined,
+            google: oauthProvider(process.env.AUTH_GOOGLE_ID, process.env.AUTH_GOOGLE_SECRET),
+            discord: oauthProvider(process.env.AUTH_DISCORD_ID, process.env.AUTH_DISCORD_SECRET),
+            github: oauthProvider(process.env.AUTH_GITHUB_ID, process.env.AUTH_GITHUB_SECRET),
+            twitch: oauthProvider(process.env.AUTH_TWITCH_ID, process.env.AUTH_TWITCH_SECRET),
+        },
+    }),
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/modules/bunny/bunny.constants.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="BUNNY_REGION_MAP"></a>
+                    <span class="name">
+                        <span ><b>BUNNY_REGION_MAP</b></span>
+                        <a href="#BUNNY_REGION_MAP"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#BunnyRegion" target="_self" >Record&lt;string, BunnyRegion&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    falkenstein: &#x27;de&#x27;,
+    london: &#x27;uk&#x27;,
+    new_york: &#x27;ny&#x27;,
+    los_angeles: &#x27;la&#x27;,
+    singapore: &#x27;sg&#x27;,
+    sydney: &#x27;syd&#x27;,
+    johannesburg: &#x27;jh&#x27;,
+    stockholm: &#x27;se&#x27;,
+    sao_paulo: &#x27;br&#x27;,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="BUNNY_STORAGE_ZONE"></a>
+                    <span class="name">
+                        <span ><b>BUNNY_STORAGE_ZONE</b></span>
+                        <a href="#BUNNY_STORAGE_ZONE"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;BUNNY_STORAGE_ZONE&#x27; as const</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/modules/config/namespaces/bunny.config.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="bunnyConfig"></a>
+                    <span class="name">
+                        <span ><b>bunnyConfig</b></span>
+                        <a href="#bunnyConfig"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>registerAs(
+    &#x27;bunny&#x27;,
+    (): BunnyConfig &#x3D;&gt; ({
+        storageZone: process.env.BUNNY_STORAGE_ZONE!,
+        accessKey: process.env.BUNNY_ACCESS_KEY!,
+        publicUrl: process.env.BUNNY_PUBLIC_URL!,
+        region: process.env.BUNNY_REGION ?? &#x27;falkenstein&#x27;,
+        storageRoot: process.env.BUNNY_STORAGE_ROOT,
+    }),
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/modules/config/namespaces/database.config.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="databaseConfig"></a>
+                    <span class="name">
+                        <span ><b>databaseConfig</b></span>
+                        <a href="#databaseConfig"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>registerAs(
+    &#x27;database&#x27;,
+    (): DatabaseConfig &#x3D;&gt; ({
+        host: process.env.PGHOST!,
+        port: parseInt(process.env.PGPORT!, 10),
+        username: process.env.PGUSER!,
+        password: process.env.PGPASSWORD!,
+        database: process.env.PGDATABASE!,
+        ssl: process.env.PGSSLMODE &#x3D;&#x3D;&#x3D; &#x27;require&#x27;,
+        pool: {
+            min: parseInt(process.env.PGPOOL_MIN!, 10),
+            max: parseInt(process.env.PGPOOL_MAX!, 10),
+        },
+        migrationsRun: process.env.PGMIGRATIONS_RUN &#x3D;&#x3D;&#x3D; &#x27;true&#x27;,
+    }),
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
     <h3>src/modules/database/database.config.ts</h3>
     <section data-compodoc="block-properties">
     <h3></h3>    <table class="table table-sm table-bordered">
@@ -1445,6 +1727,203 @@ Same as vip_one at the permission layer — higher-tier benefits handled at app 
         </tbody>
     </table>
 </section>
+    <h3>src/modules/bunny/dto/download-file.dto.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="DownloadFileSchema"></a>
+                    <span class="name">
+                        <span ><b>DownloadFileSchema</b></span>
+                        <a href="#DownloadFileSchema"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>z.object({
+    /**
+     * Full path to the file inside the storage zone, e.g. &#x60;/mods/my-mod/v1.0.0/mod.zip&#x60;
+     */
+    path: z
+        .string()
+        .min(1, &#x27;Path is required&#x27;)
+        .refine((v) &#x3D;&gt; v.startsWith(&#x27;/&#x27;), { message: &#x27;Path must start with /&#x27; }),
+})</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/modules/config/env.schema.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="EnvSchema"></a>
+                    <span class="name">
+                        <span ><b>EnvSchema</b></span>
+                        <a href="#EnvSchema"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>z.object({
+    // ── Shared ─────────────────────────────────────────────────────────────────
+    TZ: z.string().default(&#x27;UTC&#x27;),
+    LANG: z.string().default(&#x27;en-US&#x27;),
+    CURRENCY: z.string().length(3, &#x27;Must be an ISO 4217 currency code&#x27;).default(&#x27;USD&#x27;),
+    COUNTRY: z.string().length(2, &#x27;Must be an ISO 3166-1 alpha-2 country code&#x27;).default(&#x27;US&#x27;),
+    COMPANY_NAME: z.string().min(1),
+    NODE_ENV: z.enum([&#x27;development&#x27;, &#x27;production&#x27;, &#x27;test&#x27;]).default(&#x27;development&#x27;),
+
+    // ── API Server ──────────────────────────────────────────────────────────────
+    HOST: z.url(&#x27;HOST must be a valid URL&#x27;),
+    PORT_BACKEND: z.coerce.number().int().min(1).max(65535).default(3000),
+    PORT_WEB_IAM: z.coerce.number().int().min(1).max(65535).default(3001),
+    PORT_WEB_ADMIN: z.coerce.number().int().min(1).max(65535).default(3002),
+    PORT_WEB_FOUNDRY: z.coerce.number().int().min(1).max(65535).default(3003),
+    PORT_WEB_HOME: z.coerce.number().int().min(1).max(65535).default(3004),
+    REGISTRATION_ENABLED: z
+        .enum([&#x27;true&#x27;, &#x27;false&#x27;])
+        .transform((v) &#x3D;&gt; v &#x3D;&#x3D;&#x3D; &#x27;true&#x27;)
+        .default(true),
+
+    // ── Database ────────────────────────────────────────────────────────────────
+    PGHOST: z.string().min(1),
+    PGPORT: z.coerce.number().int().min(1).max(65535).default(5432),
+    PGUSER: z.string().min(1),
+    PGPASSWORD: z.string().min(1),
+    PGDATABASE: z.string().min(1),
+    PGSSLMODE: z.enum([&#x27;disable&#x27;, &#x27;require&#x27;]).default(&#x27;disable&#x27;),
+    PGPOOL_MIN: z.coerce.number().int().min(0).default(2),
+    PGPOOL_MAX: z.coerce.number().int().min(1).default(10),
+    PGMIGRATIONS_RUN: z
+        .enum([&#x27;true&#x27;, &#x27;false&#x27;])
+        .transform((v) &#x3D;&gt; v &#x3D;&#x3D;&#x3D; &#x27;true&#x27;)
+        .default(false),
+
+    // ── Better Auth ─────────────────────────────────────────────────────────────
+    BETTER_AUTH_URL: z.url(&#x27;BETTER_AUTH_URL must be a valid URL&#x27;),
+    BETTER_AUTH_API_KEY: z.string().min(1),
+    BETTER_AUTH_SECRET: z.string().min(32, &#x27;Secret must be at least 32 characters&#x27;),
+    BETTER_AUTH_TRUSTED_ORIGINS: z.string().min(1),
+    BETTER_AUTH_COOKIE_DOMAIN: z.string().optional(),
+
+    // OAuth providers — all optional so the app starts without every provider configured
+    AUTH_STEAM_SECRET: z.string().optional(),
+    AUTH_GOOGLE_ID: z.string().optional(),
+    AUTH_GOOGLE_SECRET: z.string().optional(),
+    AUTH_DISCORD_ID: z.string().optional(),
+    AUTH_DISCORD_SECRET: z.string().optional(),
+    AUTH_GITHUB_ID: z.string().optional(),
+    AUTH_GITHUB_SECRET: z.string().optional(),
+    AUTH_TWITCH_ID: z.string().optional(),
+    AUTH_TWITCH_SECRET: z.string().optional(),
+
+    // ── Bunny CDN ───────────────────────────────────────────────────────────────
+    BUNNY_STORAGE_ZONE: z.string().min(1),
+    BUNNY_ACCESS_KEY: z.string().min(1),
+    BUNNY_PUBLIC_URL: z.url(&#x27;BUNNY_PUBLIC_URL must be a valid URL&#x27;),
+    BUNNY_STORAGE_ROOT: z.string().optional(),
+    // NOTE: Add BUNNY_REGION to your .env — see bunny.config.ts for valid values.
+    BUNNY_REGION: z.string().default(&#x27;falkenstein&#x27;),
+
+    // ── Stripe ──────────────────────────────────────────────────────────────────
+    PUBLIC_STRIPE_KEY_LIVE: z.string().optional(),
+    STRIPE_SECRET_KEY_LIVE: z.string().optional(),
+    PUBLIC_STRIPE_KEY_TEST: z.string().optional(),
+    STRIPE_SECRET_KEY_TEST: z.string().optional(),
+    STRIPE_WEBHOOK_SECRET_TEST: z.string().optional(),
+})</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Master environment schema.</p>
+<p>Every variable declared in .env.example must appear here.
+Validation runs once at startup via ConfigModule — a missing or malformed
+variable will crash the process immediately rather than failing silently
+at runtime when a feature is first used.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/modules/bunny/dto/file-metadata.dto.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="FileMetadataSchema"></a>
+                    <span class="name">
+                        <span ><b>FileMetadataSchema</b></span>
+                        <a href="#FileMetadataSchema"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>z.object({
+    Guid: z.string(),
+    UserId: z.string(),
+    LastChanged: z.iso.datetime(),
+    DateCreated: z.iso.datetime(),
+    StorageZoneName: z.string(),
+    Path: z.string(),
+    ObjectName: z.string(),
+    /** File size in bytes. 0 for directories. */
+    Length: z.number().nonnegative(),
+    StorageZoneId: z.number(),
+    IsDirectory: z.boolean(),
+    ServerId: z.number(),
+    /** SHA-256 checksum as returned by Bunny, may be null on brand-new uploads. */
+    Checksum: z.string().nullable(),
+    /** Comma-separated list of replicated zone names, e.g. &quot;UK,NY&quot; */
+    ReplicatedZones: z.string().nullable(),
+    ContentType: z.string().nullable(),
+})</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Mirrors the FileMetadata shape returned by the Bunny Storage SDK.
+Used to validate and type-narrow responses before passing them upstream.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
     <h3>src/app/app.module.ts</h3>
     <section data-compodoc="block-properties">
     <h3></h3>    <table class="table table-sm table-bordered">
@@ -1467,6 +1946,43 @@ Same as vip_one at the permission layer — higher-tier benefits handled at app 
                 <tr>
                     <td class="col-md-4">
                         <i>Default value : </i><code>process.env.NODE_ENV !&#x3D;&#x3D; &#x27;production&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/modules/bunny/dto/list-files.dto.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ListFilesSchema"></a>
+                    <span class="name">
+                        <span ><b>ListFilesSchema</b></span>
+                        <a href="#ListFilesSchema"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>z.object({
+    /**
+     * Directory path to list, e.g. &#x60;/mods/my-mod/&#x60; or &#x60;/&#x60; for the zone root.
+     */
+    path: z
+        .string()
+        .min(1, &#x27;Path is required&#x27;)
+        .refine((v) &#x3D;&gt; v.startsWith(&#x27;/&#x27;), { message: &#x27;Path must start with /&#x27; }),
+})</code>
                     </td>
                 </tr>
 
@@ -1729,6 +2245,120 @@ Cannot manage the org, teams, or transfer ownership.</p>
         &#x27;manage-members&#x27;, // add/remove users from a sub-team (admin+)
     ],
 } as const</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/modules/config/namespaces/stripe.config.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="stripeConfig"></a>
+                    <span class="name">
+                        <span ><b>stripeConfig</b></span>
+                        <a href="#stripeConfig"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>registerAs(&#x27;stripe&#x27;, (): StripeConfig &#x3D;&gt; {
+    const isProduction &#x3D; process.env.NODE_ENV &#x3D;&#x3D;&#x3D; &#x27;production&#x27;;
+
+    const live &#x3D;
+        process.env.PUBLIC_STRIPE_KEY_LIVE &amp;&amp; process.env.STRIPE_SECRET_KEY_LIVE
+            ? {
+                  publicKey: process.env.PUBLIC_STRIPE_KEY_LIVE,
+                  secretKey: process.env.STRIPE_SECRET_KEY_LIVE,
+              }
+            : undefined;
+
+    const test &#x3D;
+        process.env.PUBLIC_STRIPE_KEY_TEST &amp;&amp; process.env.STRIPE_SECRET_KEY_TEST
+            ? {
+                  publicKey: process.env.PUBLIC_STRIPE_KEY_TEST,
+                  secretKey: process.env.STRIPE_SECRET_KEY_TEST,
+                  webhookSecret: process.env.STRIPE_WEBHOOK_SECRET_TEST,
+              }
+            : undefined;
+
+    return {
+        mode: isProduction ? &#x27;live&#x27; : &#x27;test&#x27;,
+        live,
+        test,
+        active: isProduction ? live : test,
+    };
+})</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/modules/bunny/dto/upload-file.dto.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="UploadFileSchema"></a>
+                    <span class="name">
+                        <span ><b>UploadFileSchema</b></span>
+                        <a href="#UploadFileSchema"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>z.object({
+    /**
+     * Destination path inside the storage zone, e.g. &#x60;/mods/my-mod/v1.0.0/mod.zip&#x60;
+     * Must start with &#x60;/&#x60;.
+     */
+    path: z
+        .string()
+        .min(1, &#x27;Path is required&#x27;)
+        .refine((v) &#x3D;&gt; v.startsWith(&#x27;/&#x27;), { message: &#x27;Path must start with /&#x27; }),
+
+    /**
+     * The file stream to upload. Bunny&#x27;s SDK accepts ReadableStream&lt;Uint8Array&gt;
+     * directly, allowing large mod archives to be piped without buffering.
+     */
+    stream: z.instanceof(ReadableStream&lt;Uint8Array&gt;),
+
+    /**
+     * Optional SHA-256 checksum (hex string). When provided, Bunny will verify
+     * integrity server-side and reject mismatches — strongly recommended for mods.
+     */
+    sha256Checksum: z
+        .string()
+        .regex(/^[a-f0-9]{64}$/i, &#x27;Must be a valid SHA-256 hex string&#x27;)
+        .optional(),
+
+    /**
+     * Override the content-type stored in Bunny. Bunny infers from extension
+     * by default; set explicitly for non-standard or ambiguous types.
+     */
+    contentType: z.string().optional(),
+})</code>
                     </td>
                 </tr>
 

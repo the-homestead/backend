@@ -1,0 +1,649 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Homestead Backend</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">Homestead Backend</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content interface">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Interfaces</li>
+  <li class="breadcrumb-item"
+  >
+  BunnyDownloadResult</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/modules/bunny/services/storage.service.ts</code>
+        </p>
+
+
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Return type for a download operation.</p>
+
+            </p>
+
+
+        <section data-compodoc="block-index">
+            <h3 id="index">Index</h3>
+            <table class="table table-sm table-bordered index-table">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Properties</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                            <span class="modifier">Optional</span>
+                                        <a href="#length" 
+>
+                                            length
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#response" 
+>
+                                            response
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#stream" 
+>
+                                            stream
+                                        </a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+
+
+            <section data-compodoc="block-properties">
+                <h3 id="inputs">Properties</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="length"></a>
+                                        <span class="name "><b>length</b>
+                                            <a href="#length">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>length:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Content length in bytes, if the server provided it.</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="response"></a>
+                                        <span class="name "><b>response</b>
+                                            <a href="#response">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>response:     <code>Response</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>Response</code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="stream"></a>
+                                        <span class="name "><b>stream</b>
+                                            <a href="#stream">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>stream:     <code>WebReadableStream&lt;Uint8Array&gt;</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>WebReadableStream&lt;Uint8Array&gt;</code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+            </section>
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { type ReadableStream as WebReadableStream } from &#x27;node:stream/web&#x27;;
+
+import { Injectable, OnModuleInit } from &#x27;@nestjs/common&#x27;;
+import { InjectPinoLogger, PinoLogger } from &#x27;nestjs-pino&#x27;;
+import * as BunnyStorageSDK from &#x27;@bunny.net/storage-sdk&#x27;;
+import type { StorageZone } from &#x27;@bunny.net/storage-sdk&#x27;;
+import { ZodError } from &#x27;zod&#x27;;
+
+import { AppConfigService } from &#x27;@homestead/api/modules/config/config.service&#x27;;
+import type { BunnyConfig } from &#x27;@homestead/api/modules/config/namespaces/bunny.config&#x27;;
+import { BUNNY_REGION_MAP, type BunnyRegionKey } from &#x27;../bunny.constants&#x27;;
+import { DownloadFileDto, DownloadFileSchema } from &#x27;../dto/download-file.dto&#x27;;
+import { FileMetadataDto, FileMetadataSchema } from &#x27;../dto/file-metadata.dto&#x27;;
+import { ListFilesDto, ListFilesSchema } from &#x27;../dto/list-files.dto&#x27;;
+import { UploadFileDto, UploadFileSchema } from &#x27;../dto/upload-file.dto&#x27;;
+
+/** Return type for a download operation. */
+export interface BunnyDownloadResult {
+    stream: WebReadableStream&lt;Uint8Array&gt;;
+    response: Response;
+    /** Content length in bytes, if the server provided it. */
+    length?: number;
+}
+
+@Injectable()
+export class BunnyStorageService implements OnModuleInit {
+    private zone!: StorageZone;
+
+    constructor(
+        @InjectPinoLogger(BunnyStorageService.name)
+        private readonly logger: PinoLogger,
+        private readonly config: AppConfigService,
+    ) {}
+
+    // ---------------------------------------------------------------------------
+    // Lifecycle
+    // ---------------------------------------------------------------------------
+
+    onModuleInit(): void {
+        const bunnyConfig: BunnyConfig &#x3D; this.config.bunny;
+        const regionKey: BunnyRegionKey &#x3D; bunnyConfig.region;
+        const zoneName: string &#x3D; bunnyConfig.storageZone;
+        const accessKey: string &#x3D; bunnyConfig.accessKey;
+
+        const region &#x3D; BUNNY_REGION_MAP[regionKey] as BunnyStorageSDK.StorageRegion;
+
+        if (!region) {
+            const valid &#x3D; Object.keys(BUNNY_REGION_MAP).join(&#x27;, &#x27;);
+            throw new Error(
+                &#x60;[BunnyStorage] Unknown region &quot;${regionKey}&quot;. Valid options: ${valid}&#x60;,
+            );
+        }
+
+        this.zone &#x3D; BunnyStorageSDK.zone.connect_with_accesskey(region, zoneName, accessKey);
+
+        this.logger.info(&#x60;Storage zone connected — zone: &quot;${zoneName}&quot;, region: &quot;${regionKey}&quot;&#x60;);
+    }
+
+    // ---------------------------------------------------------------------------
+    // Upload
+    // ---------------------------------------------------------------------------
+
+    /**
+     * Upload a file stream to the storage zone.
+     *
+     * For mod platforms, always supply &#x60;sha256Checksum&#x60; so Bunny can reject
+     * corrupted uploads server-side before they become publicly accessible.
+     */
+    async upload(input: UploadFileDto): Promise&lt;boolean&gt; {
+        const dto &#x3D; this.validate(UploadFileSchema, input, &#x27;upload&#x27;);
+        const start &#x3D; performance.now();
+
+        this.logger.info(&#x60;[UPLOAD] ▶ ${dto.path}&#x60;);
+
+        if (dto.sha256Checksum) {
+            this.logger.debug(&#x60;[UPLOAD] SHA-256 checksum provided: ${dto.sha256Checksum}&#x60;);
+        } else {
+            this.logger.warn(
+                &#x60;[UPLOAD] No checksum provided for &quot;${dto.path}&quot; — integrity will not be verified by Bunny&#x60;,
+            );
+        }
+
+        const success &#x3D; await BunnyStorageSDK.file.upload(this.zone, dto.path, dto.stream, {
+            ...(dto.sha256Checksum &amp;&amp; { sha256Checksum: dto.sha256Checksum }),
+            ...(dto.contentType &amp;&amp; { contentType: dto.contentType }),
+        });
+
+        const elapsed &#x3D; (performance.now() - start).toFixed(1);
+
+        if (success) {
+            this.logger.info(&#x60;[UPLOAD] ✔ ${dto.path} (${elapsed}ms)&#x60;);
+        } else {
+            this.logger.error(
+                &#x60;[UPLOAD] ✘ Upload returned false for &quot;${dto.path}&quot; after ${elapsed}ms&#x60;,
+            );
+        }
+
+        return success;
+    }
+
+    // ---------------------------------------------------------------------------
+    // Download
+    // ---------------------------------------------------------------------------
+
+    /**
+     * Download a file as a stream.
+     *
+     * The caller is responsible for consuming or cancelling the stream.
+     */
+    async download(input: DownloadFileDto): Promise&lt;BunnyDownloadResult&gt; {
+        const dto &#x3D; this.validate(DownloadFileSchema, input, &#x27;download&#x27;);
+        const start &#x3D; performance.now();
+
+        this.logger.info(&#x60;[DOWNLOAD] ▶ ${dto.path}&#x60;);
+
+        const result &#x3D; await BunnyStorageSDK.file.download(this.zone, dto.path);
+
+        const elapsed &#x3D; (performance.now() - start).toFixed(1);
+        const sizeLabel &#x3D; result.length
+            ? &#x60;${(result.length / 1_048_576).toFixed(2)} MB&#x60;
+            : &#x27;unknown size&#x27;;
+
+        this.logger.info(
+            &#x60;[DOWNLOAD] ✔ ${dto.path} — ${sizeLabel} (${elapsed}ms, HTTP ${result.response.status})&#x60;,
+        );
+
+        return result;
+    }
+
+    // ---------------------------------------------------------------------------
+    // Get metadata
+    // ---------------------------------------------------------------------------
+
+    /**
+     * Fetch the metadata of a single file or directory node.
+     *
+     * The raw SDK response is validated against &#x60;FileMetadataSchema&#x60; before
+     * being returned, ensuring the shape is always what the rest of the app expects.
+     */
+    async getMetadata(path: string): Promise&lt;FileMetadataDto&gt; {
+        this.logger.info(&#x60;[METADATA] ▶ ${path}&#x60;);
+
+        const raw &#x3D; await BunnyStorageSDK.file.get(this.zone, path);
+        const metadata &#x3D; this.validate(FileMetadataSchema, raw, &#x27;getMetadata&#x27;);
+
+        this.logger.info(
+            &#x60;[METADATA] ✔ ${path} — ${metadata.IsDirectory ? &#x27;directory&#x27; : &#x60;file, ${metadata.Length} bytes&#x60;}&#x60; +
+                &#x60;${metadata.Checksum ? &#x60;, SHA-256: ${metadata.Checksum}&#x60; : &#x27;&#x27;}&#x60; +
+                &#x60;${metadata.ReplicatedZones ? &#x60;, replicas: [${metadata.ReplicatedZones}]&#x60; : &#x27;&#x27;}&#x60;,
+        );
+
+        return metadata;
+    }
+
+    // ---------------------------------------------------------------------------
+    // List
+    // ---------------------------------------------------------------------------
+
+    /**
+     * List all entries (files and sub-directories) under a given path.
+     */
+    async list(input: ListFilesDto): Promise&lt;FileMetadataDto[]&gt; {
+        const dto &#x3D; this.validate(ListFilesSchema, input, &#x27;list&#x27;);
+
+        this.logger.info(&#x60;[LIST] ▶ ${dto.path}&#x60;);
+
+        const raw &#x3D; await BunnyStorageSDK.file.list(this.zone, dto.path);
+
+        const entries &#x3D; raw.map((item, i) &#x3D;&gt; this.validate(FileMetadataSchema, item, &#x60;list[${i}]&#x60;));
+
+        const fileCount &#x3D; entries.filter((e) &#x3D;&gt; !e.IsDirectory).length;
+        const dirCount &#x3D; entries.filter((e) &#x3D;&gt; e.IsDirectory).length;
+        const totalBytes &#x3D; entries.reduce((acc, e) &#x3D;&gt; acc + e.Length, 0);
+
+        this.logger.info(
+            &#x60;[LIST] ✔ ${dto.path} — ${entries.length} entries&#x60; +
+                &#x60; (${fileCount} files, ${dirCount} dirs, ${(totalBytes / 1_048_576).toFixed(2)} MB total)&#x60;,
+        );
+
+        entries.forEach((e) &#x3D;&gt; {
+            const type &#x3D; e.IsDirectory ? &#x27;📁&#x27; : &#x27;📄&#x27;;
+            const size &#x3D; e.IsDirectory ? &#x27;&#x27; : &#x60; (${e.Length} bytes)&#x60;;
+            this.logger.debug(&#x60;[LIST]   ${type} ${e.ObjectName}${size}&#x60;);
+        });
+
+        return entries;
+    }
+
+    // ---------------------------------------------------------------------------
+    // Delete
+    // ---------------------------------------------------------------------------
+
+    /**
+     * Delete a single file at the given path.
+     */
+    async delete(path: string): Promise&lt;boolean&gt; {
+        this.logger.warn(&#x60;[DELETE] ▶ ${path}&#x60;);
+
+        const success &#x3D; await BunnyStorageSDK.file.remove(this.zone, path);
+
+        if (success) {
+            this.logger.warn(&#x60;[DELETE] ✔ Deleted: ${path}&#x60;);
+        } else {
+            this.logger.error(&#x60;[DELETE] ✘ Failed to delete: &quot;${path}&quot;&#x60;);
+        }
+
+        return success;
+    }
+
+    /**
+     * Recursively delete an entire directory and all its contents.
+     *
+     * ⚠ This is destructive and irreversible — use with caution.
+     */
+    async deleteDirectory(path: string): Promise&lt;boolean&gt; {
+        this.logger.warn(&#x60;[DELETE_DIR] ▶ ${path} (recursive)&#x60;);
+
+        const success &#x3D; await BunnyStorageSDK.file.removeDirectory(this.zone, path);
+
+        if (success) {
+            this.logger.warn(&#x60;[DELETE_DIR] ✔ Deleted directory: ${path}&#x60;);
+        } else {
+            this.logger.error(&#x60;[DELETE_DIR] ✘ Failed to delete directory: &quot;${path}&quot;&#x60;);
+        }
+
+        return success;
+    }
+
+    // ---------------------------------------------------------------------------
+    // Helpers
+    // ---------------------------------------------------------------------------
+
+    /**
+     * Validate &#x60;data&#x60; against a Zod schema.
+     * On failure, logs the issues and re-throws a clean Error so upstream
+     * services get a useful message rather than a raw ZodError.
+     */
+    private validate&lt;T&gt;(schema: { parse: (d: unknown) &#x3D;&gt; T }, data: unknown, context: string): T {
+        try {
+            return schema.parse(data);
+        } catch (err) {
+            if (err instanceof ZodError) {
+                const issues &#x3D; err.issues
+                    .map((i) &#x3D;&gt; &#x60;  • ${i.path.join(&#x27;.&#x27;)} — ${i.message}&#x60;)
+                    .join(&#x27;\n&#x27;);
+
+                this.logger.error(&#x60;[VALIDATION] Failed in context &quot;${context}&quot;:\n${issues}&#x60;);
+
+                throw new Error(&#x60;BunnyStorageService validation error in &quot;${context}&quot;:\n${issues}&#x60;);
+            }
+
+            throw err;
+        }
+    }
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
+            var COMPODOC_CURRENT_PAGE_URL = 'BunnyDownloadResult.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

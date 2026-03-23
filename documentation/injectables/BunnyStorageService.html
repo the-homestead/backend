@@ -1,0 +1,1235 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Homestead Backend</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">Homestead Backend</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Injectables</li>
+  <li class="breadcrumb-item" >BunnyStorageService</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/modules/bunny/services/storage.service.ts</code>
+        </p>
+
+
+
+
+
+            <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#zone" >zone</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#delete" >delete</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#deleteDirectory" >deleteDirectory</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#download" >download</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#getMetadata" >getMetadata</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#list" >list</a>
+                            </li>
+                            <li>
+                                <a href="#onModuleInit" >onModuleInit</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#upload" >upload</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#validate" >validate</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(logger: PinoLogger, config: <a href="../injectables/AppConfigService.html" target="_self">AppConfigService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/modules/bunny/services/storage.service.ts:29</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>logger</td>
+                                                  
+                                                        <td>
+                                                                    <code>PinoLogger</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>config</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AppConfigService.html" target="_self" >AppConfigService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="delete"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>delete</b></span>
+                        <a href="#delete"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>delete(path: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="198"
+                                    class="link-to-prism">src/modules/bunny/services/storage.service.ts:198</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Delete a single file at the given path.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>path</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;boolean&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deleteDirectory"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>deleteDirectory</b></span>
+                        <a href="#deleteDirectory"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>deleteDirectory(path: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="217"
+                                    class="link-to-prism">src/modules/bunny/services/storage.service.ts:217</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Recursively delete an entire directory and all its contents.</p>
+<p>⚠ This is destructive and irreversible — use with caution.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>path</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;boolean&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="download"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>download</b></span>
+                        <a href="#download"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>download(input: <a href="../miscellaneous/typealiases.html#DownloadFileDto" target="_self">DownloadFileDto</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="112"
+                                    class="link-to-prism">src/modules/bunny/services/storage.service.ts:112</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Download a file as a stream.</p>
+<p>The caller is responsible for consuming or cancelling the stream.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>input</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/typealiases.html#DownloadFileDto" target="_self" >DownloadFileDto</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../interfaces/BunnyDownloadResult.html" target="_self" >Promise&lt;BunnyDownloadResult&gt;</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getMetadata"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>getMetadata</b></span>
+                        <a href="#getMetadata"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getMetadata(path: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="142"
+                                    class="link-to-prism">src/modules/bunny/services/storage.service.ts:142</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Fetch the metadata of a single file or directory node.</p>
+<p>The raw SDK response is validated against <code>FileMetadataSchema</code> before
+being returned, ensuring the shape is always what the rest of the app expects.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>path</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../miscellaneous/typealiases.html#FileMetadataDto" target="_self" >Promise&lt;FileMetadataDto&gt;</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="list"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>list</b></span>
+                        <a href="#list"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>list(input: <a href="../miscellaneous/typealiases.html#ListFilesDto" target="_self">ListFilesDto</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="164"
+                                    class="link-to-prism">src/modules/bunny/services/storage.service.ts:164</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>List all entries (files and sub-directories) under a given path.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>input</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/typealiases.html#ListFilesDto" target="_self" >ListFilesDto</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../miscellaneous/typealiases.html#FileMetadataDto" target="_self" >Promise&lt;FileMetadataDto[]&gt;</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onModuleInit"></a>
+                    <span class="name">
+                        <span ><b>onModuleInit</b></span>
+                        <a href="#onModuleInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onModuleInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="41"
+                                    class="link-to-prism">src/modules/bunny/services/storage.service.ts:41</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="upload"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>upload</b></span>
+                        <a href="#upload"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>upload(input: <a href="../miscellaneous/typealiases.html#UploadFileDto" target="_self">UploadFileDto</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="71"
+                                    class="link-to-prism">src/modules/bunny/services/storage.service.ts:71</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Upload a file stream to the storage zone.</p>
+<p>For mod platforms, always supply <code>sha256Checksum</code> so Bunny can reject
+corrupted uploads server-side before they become publicly accessible.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>input</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/typealiases.html#UploadFileDto" target="_self" >UploadFileDto</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;boolean&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="validate"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>validate</b></span>
+                        <a href="#validate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>validate(schema: literal type, data: unknown, context: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="240"
+                                    class="link-to-prism">src/modules/bunny/services/storage.service.ts:240</a></div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Type parameters :</b>
+                            <ul class="type-parameters">
+                                    <li>T</li>
+                            </ul>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Validate <code>data</code> against a Zod schema.
+On failure, logs the issues and re-throws a clean Error so upstream
+services get a useful message rather than a raw ZodError.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>schema</td>
+                                            <td>
+                                                        <code>literal type</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>data</td>
+                                            <td>
+                                                        <code>unknown</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>context</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>T</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="zone"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>zone</b></span>
+                        <a href="#zone"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>StorageZone</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/modules/bunny/services/storage.service.ts:29</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { type ReadableStream as WebReadableStream } from &#x27;node:stream/web&#x27;;
+
+import { Injectable, OnModuleInit } from &#x27;@nestjs/common&#x27;;
+import { InjectPinoLogger, PinoLogger } from &#x27;nestjs-pino&#x27;;
+import * as BunnyStorageSDK from &#x27;@bunny.net/storage-sdk&#x27;;
+import type { StorageZone } from &#x27;@bunny.net/storage-sdk&#x27;;
+import { ZodError } from &#x27;zod&#x27;;
+
+import { AppConfigService } from &#x27;@homestead/api/modules/config/config.service&#x27;;
+import type { BunnyConfig } from &#x27;@homestead/api/modules/config/namespaces/bunny.config&#x27;;
+import { BUNNY_REGION_MAP, type BunnyRegionKey } from &#x27;../bunny.constants&#x27;;
+import { DownloadFileDto, DownloadFileSchema } from &#x27;../dto/download-file.dto&#x27;;
+import { FileMetadataDto, FileMetadataSchema } from &#x27;../dto/file-metadata.dto&#x27;;
+import { ListFilesDto, ListFilesSchema } from &#x27;../dto/list-files.dto&#x27;;
+import { UploadFileDto, UploadFileSchema } from &#x27;../dto/upload-file.dto&#x27;;
+
+/** Return type for a download operation. */
+export interface BunnyDownloadResult {
+    stream: WebReadableStream&lt;Uint8Array&gt;;
+    response: Response;
+    /** Content length in bytes, if the server provided it. */
+    length?: number;
+}
+
+@Injectable()
+export class BunnyStorageService implements OnModuleInit {
+    private zone!: StorageZone;
+
+    constructor(
+        @InjectPinoLogger(BunnyStorageService.name)
+        private readonly logger: PinoLogger,
+        private readonly config: AppConfigService,
+    ) {}
+
+    // ---------------------------------------------------------------------------
+    // Lifecycle
+    // ---------------------------------------------------------------------------
+
+    onModuleInit(): void {
+        const bunnyConfig: BunnyConfig &#x3D; this.config.bunny;
+        const regionKey: BunnyRegionKey &#x3D; bunnyConfig.region;
+        const zoneName: string &#x3D; bunnyConfig.storageZone;
+        const accessKey: string &#x3D; bunnyConfig.accessKey;
+
+        const region &#x3D; BUNNY_REGION_MAP[regionKey] as BunnyStorageSDK.StorageRegion;
+
+        if (!region) {
+            const valid &#x3D; Object.keys(BUNNY_REGION_MAP).join(&#x27;, &#x27;);
+            throw new Error(
+                &#x60;[BunnyStorage] Unknown region &quot;${regionKey}&quot;. Valid options: ${valid}&#x60;,
+            );
+        }
+
+        this.zone &#x3D; BunnyStorageSDK.zone.connect_with_accesskey(region, zoneName, accessKey);
+
+        this.logger.info(&#x60;Storage zone connected — zone: &quot;${zoneName}&quot;, region: &quot;${regionKey}&quot;&#x60;);
+    }
+
+    // ---------------------------------------------------------------------------
+    // Upload
+    // ---------------------------------------------------------------------------
+
+    /**
+     * Upload a file stream to the storage zone.
+     *
+     * For mod platforms, always supply &#x60;sha256Checksum&#x60; so Bunny can reject
+     * corrupted uploads server-side before they become publicly accessible.
+     */
+    async upload(input: UploadFileDto): Promise&lt;boolean&gt; {
+        const dto &#x3D; this.validate(UploadFileSchema, input, &#x27;upload&#x27;);
+        const start &#x3D; performance.now();
+
+        this.logger.info(&#x60;[UPLOAD] ▶ ${dto.path}&#x60;);
+
+        if (dto.sha256Checksum) {
+            this.logger.debug(&#x60;[UPLOAD] SHA-256 checksum provided: ${dto.sha256Checksum}&#x60;);
+        } else {
+            this.logger.warn(
+                &#x60;[UPLOAD] No checksum provided for &quot;${dto.path}&quot; — integrity will not be verified by Bunny&#x60;,
+            );
+        }
+
+        const success &#x3D; await BunnyStorageSDK.file.upload(this.zone, dto.path, dto.stream, {
+            ...(dto.sha256Checksum &amp;&amp; { sha256Checksum: dto.sha256Checksum }),
+            ...(dto.contentType &amp;&amp; { contentType: dto.contentType }),
+        });
+
+        const elapsed &#x3D; (performance.now() - start).toFixed(1);
+
+        if (success) {
+            this.logger.info(&#x60;[UPLOAD] ✔ ${dto.path} (${elapsed}ms)&#x60;);
+        } else {
+            this.logger.error(
+                &#x60;[UPLOAD] ✘ Upload returned false for &quot;${dto.path}&quot; after ${elapsed}ms&#x60;,
+            );
+        }
+
+        return success;
+    }
+
+    // ---------------------------------------------------------------------------
+    // Download
+    // ---------------------------------------------------------------------------
+
+    /**
+     * Download a file as a stream.
+     *
+     * The caller is responsible for consuming or cancelling the stream.
+     */
+    async download(input: DownloadFileDto): Promise&lt;BunnyDownloadResult&gt; {
+        const dto &#x3D; this.validate(DownloadFileSchema, input, &#x27;download&#x27;);
+        const start &#x3D; performance.now();
+
+        this.logger.info(&#x60;[DOWNLOAD] ▶ ${dto.path}&#x60;);
+
+        const result &#x3D; await BunnyStorageSDK.file.download(this.zone, dto.path);
+
+        const elapsed &#x3D; (performance.now() - start).toFixed(1);
+        const sizeLabel &#x3D; result.length
+            ? &#x60;${(result.length / 1_048_576).toFixed(2)} MB&#x60;
+            : &#x27;unknown size&#x27;;
+
+        this.logger.info(
+            &#x60;[DOWNLOAD] ✔ ${dto.path} — ${sizeLabel} (${elapsed}ms, HTTP ${result.response.status})&#x60;,
+        );
+
+        return result;
+    }
+
+    // ---------------------------------------------------------------------------
+    // Get metadata
+    // ---------------------------------------------------------------------------
+
+    /**
+     * Fetch the metadata of a single file or directory node.
+     *
+     * The raw SDK response is validated against &#x60;FileMetadataSchema&#x60; before
+     * being returned, ensuring the shape is always what the rest of the app expects.
+     */
+    async getMetadata(path: string): Promise&lt;FileMetadataDto&gt; {
+        this.logger.info(&#x60;[METADATA] ▶ ${path}&#x60;);
+
+        const raw &#x3D; await BunnyStorageSDK.file.get(this.zone, path);
+        const metadata &#x3D; this.validate(FileMetadataSchema, raw, &#x27;getMetadata&#x27;);
+
+        this.logger.info(
+            &#x60;[METADATA] ✔ ${path} — ${metadata.IsDirectory ? &#x27;directory&#x27; : &#x60;file, ${metadata.Length} bytes&#x60;}&#x60; +
+                &#x60;${metadata.Checksum ? &#x60;, SHA-256: ${metadata.Checksum}&#x60; : &#x27;&#x27;}&#x60; +
+                &#x60;${metadata.ReplicatedZones ? &#x60;, replicas: [${metadata.ReplicatedZones}]&#x60; : &#x27;&#x27;}&#x60;,
+        );
+
+        return metadata;
+    }
+
+    // ---------------------------------------------------------------------------
+    // List
+    // ---------------------------------------------------------------------------
+
+    /**
+     * List all entries (files and sub-directories) under a given path.
+     */
+    async list(input: ListFilesDto): Promise&lt;FileMetadataDto[]&gt; {
+        const dto &#x3D; this.validate(ListFilesSchema, input, &#x27;list&#x27;);
+
+        this.logger.info(&#x60;[LIST] ▶ ${dto.path}&#x60;);
+
+        const raw &#x3D; await BunnyStorageSDK.file.list(this.zone, dto.path);
+
+        const entries &#x3D; raw.map((item, i) &#x3D;&gt; this.validate(FileMetadataSchema, item, &#x60;list[${i}]&#x60;));
+
+        const fileCount &#x3D; entries.filter((e) &#x3D;&gt; !e.IsDirectory).length;
+        const dirCount &#x3D; entries.filter((e) &#x3D;&gt; e.IsDirectory).length;
+        const totalBytes &#x3D; entries.reduce((acc, e) &#x3D;&gt; acc + e.Length, 0);
+
+        this.logger.info(
+            &#x60;[LIST] ✔ ${dto.path} — ${entries.length} entries&#x60; +
+                &#x60; (${fileCount} files, ${dirCount} dirs, ${(totalBytes / 1_048_576).toFixed(2)} MB total)&#x60;,
+        );
+
+        entries.forEach((e) &#x3D;&gt; {
+            const type &#x3D; e.IsDirectory ? &#x27;📁&#x27; : &#x27;📄&#x27;;
+            const size &#x3D; e.IsDirectory ? &#x27;&#x27; : &#x60; (${e.Length} bytes)&#x60;;
+            this.logger.debug(&#x60;[LIST]   ${type} ${e.ObjectName}${size}&#x60;);
+        });
+
+        return entries;
+    }
+
+    // ---------------------------------------------------------------------------
+    // Delete
+    // ---------------------------------------------------------------------------
+
+    /**
+     * Delete a single file at the given path.
+     */
+    async delete(path: string): Promise&lt;boolean&gt; {
+        this.logger.warn(&#x60;[DELETE] ▶ ${path}&#x60;);
+
+        const success &#x3D; await BunnyStorageSDK.file.remove(this.zone, path);
+
+        if (success) {
+            this.logger.warn(&#x60;[DELETE] ✔ Deleted: ${path}&#x60;);
+        } else {
+            this.logger.error(&#x60;[DELETE] ✘ Failed to delete: &quot;${path}&quot;&#x60;);
+        }
+
+        return success;
+    }
+
+    /**
+     * Recursively delete an entire directory and all its contents.
+     *
+     * ⚠ This is destructive and irreversible — use with caution.
+     */
+    async deleteDirectory(path: string): Promise&lt;boolean&gt; {
+        this.logger.warn(&#x60;[DELETE_DIR] ▶ ${path} (recursive)&#x60;);
+
+        const success &#x3D; await BunnyStorageSDK.file.removeDirectory(this.zone, path);
+
+        if (success) {
+            this.logger.warn(&#x60;[DELETE_DIR] ✔ Deleted directory: ${path}&#x60;);
+        } else {
+            this.logger.error(&#x60;[DELETE_DIR] ✘ Failed to delete directory: &quot;${path}&quot;&#x60;);
+        }
+
+        return success;
+    }
+
+    // ---------------------------------------------------------------------------
+    // Helpers
+    // ---------------------------------------------------------------------------
+
+    /**
+     * Validate &#x60;data&#x60; against a Zod schema.
+     * On failure, logs the issues and re-throws a clean Error so upstream
+     * services get a useful message rather than a raw ZodError.
+     */
+    private validate&lt;T&gt;(schema: { parse: (d: unknown) &#x3D;&gt; T }, data: unknown, context: string): T {
+        try {
+            return schema.parse(data);
+        } catch (err) {
+            if (err instanceof ZodError) {
+                const issues &#x3D; err.issues
+                    .map((i) &#x3D;&gt; &#x60;  • ${i.path.join(&#x27;.&#x27;)} — ${i.message}&#x60;)
+                    .join(&#x27;\n&#x27;);
+
+                this.logger.error(&#x60;[VALIDATION] Failed in context &quot;${context}&quot;:\n${issues}&#x60;);
+
+                throw new Error(&#x60;BunnyStorageService validation error in &quot;${context}&quot;:\n${issues}&#x60;);
+            }
+
+            throw err;
+        }
+    }
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'BunnyStorageService.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

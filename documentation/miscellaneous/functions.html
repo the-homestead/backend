@@ -136,7 +136,13 @@
                             <a href="#getBaseDomain" title="src/lib/get-base-domain.ts" ><b>getBaseDomain</b>&nbsp;&nbsp;&nbsp;(src/.../get-base-domain.ts)</a>
                         </li>
                         <li>
+                            <a href="#oauthProvider" title="src/modules/config/namespaces/auth.config.ts" ><b>oauthProvider</b>&nbsp;&nbsp;&nbsp;(src/.../auth.config.ts)</a>
+                        </li>
+                        <li>
                             <a href="#toRequestHeaders" title="src/modules/auth/helpers/to-request-headers.helper.ts" ><b>toRequestHeaders</b>&nbsp;&nbsp;&nbsp;(src/.../to-request-headers.helper.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#validateEnv" title="src/modules/config/env.schema.ts" ><b>validateEnv</b>&nbsp;&nbsp;&nbsp;(src/.../env.schema.ts)</a>
                         </li>
                     </ul>
                 </td>
@@ -202,6 +208,76 @@
             </tr>
         </tbody>
     </table>
+</section>    <h3>src/modules/config/namespaces/auth.config.ts</h3>
+    <section data-compodoc="block-methods">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="oauthProvider"></a>
+                    <span class="name">
+                        <span ><b>oauthProvider</b></span>
+                        <a href="#oauthProvider"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>oauthProvider(id, secret)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Returns an OAuthProviderConfig only if both id and secret are present.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>secret</td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../interfaces/OAuthProviderConfig.html" target="_self" >OAuthProviderConfig | undefined</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </section>    <h3>src/modules/auth/helpers/to-request-headers.helper.ts</h3>
     <section data-compodoc="block-methods">
     <h3></h3>    <table class="table table-sm table-bordered">
@@ -259,6 +335,72 @@ better-auth&#39;s api methods expect a Web API Headers instance.</p>
                             </div>
                         <div class="io-description">
                             <b>Returns : </b>    <code>Headers</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>src/modules/config/env.schema.ts</h3>
+    <section data-compodoc="block-methods">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="validateEnv"></a>
+                    <span class="name">
+                        <span ><b>validateEnv</b></span>
+                        <a href="#validateEnv"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>validateEnv(config: Record)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Adapter used by NestJS ConfigModule&#39;s <code>validate</code> option.
+Throws on parse failure, which aborts the bootstrap process with a clear message.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>config</td>
+                                            <td>
+                                                        <code>Record</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../miscellaneous/typealiases.html#Env" target="_self" >Env</a></code>
 
                         </div>
                             <div class="io-description">

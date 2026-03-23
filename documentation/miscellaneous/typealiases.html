@@ -139,10 +139,25 @@
                             <a href="#Auth" title="src/modules/auth/auth.main.ts" ><b>Auth</b>&nbsp;&nbsp;&nbsp;(src/.../auth.main.ts)</a>
                         </li>
                         <li>
-                            <a href="#HealthDetails" title="src/modules/health/health.controller.ts" ><b>HealthDetails</b>&nbsp;&nbsp;&nbsp;(src/.../health.controller.ts)</a>
+                            <a href="#BunnyRegion" title="src/modules/bunny/bunny.constants.ts" ><b>BunnyRegion</b>&nbsp;&nbsp;&nbsp;(src/.../bunny.constants.ts)</a>
                         </li>
                         <li>
-                            <a href="#HealthStatus" title="src/modules/health/health.controller.ts" ><b>HealthStatus</b>&nbsp;&nbsp;&nbsp;(src/.../health.controller.ts)</a>
+                            <a href="#BunnyRegionKey" title="src/modules/bunny/bunny.constants.ts" ><b>BunnyRegionKey</b>&nbsp;&nbsp;&nbsp;(src/.../bunny.constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#DownloadFileDto" title="src/modules/bunny/dto/download-file.dto.ts" ><b>DownloadFileDto</b>&nbsp;&nbsp;&nbsp;(src/.../download-file.dto.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#Env" title="src/modules/config/env.schema.ts" ><b>Env</b>&nbsp;&nbsp;&nbsp;(src/.../env.schema.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#FileMetadataDto" title="src/modules/bunny/dto/file-metadata.dto.ts" ><b>FileMetadataDto</b>&nbsp;&nbsp;&nbsp;(src/.../file-metadata.dto.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#HealthResponse" title="src/modules/health/health.controller.ts" ><b>HealthResponse</b>&nbsp;&nbsp;&nbsp;(src/.../health.controller.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#ListFilesDto" title="src/modules/bunny/dto/list-files.dto.ts" ><b>ListFilesDto</b>&nbsp;&nbsp;&nbsp;(src/.../list-files.dto.ts)</a>
                         </li>
                         <li>
                             <a href="#Organization" title="src/modules/auth/auth.main.ts" ><b>Organization</b>&nbsp;&nbsp;&nbsp;(src/.../auth.main.ts)</a>
@@ -167,6 +182,9 @@
                         </li>
                         <li>
                             <a href="#TeamMember" title="src/modules/auth/auth.main.ts" ><b>TeamMember</b>&nbsp;&nbsp;&nbsp;(src/.../auth.main.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#UploadFileDto" title="src/modules/bunny/dto/upload-file.dto.ts" ><b>UploadFileDto</b>&nbsp;&nbsp;&nbsp;(src/.../upload-file.dto.ts)</a>
                         </li>
                         <li>
                             <a href="#User" title="src/modules/auth/auth.main.ts" ><b>User</b>&nbsp;&nbsp;&nbsp;(src/.../auth.main.ts)</a>
@@ -344,19 +362,19 @@
             </tr>
         </tbody>
     </table>
-</section>    <h3>src/modules/health/health.controller.ts</h3>
+</section>    <h3>src/modules/bunny/bunny.constants.ts</h3>
     <section data-compodoc="block-typealias">
     <table class="table table-sm table-bordered">
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="HealthDetails"></a>
-                    <span class="name "><b>HealthDetails</b><a href="#HealthDetails"><span class="icon ion-ios-link"></span></a></span>
+                    <a name="BunnyRegion"></a>
+                    <span class="name "><b>BunnyRegion</b><a href="#BunnyRegion"><span class="icon ion-ios-link"></span></a></span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-                    <code>        <code><a href="../interfaces/HealthIndicatorResult.html" target="_self" >Record&lt;string | HealthIndicatorResult&gt;</a></code>
+                    <code>    <code>&quot;de&quot; | &quot;uk&quot; | &quot;ny&quot; | &quot;la&quot; | &quot;sg&quot; | &quot;syd&quot; | &quot;jh&quot; | &quot;se&quot; | &quot;br&quot;</code>
 </code>
                 </td>
             </tr>
@@ -366,13 +384,103 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="HealthStatus"></a>
-                    <span class="name "><b>HealthStatus</b><a href="#HealthStatus"><span class="icon ion-ios-link"></span></a></span>
+                    <a name="BunnyRegionKey"></a>
+                    <span class="name "><b>BunnyRegionKey</b><a href="#BunnyRegionKey"><span class="icon ion-ios-link"></span></a></span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-                    <code>    <code>&quot;up&quot; | &quot;down&quot;</code>
+                    <code>    <code>unknown</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>src/modules/bunny/dto/download-file.dto.ts</h3>
+    <section data-compodoc="block-typealias">
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="DownloadFileDto"></a>
+                    <span class="name "><b>DownloadFileDto</b><a href="#DownloadFileDto"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>z.infer&lt;unknown&gt;</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>src/modules/config/env.schema.ts</h3>
+    <section data-compodoc="block-typealias">
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="Env"></a>
+                    <span class="name "><b>Env</b><a href="#Env"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>z.infer&lt;unknown&gt;</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>src/modules/bunny/dto/file-metadata.dto.ts</h3>
+    <section data-compodoc="block-typealias">
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="FileMetadataDto"></a>
+                    <span class="name "><b>FileMetadataDto</b><a href="#FileMetadataDto"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>z.infer&lt;unknown&gt;</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>src/modules/health/health.controller.ts</h3>
+    <section data-compodoc="block-typealias">
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="HealthResponse"></a>
+                    <span class="name "><b>HealthResponse</b><a href="#HealthResponse"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>HealthUpResponse | HealthDownResponse</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>src/modules/bunny/dto/list-files.dto.ts</h3>
+    <section data-compodoc="block-typealias">
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ListFilesDto"></a>
+                    <span class="name "><b>ListFilesDto</b><a href="#ListFilesDto"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>z.infer&lt;unknown&gt;</code>
 </code>
                 </td>
             </tr>
@@ -407,6 +515,24 @@
             <tr>
                 <td class="col-md-4">
                     <code>        <code><a href="../miscellaneous/enumerations.html#OrgRole" target="_self" >OrgRole | OrgRole[]</a></code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>src/modules/bunny/dto/upload-file.dto.ts</h3>
+    <section data-compodoc="block-typealias">
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="UploadFileDto"></a>
+                    <span class="name "><b>UploadFileDto</b><a href="#UploadFileDto"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>z.infer&lt;unknown&gt;</code>
 </code>
                 </td>
             </tr>
