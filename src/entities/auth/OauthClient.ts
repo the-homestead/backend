@@ -1,0 +1,93 @@
+import { Column } from 'typeorm/decorator/columns/Column.js';
+import { PrimaryColumn } from 'typeorm/decorator/columns/PrimaryColumn.js';
+import { Entity } from 'typeorm/decorator/entity/Entity.js';
+
+@Entity('oauthClient')
+export class OauthClient {
+    @PrimaryColumn('text')
+    id!: string;
+
+    @Column('text', { name: 'clientId', unique: true })
+    clientId!: string;
+
+    @Column('text', { name: 'clientSecret', nullable: true })
+    clientSecret?: string | null;
+
+    @Column('boolean', { name: 'disabled', nullable: true })
+    disabled?: boolean | null;
+
+    @Column('boolean', { name: 'skipConsent', nullable: true })
+    skipConsent?: boolean | null;
+
+    @Column('boolean', { name: 'enableEndSession', nullable: true })
+    enableEndSession?: boolean | null;
+
+    @Column('text', { name: 'scopes', nullable: true })
+    scopes?: string | null;
+
+    @Column('text', { name: 'userId', nullable: true })
+    userId?: string | null;
+
+    @Column('date', { name: 'createdAt', nullable: true })
+    createdAt?: Date | null;
+
+    @Column('date', { name: 'updatedAt', nullable: true })
+    updatedAt?: Date | null;
+
+    @Column('text', { name: 'name', nullable: true })
+    name?: string | null;
+
+    @Column('text', { name: 'uri', nullable: true })
+    uri?: string | null;
+
+    @Column('text', { name: 'icon', nullable: true })
+    icon?: string | null;
+
+    @Column('text', { name: 'contacts', nullable: true })
+    contacts?: string | null;
+
+    @Column('text', { name: 'tos', nullable: true })
+    tos?: string | null;
+
+    @Column('text', { name: 'policy', nullable: true })
+    policy?: string | null;
+
+    @Column('text', { name: 'softwareId', nullable: true })
+    softwareId?: string | null;
+
+    @Column('text', { name: 'softwareVersion', nullable: true })
+    softwareVersion?: string | null;
+
+    @Column('text', { name: 'softwareStatement', nullable: true })
+    softwareStatement?: string | null;
+
+    @Column('text', { name: 'redirectUris' })
+    redirectUris!: string;
+
+    @Column('text', { name: 'postLogoutRedirectUris', nullable: true })
+    postLogoutRedirectUris?: string | null;
+
+    @Column('text', { name: 'tokenEndpointAuthMethod', nullable: true })
+    tokenEndpointAuthMethod?: string | null;
+
+    @Column('text', { name: 'grantTypes', nullable: true })
+    grantTypes?: string | null;
+
+    @Column('text', { name: 'responseTypes', nullable: true })
+    responseTypes?: string | null;
+
+    @Column('boolean', { name: 'public', nullable: true })
+    public?: boolean | null;
+
+    @Column('text', { name: 'type', nullable: true })
+    type?: string | null;
+
+    @Column('boolean', { name: 'requirePKCE', nullable: true })
+    requirePKCE?: boolean | null;
+
+    @Column('text', { name: 'referenceId', nullable: true })
+    referenceId?: string | null;
+
+    @Column('text', { name: 'metadata', nullable: true })
+    metadata?: string | null;
+}
