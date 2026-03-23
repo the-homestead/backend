@@ -1,0 +1,56 @@
+# TypeORM Schema Changes - 2026-03-08T08:00:55.217Z
+
+- CREATE Migration: migrations/1772956855217-create-user.ts
+- Entity: entities/User.ts
+
+- CREATE Migration: migrations/1772956855217-create-session.ts
+- Entity: entities/Session.ts
+
+- CREATE Migration: migrations/1772956855217-create-account.ts
+- Entity: entities/Account.ts
+
+- CREATE Migration: migrations/1772956855217-create-verification.ts
+- Entity: entities/Verification.ts
+
+- CREATE Migration: migrations/1772956855217-create-twoFactor.ts
+- Entity: entities/TwoFactor.ts
+
+- CREATE Migration: migrations/1772956855217-create-organization.ts
+- Entity: entities/Organization.ts
+
+- CREATE Migration: migrations/1772956855217-create-team.ts
+- Entity: entities/Team.ts
+
+- CREATE Migration: migrations/1772956855217-create-teamMember.ts
+- Entity: entities/TeamMember.ts
+
+- CREATE Migration: migrations/1772956855217-create-member.ts
+- Entity: entities/Member.ts
+
+- CREATE Migration: migrations/1772956855217-create-invitation.ts
+- Entity: entities/Invitation.ts
+
+- CREATE Migration: migrations/1772956855217-create-jwks.ts
+- Entity: entities/Jwks.ts
+
+- CREATE Migration: migrations/1772956855217-create-passkey.ts
+- Entity: entities/Passkey.ts
+
+- CREATE Migration: migrations/1772956855217-create-apikey.ts
+- Entity: entities/Apikey.ts
+
+- CREATE Migration: migrations/1772956855217-create-oauthClient.ts
+- Entity: entities/OauthClient.ts
+
+- CREATE Migration: migrations/1772956855217-create-oauthRefreshToken.ts
+- Entity: entities/OauthRefreshToken.ts
+
+- CREATE Migration: migrations/1772956855217-create-oauthAccessToken.ts
+- Entity: entities/OauthAccessToken.ts
+
+- CREATE Migration: migrations/1772956855217-create-oauthConsent.ts
+- Entity: entities/OauthConsent.ts
+
+- CREATE Migration: migrations/1772956855217-create-subscription.ts
+- Entity: entities/Subscription.ts
+
