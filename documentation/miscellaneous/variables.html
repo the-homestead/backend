@@ -1,0 +1,1812 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Homestead Backend</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">Homestead Backend</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content miscellaneous-variables">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Miscellaneous</li>
+  <li class="breadcrumb-item">Variables</li>
+</ol>
+
+<section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <ul class="index-list">
+                        <li>
+                            <a href="#ac" title="src/modules/auth/access/auth.access.ts" ><b>ac</b>&nbsp;&nbsp;&nbsp;(src/.../auth.access.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#accessStatement" title="src/modules/auth/access/auth.access.ts" ><b>accessStatement</b>&nbsp;&nbsp;&nbsp;(src/.../auth.access.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#adminRole" title="src/modules/auth/access/auth.access.ts" ><b>adminRole</b>&nbsp;&nbsp;&nbsp;(src/.../auth.access.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#AppDataSource" title="src/modules/database/data-source.ts" ><b>AppDataSource</b>&nbsp;&nbsp;&nbsp;(src/.../data-source.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#auth" title="src/modules/auth/auth.main.ts" ><b>auth</b>&nbsp;&nbsp;&nbsp;(src/.../auth.main.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#authorRole" title="src/modules/auth/access/auth.access.ts" ><b>authorRole</b>&nbsp;&nbsp;&nbsp;(src/.../auth.access.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#databaseEnvSchema" title="src/modules/database/database.config.ts" ><b>databaseEnvSchema</b>&nbsp;&nbsp;&nbsp;(src/.../database.config.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#developerRole" title="src/modules/auth/access/auth.access.ts" ><b>developerRole</b>&nbsp;&nbsp;&nbsp;(src/.../auth.access.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#guestRole" title="src/modules/auth/access/auth.access.ts" ><b>guestRole</b>&nbsp;&nbsp;&nbsp;(src/.../auth.access.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#IS_PROD" title="src/modules/auth/auth.main.ts" ><b>IS_PROD</b>&nbsp;&nbsp;&nbsp;(src/.../auth.main.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#IS_TEST" title="src/modules/auth/auth.main.ts" ><b>IS_TEST</b>&nbsp;&nbsp;&nbsp;(src/.../auth.main.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#isDev" title="src/app/app.module.ts" ><b>isDev</b>&nbsp;&nbsp;&nbsp;(src/.../app.module.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#moderatorRole" title="src/modules/auth/access/auth.access.ts" ><b>moderatorRole</b>&nbsp;&nbsp;&nbsp;(src/.../auth.access.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#orgAc" title="src/modules/auth/access/org.access.ts" ><b>orgAc</b>&nbsp;&nbsp;&nbsp;(src/.../org.access.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#orgAdmin" title="src/modules/auth/access/org.access.ts" ><b>orgAdmin</b>&nbsp;&nbsp;&nbsp;(src/.../org.access.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#orgContributor" title="src/modules/auth/access/org.access.ts" ><b>orgContributor</b>&nbsp;&nbsp;&nbsp;(src/.../org.access.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#orgMember" title="src/modules/auth/access/org.access.ts" ><b>orgMember</b>&nbsp;&nbsp;&nbsp;(src/.../org.access.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#orgOwner" title="src/modules/auth/access/org.access.ts" ><b>orgOwner</b>&nbsp;&nbsp;&nbsp;(src/.../org.access.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#orgPublisher" title="src/modules/auth/access/org.access.ts" ><b>orgPublisher</b>&nbsp;&nbsp;&nbsp;(src/.../org.access.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#orgStatement" title="src/modules/auth/access/org.access.ts" ><b>orgStatement</b>&nbsp;&nbsp;&nbsp;(src/.../org.access.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#ownerRole" title="src/modules/auth/access/auth.access.ts" ><b>ownerRole</b>&nbsp;&nbsp;&nbsp;(src/.../auth.access.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#RoleEnum" title="src/modules/auth/access/auth.access.ts" ><b>RoleEnum</b>&nbsp;&nbsp;&nbsp;(src/.../auth.access.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#roles" title="src/modules/auth/access/auth.access.ts" ><b>roles</b>&nbsp;&nbsp;&nbsp;(src/.../auth.access.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#socialProviders" title="src/modules/auth/auth.main.ts" ><b>socialProviders</b>&nbsp;&nbsp;&nbsp;(src/.../auth.main.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#userRole" title="src/modules/auth/access/auth.access.ts" ><b>userRole</b>&nbsp;&nbsp;&nbsp;(src/.../auth.access.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#vip_oneRole" title="src/modules/auth/access/auth.access.ts" ><b>vip_oneRole</b>&nbsp;&nbsp;&nbsp;(src/.../auth.access.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#vip_twoRole" title="src/modules/auth/access/auth.access.ts" ><b>vip_twoRole</b>&nbsp;&nbsp;&nbsp;(src/.../auth.access.ts)</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+    <h3>src/modules/auth/access/auth.access.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ac"></a>
+                    <span class="name">
+                        <span ><b>ac</b></span>
+                        <a href="#ac"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAccessControl(accessStatement)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="accessStatement"></a>
+                    <span class="name">
+                        <span ><b>accessStatement</b></span>
+                        <a href="#accessStatement"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    ...defaultStatements,
+
+    // The mod/addon/project itself
+    project: [
+        &#x27;create&#x27;, // any registered user can create a project (starts as draft)
+        &#x27;read&#x27;, // anyone including guests can read public project metadata
+        &#x27;update-own&#x27;, // author edits their own project metadata (title, description, tags etc.)
+        &#x27;update-any&#x27;, // staff can edit any project (e.g. to fix bad metadata or policy violations)
+        &#x27;delete-own&#x27;, // author soft-deletes their own project (can be restored within grace period)
+        &#x27;delete-any&#x27;, // staff can hard-delete (purge) or restore any project
+        &#x27;publish&#x27;, // flip project from draft → publicly listed (may be gated behind review)
+        &#x27;unpublish&#x27;, // pull a project from listing without deleting it (staff or author)
+        &#x27;feature&#x27;, // pin project to homepage / trending section (staff only)
+        &#x27;transfer&#x27;, // reassign project ownership to another user or org (password-verified at middleware layer)
+        &#x27;share&#x27;, // generate shareable or embeddable links for a project
+    ],
+
+    // Individual releases attached to a project
+    version: [
+        &#x27;create&#x27;, // author creates a new version (starts as draft, not publicly visible)
+        &#x27;read&#x27;, // anyone can read version metadata; actual file download is gated by file permissions
+        &#x27;update-own&#x27;, // author edits their own version (changelog, attached files, compatibility tags etc.)
+        &#x27;update-any&#x27;, // staff can edit any version (e.g. to correct bad metadata or flag a bad release)
+        &#x27;delete-own&#x27;, // author soft-deletes their own version (can be restored within grace period)
+        &#x27;delete-any&#x27;, // staff can hard-delete (purge) or restore any version
+        &#x27;publish&#x27;, // author lists the version publicly (makes it visible and downloadable)
+        &#x27;yank&#x27;, // mark a version as broken or recalled — stays visible with a warning banner but discouraged from download
+    ],
+
+    // The actual uploaded file artifact(s) attached to a version
+    file: [
+        &#x27;upload&#x27;, // author uploads a file and attaches it to a version
+        &#x27;read&#x27;, // download/access a file; can differ from version visibility (e.g. server jars gated separately)
+        &#x27;replace&#x27;, // swap out a file on a version without deleting the version; tracked separately for audit trail
+        &#x27;delete-own&#x27;, // author removes a file from their own version (e.g. to replace a bad build)
+        &#x27;delete-any&#x27;, // staff removes a file from any version without deleting the version itself
+        &#x27;scan&#x27;, // trigger AV / hash integrity scan on a file (staff only)
+    ],
+
+    // User comments and reviews on projects
+    comment: [
+        &#x27;create&#x27;, // any logged-in user can post a comment (may be held for approval based on trust level)
+        &#x27;read&#x27;, // anyone can read approved comments; held comments are only visible to author and staff
+        &#x27;update-own&#x27;, // commenter edits their own comment (edit history tracked)
+        &#x27;delete-own&#x27;, // commenter soft-deletes their own comment (mod/staff can still see it)
+        &#x27;delete-any&#x27;, // staff removes any comment (soft or hard delete depending on severity)
+        &#x27;approve&#x27;, // mod+ approves a held comment from a new or untrusted user
+        &#x27;pin&#x27;, // pin a comment to the top of the thread (project author or staff)
+        &#x27;lock&#x27;, // lock a comment thread to prevent further replies (staff only)
+    ],
+
+    // Abuse reports, DMCA submissions, and content flag tickets
+    report: [
+        &#x27;create&#x27;, // any logged-in user can file a report against a project, version, file, or comment
+        &#x27;read-own&#x27;, // reporter can see the status and updates on their own submitted report
+        &#x27;read-any&#x27;, // staff can see all reports; once a report is escalated, mod visibility is pulled at query layer
+        &#x27;assign&#x27;, // mod claims a report/ticket to manage it (prevents duplicate handling)
+        &#x27;warn&#x27;, // issue a formal warning to a user tied to a report (mod+)
+        &#x27;escalate&#x27;, // moderator bumps a report to admin — mod loses read visibility once escalated unless re-added by admin+
+        &#x27;resolve&#x27;, // admin+ closes a report with a final verdict (approved, dismissed, actioned)
+    ],
+
+    // Curated mod lists and modpacks created by users or staff
+    collection: [
+        &#x27;create&#x27;, // any registered user can create a collection
+        &#x27;read&#x27;, // collections are public; project visibility within them is still gated by each project&#x27;s own permissions
+        &#x27;update-own&#x27;, // collection author edits metadata (title, description) and manages the project list
+        &#x27;delete-own&#x27;, // collection author soft-deletes their own collection
+        &#x27;delete-any&#x27;, // staff can delete any collection being abused (does not delete the projects inside it)
+        &#x27;feature&#x27;, // staff pin a collection to homepage or curated sections
+        &#x27;add-project&#x27;, // add a project to a collection (collection author or project author depending on collection settings)
+        &#x27;remove-project&#x27;, // remove a project from a collection
+    ],
+
+    // Content taxonomy — game versions, mod loaders (Forge, Fabric etc.), categories
+    tag: [
+        &#x27;read&#x27;, // anyone can read tags
+        &#x27;create&#x27;, // staff only — create a new tag
+        &#x27;update&#x27;, // staff only — rename or reconfigure a tag
+        &#x27;delete&#x27;, // staff only — remove a tag (cascades to tagged content)
+    ],
+
+    // Platform and project analytics — download counts, referrers, geo breakdowns
+    analytics: [
+        &#x27;read-own&#x27;, // project author views stats for their own projects
+        &#x27;read-any&#x27;, // staff views platform-wide analytics
+        &#x27;export&#x27;, // export analytics as CSV/JSON (author+ for own, staff for platform-wide)
+    ],
+} as const</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="adminRole"></a>
+                    <span class="name">
+                        <span ><b>adminRole</b></span>
+                        <a href="#adminRole"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>ac.newRole({
+    ...adminAc.statements,
+    project: [
+        &#x27;create&#x27;,
+        &#x27;read&#x27;,
+        &#x27;update-own&#x27;,
+        &#x27;update-any&#x27;,
+        &#x27;delete-own&#x27;,
+        &#x27;delete-any&#x27;,
+        &#x27;publish&#x27;,
+        &#x27;unpublish&#x27;,
+        &#x27;feature&#x27;,
+        &#x27;transfer&#x27;,
+        &#x27;share&#x27;,
+    ],
+    version: [
+        &#x27;create&#x27;,
+        &#x27;read&#x27;,
+        &#x27;update-own&#x27;,
+        &#x27;update-any&#x27;,
+        &#x27;delete-own&#x27;,
+        &#x27;delete-any&#x27;,
+        &#x27;publish&#x27;,
+        &#x27;yank&#x27;,
+    ],
+    file: [&#x27;upload&#x27;, &#x27;read&#x27;, &#x27;replace&#x27;, &#x27;delete-own&#x27;, &#x27;delete-any&#x27;, &#x27;scan&#x27;],
+    comment: [&#x27;create&#x27;, &#x27;read&#x27;, &#x27;update-own&#x27;, &#x27;delete-any&#x27;, &#x27;approve&#x27;, &#x27;pin&#x27;, &#x27;lock&#x27;],
+    report: [&#x27;create&#x27;, &#x27;read-own&#x27;, &#x27;read-any&#x27;, &#x27;assign&#x27;, &#x27;warn&#x27;, &#x27;escalate&#x27;, &#x27;resolve&#x27;],
+    collection: [
+        &#x27;create&#x27;,
+        &#x27;read&#x27;,
+        &#x27;update-own&#x27;,
+        &#x27;delete-any&#x27;,
+        &#x27;feature&#x27;,
+        &#x27;add-project&#x27;,
+        &#x27;remove-project&#x27;,
+    ],
+    tag: [&#x27;read&#x27;, &#x27;create&#x27;, &#x27;update&#x27;, &#x27;delete&#x27;],
+    analytics: [&#x27;read-own&#x27;, &#x27;read-any&#x27;, &#x27;export&#x27;],
+})</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Site administrator — handles abuse, DMCA, user management, and full content control.
+Cannot access server-level controls, infrastructure config, or platform financials
+(those are developer/owner only and live outside this permission schema).</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="authorRole"></a>
+                    <span class="name">
+                        <span ><b>authorRole</b></span>
+                        <a href="#authorRole"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>ac.newRole({
+    ...userRole.statements,
+    analytics: [&#x27;read-own&#x27;, &#x27;export&#x27;],
+})</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Verified / trusted publisher.
+Gets analytics export on top of standard user perms.
+Also first to receive beta feature access (handled at app layer, not here).</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="developerRole"></a>
+                    <span class="name">
+                        <span ><b>developerRole</b></span>
+                        <a href="#developerRole"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>ac.newRole({
+    ...adminRole.statements,
+})</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Developer — full access identical to owner at the permission layer.
+Server-level control, infrastructure, and financial access are gated
+outside this schema (admin panel + deployment layer).</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="guestRole"></a>
+                    <span class="name">
+                        <span ><b>guestRole</b></span>
+                        <a href="#guestRole"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>ac.newRole({
+    project: [&#x27;read&#x27;],
+    version: [&#x27;read&#x27;],
+    file: [&#x27;read&#x27;],
+    comment: [&#x27;read&#x27;],
+    collection: [&#x27;read&#x27;],
+    tag: [&#x27;read&#x27;],
+})</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Unauthenticated / logged-out visitor — read-only across all public resources</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="moderatorRole"></a>
+                    <span class="name">
+                        <span ><b>moderatorRole</b></span>
+                        <a href="#moderatorRole"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>ac.newRole({
+    ...userRole.statements,
+    project: [...userRole.statements.project, &#x27;update-any&#x27;, &#x27;unpublish&#x27;],
+    version: [...userRole.statements.version, &#x27;update-any&#x27;, &#x27;delete-any&#x27;],
+    file: [...userRole.statements.file, &#x27;delete-any&#x27;, &#x27;scan&#x27;],
+    comment: [...userRole.statements.comment, &#x27;delete-any&#x27;, &#x27;approve&#x27;, &#x27;pin&#x27;, &#x27;lock&#x27;],
+    report: [&#x27;create&#x27;, &#x27;read-own&#x27;, &#x27;read-any&#x27;, &#x27;assign&#x27;, &#x27;warn&#x27;, &#x27;escalate&#x27;],
+    collection: [...userRole.statements.collection, &#x27;delete-any&#x27;],
+    tag: [&#x27;read&#x27;],
+    analytics: [&#x27;read-own&#x27;],
+})</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Content moderator — manages reports, warnings, and content moderation.
+Can escalate reports to admin but loses visibility on that report once escalated
+unless an admin/owner explicitly re-adds them.
+Cannot resolve reports, manage financials, or access platform-wide analytics.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ownerRole"></a>
+                    <span class="name">
+                        <span ><b>ownerRole</b></span>
+                        <a href="#ownerRole"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>ac.newRole({
+    ...developerRole.statements,
+})</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Platform owner — unrestricted. Inherits everything from developer/admin.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="RoleEnum"></a>
+                    <span class="name">
+                        <span ><b>RoleEnum</b></span>
+                        <a href="#RoleEnum"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>Object.freeze(
+    Object.fromEntries(Object.keys(roles).map((k) &#x3D;&gt; [k, k])),
+) as { [K in keyof typeof roles]: K }</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="roles"></a>
+                    <span class="name">
+                        <span ><b>roles</b></span>
+                        <a href="#roles"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    guestRole,
+    userRole,
+    authorRole,
+    vip_oneRole,
+    vip_twoRole,
+    moderatorRole,
+    adminRole,
+    developerRole,
+    ownerRole,
+} as const</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="userRole"></a>
+                    <span class="name">
+                        <span ><b>userRole</b></span>
+                        <a href="#userRole"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>ac.newRole({
+    ...defaultAc.statements,
+    project: [&#x27;create&#x27;, &#x27;read&#x27;, &#x27;update-own&#x27;, &#x27;delete-own&#x27;, &#x27;publish&#x27;, &#x27;transfer&#x27;, &#x27;share&#x27;],
+    version: [&#x27;create&#x27;, &#x27;read&#x27;, &#x27;update-own&#x27;, &#x27;delete-own&#x27;, &#x27;publish&#x27;, &#x27;yank&#x27;],
+    file: [&#x27;upload&#x27;, &#x27;read&#x27;, &#x27;replace&#x27;, &#x27;delete-own&#x27;],
+    comment: [&#x27;create&#x27;, &#x27;read&#x27;, &#x27;update-own&#x27;, &#x27;delete-own&#x27;],
+    report: [&#x27;create&#x27;, &#x27;read-own&#x27;],
+    collection: [&#x27;create&#x27;, &#x27;read&#x27;, &#x27;update-own&#x27;, &#x27;delete-own&#x27;, &#x27;add-project&#x27;, &#x27;remove-project&#x27;],
+    tag: [&#x27;read&#x27;],
+    analytics: [&#x27;read-own&#x27;],
+})</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Standard registered user — can create and manage their own content</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="vip_oneRole"></a>
+                    <span class="name">
+                        <span ><b>vip_oneRole</b></span>
+                        <a href="#vip_oneRole"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>ac.newRole({
+    ...userRole.statements,
+})</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Tier 1 monthly subscriber.
+Permissions mirror standard user — actual VIP benefits (no rate limits, no ads,
+multi-threaded downloads etc.) are enforced at the app/middleware layer, not here.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="vip_twoRole"></a>
+                    <span class="name">
+                        <span ><b>vip_twoRole</b></span>
+                        <a href="#vip_twoRole"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>ac.newRole({
+    ...userRole.statements,
+})</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Tier 2 monthly subscriber.
+Same as vip_one at the permission layer — higher-tier benefits handled at app layer.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/modules/database/data-source.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="AppDataSource"></a>
+                    <span class="name">
+                        <span ><b>AppDataSource</b></span>
+                        <a href="#AppDataSource"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new DataSource({
+    type: &#x27;postgres&#x27;,
+
+    host: process.env.PGHOST ?? &#x27;localhost&#x27;,
+    port: parseInt(process.env.PGPORT ?? &#x27;5432&#x27;, 10),
+    username: process.env.PGUSER ?? &#x27;postgres&#x27;,
+    password: process.env.PGPASSWORD ?? &#x27;postgres&#x27;,
+    database: process.env.PGDATABASE ?? &#x27;backend&#x27;,
+
+    ssl: process.env.PGSSLMODE &#x3D;&#x3D;&#x3D; &#x27;require&#x27; ? { rejectUnauthorized: false } : false,
+
+    // Discover all entities in the NX app + any shared libs
+    entities: [&#x27;./src/**/*.entity{.ts,.js}&#x27;],
+
+    migrations: [&#x27;./migrations/*{.ts,.js}&#x27;],
+
+    migrationsTableName: &#x27;typeorm_migrations&#x27;,
+
+    // Never use synchronize via CLI tool
+    synchronize: false,
+    logging: [&#x27;query&#x27;, &#x27;error&#x27;, &#x27;warn&#x27;, &#x27;schema&#x27;, &#x27;migration&#x27;],
+})</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/modules/auth/auth.main.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="auth"></a>
+                    <span class="name">
+                        <span ><b>auth</b></span>
+                        <a href="#auth"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>betterAuth({
+    // ── Identity ───────────────────────────────────────────────────────────────
+    appName: process.env.APP_NAME ?? &#x27;Backend&#x27;,
+    baseURL: process.env.BETTER_AUTH_URL,
+    secret: process.env.BETTER_AUTH_SECRET,
+    basePath: &#x27;/api/auth&#x27;,
+
+    // ── Advanced  ─────────────────────────────────────────────────────────────
+    advanced: {
+        ipAddress: {
+            ipAddressHeaders: [
+                &#x27;x-forwarded-for&#x27;,
+                &#x27;x-real-ip&#x27;,
+                &#x27;cf-connecting-ip&#x27;,
+                &#x27;fastly-client-ip&#x27;,
+                &#x27;true-client-ip&#x27;,
+                &#x27;x-cluster-client-ip&#x27;,
+                &#x27;x-forwarded&#x27;,
+                &#x27;forwarded-for&#x27;,
+                &#x27;forwarded&#x27;,
+            ],
+            disableIpTracking: false,
+        },
+        useSecureCookies: IS_PROD,
+        crossSubDomainCookies: {
+            enabled: IS_PROD,
+            domain: process.env.BETTER_AUTH_COOKIE_DOMAIN, // e.g. &#x27;.example.com&#x27; for sharing across subdomains
+        },
+        defaultCookieAttributes: {
+            httpOnly: true,
+            secure: IS_PROD,
+            sameSite: IS_PROD ? &#x27;lax&#x27; : &#x27;none&#x27;,
+        },
+    },
+
+    // ── Social / OAuth providers ───────────────────────────────────────────────
+    socialProviders,
+
+    // ── Database ───────────────────────────────────────────────────────────────
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    database: typeormAdapter(AppDataSource, {
+        outputDir: &#x27;./src/modules/auth&#x27;,
+        entitiesDir: &#x27;./src/entities&#x27;,
+        migrationsDir: &#x27;./migrations&#x27;,
+    }),
+
+    // ── CORS / cookies ─────────────────────────────────────────────────────────
+    trustedOrigins: process.env.BETTER_AUTH_TRUSTED_ORIGINS?.split(&#x27;,&#x27;) ?? [],
+
+    // ── Session ────────────────────────────────────────────────────────────────
+    session: {
+        storeSessionInDatabase: true,
+        expiresIn: 60 * 60 * 24 * 7, // 7 days
+        updateAge: 60 * 60 * 24, // rotate if &gt; 1 day old
+        additionalFields: {
+            language: {
+                type: &#x27;string&#x27;,
+                input: true, // allow authClient.updateSession({ language }) to write it
+            },
+        },
+        cookieCache: {
+            enabled: true,
+            maxAge: 60 * 5, // 5 minutes
+            strategy: &#x27;jwt&#x27;, // encrypt cookie contents to safely cache sensitive session data (e.g. for multi-session listing) without hitting the database on every request. Requires additional encryption keys in production for security — see docs for details.
+        },
+    },
+
+    // ── Rate limiting ──────────────────────────────────────────────────────────
+    rateLimit: {
+        enabled: true,
+        window: 60,
+        max: 100,
+        customRules: {
+            &#x27;/sign-in/email&#x27;: { window: 60, max: 5 },
+            &#x27;/sign-up/email&#x27;: { window: 60, max: 3 },
+            &#x27;/two-factor/verify&#x27;: { window: 10, max: 3 },
+            &#x27;/request-password-reset&#x27;: { window: 180, max: 1 },
+            &#x27;/reset-password&#x27;: { window: 60, max: 2 },
+            &#x27;/magic-link/send&#x27;: { window: 60, max: 3 },
+            &#x27;/email-otp/send-verification-otp&#x27;: { window: 60, max: 3 },
+            &#x27;/passkey/register&#x27;: { window: 60, max: 5 },
+        },
+    },
+
+    // ── Email + Password ───────────────────────────────────────────────────────
+    emailAndPassword: {
+        enabled: true,
+        disableSignUp: process.env.REGISTRATION_ENABLED &#x3D;&#x3D;&#x3D; &#x27;false&#x27;,
+        requireEmailVerification: true,
+        minPasswordLength: 8,
+        maxPasswordLength: 128,
+        // Temporary Dsiabled
+        // eslint-disable-next-line @typescript-eslint/require-await, @typescript-eslint/no-unused-vars
+        onExistingUserSignUp: async ({ user }, _request) &#x3D;&gt; {
+            // Avoid awaint the email sending to prevent timing attacks. use waitUntil or similar
+            console.log({
+                to: user.email,
+                subject: &#x27;Sign-up attempt with your email&#x27;,
+                text: &#x27;Someone tried to create an account using your email address. If this was you, try signing in instead. If not, you can safely ignore this email.&#x27;,
+            });
+        },
+        // Temporary Dsiabled
+        // eslint-disable-next-line @typescript-eslint/require-await, @typescript-eslint/no-unused-vars
+        sendResetPassword: async ({ user, url, token }, _request) &#x3D;&gt; {
+            // Avoid awaint the email sending to prevent timing attacks. use waitUntil or similar
+            console.log({
+                to: user.email,
+                subject: &#x27;Reset your password&#x27;,
+                text: &#x60;Click the link to reset your password: ${url}&#x60;,
+            });
+        },
+        // Temporary Dsiabled
+        // eslint-disable-next-line @typescript-eslint/require-await, @typescript-eslint/no-unused-vars
+        onPasswordReset: async ({ user }, _request) &#x3D;&gt; {
+            // your logic here when a password is reset successfully, e.g. send a confirmation email or log the event
+            console.log(&#x60;Password for user ${user.email} has been reset.&#x60;);
+        },
+        customSyntheticUser: ({ coreFields, additionalFields, id }) &#x3D;&gt; ({
+            ...coreFields,
+            // Admin plugin fields (in schema order)
+            role: &#x27;user&#x27;,
+            banned: false,
+            banReason: null,
+            banExpires: null,
+            // Your additional fields
+            ...additionalFields,
+            // ID must be last to match database output order
+            id,
+        }),
+    },
+
+    // emailVerification: {
+    //   sendVerificationEmail: async ({ user, url }) &#x3D;&gt; {
+    //     await mailer.send({ to: user.email, subject: &#x27;Verify your email&#x27;, html: &#x60;&lt;a href&#x3D;&quot;${url}&quot;&gt;Verify&lt;/a&gt;&#x60; });
+    //   },
+    //   autoSignInAfterVerification: true,
+    // },
+
+    // ── Account linking ────────────────────────────────────────────────────────
+    account: {
+        accountLinking: {
+            enabled: true,
+            trustedProviders: [&#x27;google&#x27;, &#x27;github&#x27;],
+        },
+    },
+
+    user: {
+        additionalFields: {
+            age: {
+                type: &#x27;number&#x27;,
+                input: true,
+                required: false,
+            },
+            agePublic: {
+                type: &#x27;boolean&#x27;,
+                input: true,
+                required: false,
+            },
+            firstName: {
+                type: &#x27;string&#x27;,
+                input: true,
+                required: false,
+            },
+            firstNamePublic: {
+                type: &#x27;boolean&#x27;,
+                input: true,
+                required: false,
+            },
+            lastName: {
+                type: &#x27;string&#x27;,
+                input: true,
+                required: false,
+            },
+            lastNamePublic: {
+                type: &#x27;boolean&#x27;,
+                input: true,
+                required: false,
+            },
+            bio: {
+                type: &#x27;string&#x27;,
+                input: true,
+                required: false,
+            },
+        },
+    },
+
+    // ── Plugins ────────────────────────────────────────────────────────────────
+    plugins: [
+        // ── Two-Factor (TOTP + backup codes) ──────────────────────────────────────
+        // See docs for adding other 2FA methods like emailOTP, passkey, or authenticator push notifications.
+        // https://better-auth.com/docs/plugins/2fa.mdx
+        twoFactor({
+            issuer: process.env.APP_NAME ?? &#x27;Backend&#x27;,
+            otpOptions: {
+                period: 30,
+                digits: 6,
+            },
+            backupCodes: {
+                amount: 10,
+                length: 10,
+            },
+        }),
+
+        // ── Organisation / Teams ──────────────────────────────────────────────────
+        // See docs for full API reference and example usage in OrgsService.
+        // https://better-auth.com/docs/plugins/organization.mdx
+        organization({
+            allowUserToCreateOrganization: true,
+            organizationLimit: 5,
+            membershipLimit: 100,
+            teams: {
+                enabled: true,
+                maximumTeams: 20,
+            },
+            ac: orgAc,
+            roles: {
+                owner: orgOwner,
+                admin: orgAdmin,
+                publisher: orgPublisher,
+                contributor: orgContributor,
+                member: orgMember,
+            },
+            // Temporary Dsiabled
+            // eslint-disable-next-line @typescript-eslint/require-await
+            sendInvitationEmail: async ({
+                email,
+                // eslint-disable-next-line @typescript-eslint/no-unused-vars
+                inviter,
+                organization,
+                role,
+                invitation,
+            }) &#x3D;&gt; {
+                // TODO: replace with your email service
+                console.log(&#x60;[org] Invite ${email} to ${organization.name} as ${role}&#x60;, invitation);
+            },
+        }),
+
+        // ── JWT — MUST be before oauthProvider ────────────────────────────────────
+        // Required for oauthProvider plugin and recommended for encrypting session cookies if using cookieCache strategy.
+        // See docs for details on secure key management in production.
+        // https://better-auth.com/docs/plugins/jwt.mdx
+        jwt({
+            jwt: {
+                expirationTime: &#x27;15m&#x27;,
+                issuer: process.env.BETTER_AUTH_URL ?? &#x27;http://localhost:3000&#x27;,
+                audience: &#x27;backend-api&#x27;,
+            },
+            jwks: {
+                rotationInterval: 60 * 60 * 24 * 30, // rotate every 30 days
+                gracePeriod: 60 * 60 * 24 * 30, // keep old key for 30 day grace
+            },
+        }),
+
+        // ── Bearer token (Authorization: Bearer &lt;token&gt;) ──────────────────────────
+        // https://better-auth.com/docs/plugins/bearer.mdx
+        bearer(),
+
+        // ── Username ──────────────────────────────────────────────────────────────
+        // https://better-auth.com/docs/plugins/username.mdx
+        username({
+            minUsernameLength: 3,
+            maxUsernameLength: 32,
+        }),
+
+        // ── Magic Link ────────────────────────────────────────────────────────────
+        // https://better-auth.com/docs/plugins/magic-link.mdx
+        magicLink({
+            // Temporary Dsiabled
+            // eslint-disable-next-line @typescript-eslint/require-await
+            sendMagicLink: async ({ email, url }) &#x3D;&gt; {
+                // TODO: replace with your email service
+                console.log(&#x60;[magic-link] ${email} → ${url}&#x60;);
+            },
+            expiresIn: 60 * 10, // 10 minutes
+            disableSignUp: false,
+        }),
+
+        // ── Email OTP ─────────────────────────────────────────────────────────────
+        // https://better-auth.com/docs/plugins/email-otp.mdx
+        // Note: emailOTP can be used for both sign-in and sign-up flows, as well as 2FA. Configure the sendVerificationOTP callback and rate limits accordingly.
+        emailOTP({
+            // Temporary Dsiabled
+            // eslint-disable-next-line @typescript-eslint/require-await
+            sendVerificationOTP: async ({ email, otp, type }) &#x3D;&gt; {
+                // type: &quot;sign-in&quot; | &quot;email-verification&quot; | &quot;forget-password&quot;
+                console.log(&#x60;[email-otp] ${type} OTP for ${email}: ${otp}&#x60;);
+            },
+            expiresIn: 60 * 5, // 5 minutes
+            otpLength: 6,
+        }),
+
+        // ── Passkey / WebAuthn ────────────────────────────────────────────────────
+        // https://better-auth.com/docs/plugins/passkey.mdx
+        passkey({
+            rpID: process.env.PASSKEY_RP_ID ?? &#x27;localhost&#x27;,
+            rpName: process.env.APP_NAME ?? &#x27;Backend&#x27;,
+            origin: process.env.BETTER_AUTH_URL ?? &#x27;http://localhost:3000&#x27;,
+        }),
+
+        // ── Admin ─────────────────────────────────────────────────────────────────
+        // https://better-auth.com/docs/plugins/admin.mdx
+        admin({
+            defaultRole: &#x27;user&#x27;,
+            adminUserIds: [],
+            defaultBanReason: &#x27;Violated terms of service&#x27;,
+            defaultBanExpiresIn: undefined, // undefined &#x3D; permanent ban | 60 * 60 * 24, // 1 day
+            bannedUserMessage: &#x27;Your account has been suspended. Contact support.&#x27;,
+            impersonationSessionDuration: 60 * 60 * 24, // 1 day
+            roles: {
+                guestRole,
+                userRole,
+                authorRole,
+                vip_oneRole,
+                vip_twoRole,
+                moderatorRole,
+                adminRole,
+                developerRole,
+                ownerRole,
+            },
+        }),
+
+        // ── API Keys ──────────────────────────────────────────────────────────────
+        // https://better-auth.com/docs/plugins/api-key.mdx
+        apiKey({
+            apiKeyHeaders: [&#x27;x-hmstd-api-key&#x27;],
+            defaultKeyLength: 32,
+            enableMetadata: true,
+            keyExpiration: {
+                defaultExpiresIn: 60 * 60 * 24 * 365, // 1 year
+            },
+            rateLimit: {
+                enabled: true,
+                timeWindow: 60,
+                maxRequests: 1000,
+            },
+        }),
+
+        // ── Captcha ───────────────────────────────────────────────────────────────
+        // https://better-auth.com/docs/plugins/captcha.mdx
+        captcha({
+            provider: (process.env.CAPTCHA_PROVIDER ?? &#x27;cloudflare-turnstile&#x27;) as
+                | &#x27;cloudflare-turnstile&#x27;
+                | &#x27;google-recaptcha&#x27;,
+            secretKey: process.env.TURNSTILE_SECRET ?? process.env.RECAPTCHA_SECRET ?? &#x27;&#x27;,
+        }),
+
+        // ── Have I Been Pwned (block breached passwords) ──────────────────────────
+        // https://better-auth.com/docs/plugins/have-i-been-pwned.mdx
+        haveIBeenPwned(),
+
+        // ── i18n ──────────────────────────────────────────────────────────────────
+        // Translates built-in better-auth error messages per the user&#x27;s Accept-Language
+        // header (default detection strategy). Add locale keys as needed.
+        // English is always the fallback — no need to provide an &#x27;en&#x27; entry.
+        // https://better-auth.com/docs/plugins/i18n.mdx
+        i18n({
+            // Detection order: try cookie first, fall back to Accept-Language header
+            detection: [&#x27;cookie&#x27;, &#x27;header&#x27;],
+            localeCookie: &#x27;ba_locale&#x27;,
+
+            translations: {
+                en: {
+                    USER_NOT_FOUND: &#x27;User not found&#x27;,
+                    INVALID_EMAIL_OR_PASSWORD: &#x27;Invalid email or password&#x27;,
+                    INVALID_PASSWORD: &#x27;Invalid password&#x27;,
+                    USER_ALREADY_EXISTS_USE_ANOTHER_EMAIL:
+                        &#x27;User already exists, please use another email&#x27;,
+                    SESSION_EXPIRED: &#x27;Session expired, please sign in again&#x27;,
+                    EMAIL_NOT_VERIFIED: &#x27;Email not verified&#x27;,
+                    INVALID_TOKEN: &#x27;Invalid or expired token&#x27;,
+                    TOO_MANY_REQUESTS: &#x27;Too many attempts. Please try again later.&#x27;,
+                },
+                // ── Example: French ─────────────────────────────────────────────────
+                fr: {
+                    USER_NOT_FOUND: &#x27;Utilisateur non trouvé&#x27;,
+                    INVALID_EMAIL_OR_PASSWORD: &#x27;Email ou mot de passe invalide&#x27;,
+                    INVALID_PASSWORD: &#x27;Mot de passe invalide&#x27;,
+                    USER_ALREADY_EXISTS_USE_ANOTHER_EMAIL: &#x27;Cet email est déjà utilisé&#x27;,
+                    SESSION_EXPIRED: &#x27;Session expirée, veuillez vous reconnecter&#x27;,
+                    EMAIL_NOT_VERIFIED: &#x27;Email non vérifié&#x27;,
+                    INVALID_TOKEN: &#x27;Jeton invalide ou expiré&#x27;,
+                    TOO_MANY_REQUESTS: &#x27;Trop de tentatives. Réessayez plus tard.&#x27;,
+                },
+                // ── Example: German ──────────────────────────────────────────────────
+                de: {
+                    USER_NOT_FOUND: &#x27;Benutzer nicht gefunden&#x27;,
+                    INVALID_EMAIL_OR_PASSWORD: &#x27;Ungültige E-Mail oder Passwort&#x27;,
+                    INVALID_PASSWORD: &#x27;Ungültiges Passwort&#x27;,
+                    USER_ALREADY_EXISTS_USE_ANOTHER_EMAIL: &#x27;Diese E-Mail ist bereits vergeben&#x27;,
+                    SESSION_EXPIRED: &#x27;Sitzung abgelaufen, bitte erneut anmelden&#x27;,
+                    EMAIL_NOT_VERIFIED: &#x27;E-Mail nicht verifiziert&#x27;,
+                    INVALID_TOKEN: &#x27;Ungültiges oder abgelaufenes Token&#x27;,
+                    TOO_MANY_REQUESTS: &#x27;Zu viele Anfragen. Bitte versuche es später.&#x27;,
+                },
+                // Add more locales here following the same pattern.
+                // Full list of translatable error codes:
+                // https://better-auth.com/docs/plugins/i18n
+            },
+        }),
+
+        // ── Last Login Method ─────────────────────────────────────────────────────
+        // https://better-auth.com/docs/plugins/last-login-method.mdx
+        lastLoginMethod(),
+
+        // ── Multi-Session ─────────────────────────────────────────────────────────
+        // https://better-auth.com/docs/plugins/multi-session.mdx
+        multiSession({
+            maximumSessions: 5,
+        }),
+
+        // ── OpenAPI (Swagger UI at /api/auth/reference) ───────────────────────────
+        openAPI(),
+
+        // ── OAuth 2.1 Provider (your app as the auth server) ─────────────────────
+        // Handles: OIDC, MCP agent auth, SCM, dynamic client registration.
+        // Replaces the old mcp() and oidcProvider() plugins entirely.
+        // jwt() MUST appear above this in the plugins array.
+        // https://better-auth.com/docs/plugins/oauth-provider.mdx
+        oauthProvider({
+            loginPage: process.env.OAUTH_LOGIN_PAGE ?? &#x27;/sign-in&#x27;,
+            consentPage: process.env.OAUTH_CONSENT_PAGE ?? &#x27;/consent&#x27;,
+
+            // Dynamic client registration — allow third-party clients to self-register.
+            // Set allowUnauthenticatedClientRegistration: true for MCP inspector testing.
+            allowDynamicClientRegistration: false,
+            allowUnauthenticatedClientRegistration: false,
+        }),
+
+        // ── Stripe (billing + subscriptions) ─────────────────────────────────────
+        // https://better-auth.com/docs/plugins/stripe.mdx
+        // stripe({
+        //   stripeClient: new Stripe(process.env.STRIPE_SECRET_KEY_TEST ?? &#x27;&#x27;),
+        //   stripeWebhookSecret: process.env.STRIPE_WEBHOOK_SECRET_TEST ?? &#x27;&#x27;,
+        //   createCustomerOnSignup: true,
+        //   subscription: {
+        //     enabled: true,
+        //     plans: [
+        //       { name: &#x27;basic&#x27;, priceId: process.env.STRIPE_BASIC_PRICE_ID ?? &#x27;&#x27; },
+        //       { name: &#x27;pro&#x27;, priceId: process.env.STRIPE_PRO_PRICE_ID ?? &#x27;&#x27; },
+        //       { name: &#x27;org&#x27;, priceId: process.env.STRIPE_ORG_PRICE_ID ?? &#x27;&#x27; },
+        //     ],
+        //   },
+        // }),
+
+        // ── Test Utils (test / CI only — never ships to production) ──────────────
+        ...(IS_TEST ? [testUtils()] : []),
+    ],
+})</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="IS_PROD"></a>
+                    <span class="name">
+                        <span ><b>IS_PROD</b></span>
+                        <a href="#IS_PROD"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>process.env.NODE_ENV &#x3D;&#x3D;&#x3D; &#x27;production&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="IS_TEST"></a>
+                    <span class="name">
+                        <span ><b>IS_TEST</b></span>
+                        <a href="#IS_TEST"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>process.env.NODE_ENV &#x3D;&#x3D;&#x3D; &#x27;testing&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="socialProviders"></a>
+                    <span class="name">
+                        <span ><b>socialProviders</b></span>
+                        <a href="#socialProviders"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Record&lt;string, any&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/modules/database/database.config.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="databaseEnvSchema"></a>
+                    <span class="name">
+                        <span ><b>databaseEnvSchema</b></span>
+                        <a href="#databaseEnvSchema"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>z.object({
+    DB_HOST: z.string().nonempty(),
+    DB_PORT: z.number().default(5432),
+    DB_USERNAME: z.string().nonempty(),
+    DB_PASSWORD: z.string().nonempty(),
+    DB_NAME: z.string().nonempty(),
+    DB_SSL_MODE: z.enum([&#x27;disable&#x27;, &#x27;require&#x27;]).default(&#x27;disable&#x27;),
+    DB_POOL_MAX: z.number().default(10),
+    DB_POOL_MIN: z.number().default(2),
+    DB_MIGRATIONS_RUN: z.boolean().default(false),
+})</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/app.module.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isDev"></a>
+                    <span class="name">
+                        <span ><b>isDev</b></span>
+                        <a href="#isDev"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>process.env.NODE_ENV !&#x3D;&#x3D; &#x27;production&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/modules/auth/access/org.access.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="orgAc"></a>
+                    <span class="name">
+                        <span ><b>orgAc</b></span>
+                        <a href="#orgAc"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAccessControl(orgStatement)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="orgAdmin"></a>
+                    <span class="name">
+                        <span ><b>orgAdmin</b></span>
+                        <a href="#orgAdmin"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>orgAc.newRole({
+    ...adminAc.statements, // built-in org admin perms (org update, member CRUD, invite CRUD)
+    project: [&#x27;create&#x27;, &#x27;read&#x27;, &#x27;update&#x27;, &#x27;publish&#x27;, &#x27;delete&#x27;],
+    team: [&#x27;create&#x27;, &#x27;update&#x27;, &#x27;delete&#x27;, &#x27;manage-members&#x27;],
+})</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Org admin — manages the org structure, teams, and members.
+Can do everything a publisher can, plus full team and member management.
+Cannot delete the org or transfer org ownership.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="orgContributor"></a>
+                    <span class="name">
+                        <span ><b>orgContributor</b></span>
+                        <a href="#orgContributor"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>orgAc.newRole({
+    ...orgMember.statements,
+})</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Contributor — same as member but explicitly named for orgs that want
+a semantic distinction (e.g. external contributors vs internal members).
+Functionally identical to member for now; extend as needed.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="orgMember"></a>
+                    <span class="name">
+                        <span ><b>orgMember</b></span>
+                        <a href="#orgMember"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>orgAc.newRole({
+    project: [&#x27;create&#x27;, &#x27;read&#x27;, &#x27;update&#x27;],
+    // no org management, no team management, no publish
+})</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Regular org member — can read and contribute content but cannot publish
+or manage the org itself.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="orgOwner"></a>
+                    <span class="name">
+                        <span ><b>orgOwner</b></span>
+                        <a href="#orgOwner"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>orgAc.newRole({
+    ...orgAdmin.statements,
+    project: [...orgAdmin.statements.project, &#x27;transfer&#x27;],
+    organization: [&#x27;update&#x27;, &#x27;delete&#x27;], // can delete or rename the org
+})</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Org owner — full control over the org including ownership transfer and deletion.
+Inherits everything from admin plus project transfer and org delete.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="orgPublisher"></a>
+                    <span class="name">
+                        <span ><b>orgPublisher</b></span>
+                        <a href="#orgPublisher"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>orgAc.newRole({
+    ...orgMember.statements,
+    project: [&#x27;create&#x27;, &#x27;read&#x27;, &#x27;update&#x27;, &#x27;publish&#x27;, &#x27;delete&#x27;],
+    invitation: [&#x27;create&#x27;], // can invite new members
+})</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Publisher — trusted org member who can publish projects under the org name.
+Can also soft-delete org projects they created.
+Cannot manage the org, teams, or transfer ownership.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="orgStatement"></a>
+                    <span class="name">
+                        <span ><b>orgStatement</b></span>
+                        <a href="#orgStatement"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    ...defaultStatements,
+
+    // Org-owned projects — scoped to what members can do within the org context.
+    // Fine-grained enforcement (e.g. which specific project) is handled at the
+    // query/service layer using the global role from the IAM server.
+    project: [
+        &#x27;create&#x27;, // create a project under the org
+        &#x27;read&#x27;, // read org project listings (public projects are readable anyway)
+        &#x27;update&#x27;, // edit project metadata (contributor+)
+        &#x27;publish&#x27;, // publish a project under the org name (publisher+)
+        &#x27;delete&#x27;, // soft-delete an org project (publisher+ or org owner)
+        &#x27;transfer&#x27;, // transfer a project to another org member or sub-team (org owner only)
+    ],
+
+    // Sub-team management within the org
+    team: [
+        &#x27;create&#x27;, // create a sub-team within the org (admin+)
+        &#x27;update&#x27;, // rename or reconfigure a sub-team (admin+)
+        &#x27;delete&#x27;, // remove a sub-team (admin+)
+        &#x27;manage-members&#x27;, // add/remove users from a sub-team (admin+)
+    ],
+} as const</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'miscellaneous-variables';
+            var COMPODOC_CURRENT_PAGE_URL = 'variables.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

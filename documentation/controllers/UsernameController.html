@@ -1,0 +1,930 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Homestead Backend</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">Homestead Backend</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content controller">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Controllers</li>
+  <li class="breadcrumb-item" >UsernameController</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/modules/auth/controllers/misc.controllers.ts</code>
+        </p>
+            <p class="comment">
+                <h3>Prefix</h3>
+            </p>
+            <p class="comment">
+                <code>auth/username</code>
+            </p>
+
+
+
+
+
+
+            <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Async</span>
+                                <a href="#signIn" >signIn</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Async</span>
+                                <a href="#update" >update</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="signIn"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier">Async</span>
+                        <span ><b>signIn</b></span>
+                        <a href="#signIn"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>signIn(body: <a href="../classes/SignInUsernameDto.html" target="_self">SignInUsernameDto</a>, req: Request, res: Response)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Post(&#x27;sign-in&#x27;)<br />@AllowAnonymous()<br />@ApiOperation({summary: &#x27;Sign in with username (or email) + password&#x27;})<br />@ApiBody({type: SignInUsernameDto})<br />@ApiResponse({status: 200, description: &#x27;Session created.&#x27;})<br />@ApiResponse({status: 401, description: &#x27;Invalid credentials.&#x27;})<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="325"
+                                    class="link-to-prism">src/modules/auth/controllers/misc.controllers.ts:325</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>body</td>
+                                            <td>
+                                                            <code><a href="../classes/SignInUsernameDto.html" target="_self" >SignInUsernameDto</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>req</td>
+                                            <td>
+                                                        <code>Request</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>res</td>
+                                            <td>
+                                                        <code>Response</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>unknown</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="update"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier">Async</span>
+                        <span ><b>update</b></span>
+                        <a href="#update"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>update(body: <a href="../classes/UpdateUsernameDto.html" target="_self">UpdateUsernameDto</a>, req: Request)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Patch(&#x27;update&#x27;)<br />@ApiOperation({summary: &#x27;Update username for the current user&#x27;})<br />@ApiBody({type: UpdateUsernameDto})<br />@ApiResponse({status: 200})<br />@ApiResponse({status: 409, description: &#x27;Username already taken.&#x27;})<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="338"
+                                    class="link-to-prism">src/modules/auth/controllers/misc.controllers.ts:338</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>body</td>
+                                            <td>
+                                                            <code><a href="../classes/UpdateUsernameDto.html" target="_self" >UpdateUsernameDto</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>req</td>
+                                            <td>
+                                                        <code>Request</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>unknown</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+    Body,
+    Controller,
+    Delete,
+    Get,
+    Param,
+    Patch,
+    Post,
+    Query,
+    Req,
+    Res,
+    UseFilters,
+} from &#x27;@nestjs/common&#x27;;
+import { ApiBody, ApiOperation, ApiParam, ApiQuery, ApiResponse, ApiTags } from &#x27;@nestjs/swagger&#x27;;
+import { AllowAnonymous } from &#x27;@thallesp/nestjs-better-auth&#x27;;
+import type { Request, Response } from &#x27;express&#x27;;
+import {
+    CreateApiKeyDto,
+    type GenerateBackupCodesDTO,
+    type GenerateTotpUriDto,
+    SendEmailOtpDto,
+    SendMagicLinkDto,
+    SetActiveSessionDto,
+    SignInUsernameDto,
+    SignInWithEmailOtpDto,
+    UpdateApiKeyDto,
+    UpdateUsernameDto,
+    VerifyEmailOtpDto,
+    VerifyPasskeyAuthenticationDto,
+    VerifyPasskeyRegistrationDto,
+    type ViewBackupCodesDTO,
+} from &#x27;../dto/misc.dto&#x27;;
+import {
+    DisableTwoFactorDto,
+    EnableTwoFactorDto,
+    VerifyBackupCodeDto,
+    VerifyTotpDto,
+} from &#x27;../dto/two-factor.dto&#x27;;
+import { BetterAuthExceptionFilter } from &#x27;../filters/better-auth-exception.filter&#x27;;
+import { AuthResponseHelper } from &#x27;../helpers/auth-response.helper&#x27;;
+import {
+    ApiKeyService,
+    EmailOtpService,
+    MagicLinkService,
+    MultiSessionService,
+    PasskeyService,
+    UsernameService,
+} from &#x27;../services/misc.services&#x27;;
+import { TwoFactorService } from &#x27;../services/misc.services&#x27;;
+
+// ─────────────────────────────────────────────────────────────────────────────
+@ApiTags(&#x27;Two-Factor Auth (2FA)&#x27;)
+@Controller(&#x27;auth/two-factor&#x27;)
+@UseFilters(BetterAuthExceptionFilter)
+export class TwoFactorController {
+    constructor(
+        private readonly twoFactorService: TwoFactorService,
+        private readonly authResponse: AuthResponseHelper,
+    ) {}
+
+    @Get(&#x27;generate&#x27;)
+    @ApiOperation({ summary: &#x27;Generate TOTP URI + secret (step 1 of setup)&#x27; })
+    @ApiResponse({ status: 200, description: &#x27;totpURI and secret.&#x27; })
+    async generateTotpUri(@Body() body: GenerateTotpUriDto, @Req() req: Request) {
+        return this.authResponse.handle(await this.twoFactorService.generateTotpUri(body, req));
+    }
+
+    @Post(&#x27;enable&#x27;)
+    @ApiOperation({
+        summary: &#x27;Enable 2FA — confirm setup and receive backup codes (step 2)&#x27;,
+    })
+    @ApiBody({ type: EnableTwoFactorDto })
+    @ApiResponse({
+        status: 200,
+        description: &#x27;Backup codes returned. Store them securely.&#x27;,
+    })
+    async enable(@Body() body: EnableTwoFactorDto, @Req() req: Request) {
+        return this.authResponse.handle(await this.twoFactorService.enableTwoFactor(body, req));
+    }
+
+    @Post(&#x27;disable&#x27;)
+    @ApiOperation({ summary: &#x27;Disable 2FA on the account&#x27; })
+    @ApiBody({ type: DisableTwoFactorDto })
+    @ApiResponse({ status: 200 })
+    async disable(@Body() body: DisableTwoFactorDto, @Req() req: Request) {
+        return this.authResponse.handle(await this.twoFactorService.disableTwoFactor(body, req));
+    }
+
+    @Post(&#x27;verify-totp&#x27;)
+    @AllowAnonymous()
+    @ApiOperation({ summary: &#x27;Verify TOTP code during sign-in 2FA challenge&#x27; })
+    @ApiBody({ type: VerifyTotpDto })
+    @ApiResponse({ status: 200, description: &#x27;Session fully established.&#x27; })
+    @ApiResponse({ status: 401, description: &#x27;Invalid code.&#x27; })
+    async verifyTotp(
+        @Body() body: VerifyTotpDto,
+        @Req() req: Request,
+        @Res({ passthrough: true }) res: Response,
+    ) {
+        return this.authResponse.handle(await this.twoFactorService.verifyTotp(body, req), res);
+    }
+
+    @Post(&#x27;verify-backup-code&#x27;)
+    @AllowAnonymous()
+    @ApiOperation({
+        summary: &#x27;Verify a one-time backup code during 2FA challenge&#x27;,
+    })
+    @ApiBody({ type: VerifyBackupCodeDto })
+    @ApiResponse({ status: 200, description: &#x27;Session established.&#x27; })
+    @ApiResponse({ status: 401, description: &#x27;Invalid or already used code.&#x27; })
+    async verifyBackupCode(
+        @Body() body: VerifyBackupCodeDto,
+        @Req() req: Request,
+        @Res({ passthrough: true }) res: Response,
+    ) {
+        return this.authResponse.handle(
+            await this.twoFactorService.verifyBackupCode(body, req),
+            res,
+        );
+    }
+
+    @Get(&#x27;backup-codes&#x27;)
+    @ApiOperation({ summary: &#x27;View remaining backup codes&#x27; })
+    @ApiResponse({ status: 200 })
+    async viewBackupCodes(@Body() body: ViewBackupCodesDTO, @Req() req: Request) {
+        return this.authResponse.handle(await this.twoFactorService.viewBackupCodes(body, req));
+    }
+
+    @Post(&#x27;backup-codes/regenerate&#x27;)
+    @ApiOperation({
+        summary: &#x27;Regenerate backup codes (invalidates all previous ones)&#x27;,
+    })
+    @ApiResponse({ status: 200, description: &#x27;New backup codes.&#x27; })
+    async regenerateBackupCodes(@Body() body: GenerateBackupCodesDTO, @Req() req: Request) {
+        return this.authResponse.handle(await this.twoFactorService.generateBackupCodes(body, req));
+    }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+@ApiTags(&#x27;Magic Link&#x27;)
+@Controller(&#x27;auth/magic-link&#x27;)
+@UseFilters(BetterAuthExceptionFilter)
+export class MagicLinkController {
+    constructor(
+        private readonly magicLinkService: MagicLinkService,
+        private readonly authResponse: AuthResponseHelper,
+    ) {}
+
+    @Post(&#x27;send&#x27;)
+    @AllowAnonymous()
+    @ApiOperation({ summary: &#x27;Send a magic sign-in link to an email address&#x27; })
+    @ApiBody({ type: SendMagicLinkDto })
+    @ApiResponse({ status: 200, description: &#x27;Link dispatched.&#x27; })
+    @ApiResponse({ status: 429, description: &#x27;Rate limit exceeded.&#x27; })
+    async send(@Body() body: SendMagicLinkDto, @Req() req: Request) {
+        return this.authResponse.handle(await this.magicLinkService.sendMagicLink(body, req));
+    }
+
+    @Get(&#x27;verify&#x27;)
+    @AllowAnonymous()
+    @ApiOperation({
+        summary: &#x27;Verify magic link token — hit by user clicking the email link&#x27;,
+    })
+    @ApiQuery({ name: &#x27;token&#x27;, required: true })
+    @ApiQuery({ name: &#x27;callbackURL&#x27;, required: false })
+    @ApiResponse({ status: 200, description: &#x27;Session created.&#x27; })
+    @ApiResponse({ status: 400, description: &#x27;Token invalid or expired.&#x27; })
+    async verify(
+        @Query(&#x27;token&#x27;) token: string,
+        @Query(&#x27;callbackURL&#x27;) callbackURL: string | undefined,
+        @Req() req: Request,
+        @Res({ passthrough: true }) res: Response,
+    ) {
+        return this.authResponse.handle(
+            await this.magicLinkService.verifyMagicLink({ token, callbackURL }, req),
+            res,
+        );
+    }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+@ApiTags(&#x27;Email OTP&#x27;)
+@Controller(&#x27;auth/email-otp&#x27;)
+@UseFilters(BetterAuthExceptionFilter)
+export class EmailOtpController {
+    constructor(
+        private readonly emailOtpService: EmailOtpService,
+        private readonly authResponse: AuthResponseHelper,
+    ) {}
+
+    @Post(&#x27;send&#x27;)
+    @AllowAnonymous()
+    @ApiOperation({
+        summary: &#x27;Send a one-time passcode — type controls the flow&#x27;,
+    })
+    @ApiBody({ type: SendEmailOtpDto })
+    @ApiResponse({ status: 200 })
+    @ApiResponse({ status: 429, description: &#x27;Rate limit exceeded.&#x27; })
+    async send(@Body() body: SendEmailOtpDto, @Req() req: Request) {
+        return this.authResponse.handle(await this.emailOtpService.sendOtp(body, req));
+    }
+
+    @Post(&#x27;verify-email&#x27;)
+    @AllowAnonymous()
+    @ApiOperation({
+        summary: &#x27;Verify OTP for email-verification or forget-password flows&#x27;,
+    })
+    @ApiBody({ type: VerifyEmailOtpDto })
+    @ApiResponse({ status: 200 })
+    @ApiResponse({ status: 400, description: &#x27;OTP invalid or expired.&#x27; })
+    async verifyEmail(@Body() body: VerifyEmailOtpDto, @Req() req: Request) {
+        return this.authResponse.handle(await this.emailOtpService.verifyEmail(body, req));
+    }
+
+    @Post(&#x27;sign-in&#x27;)
+    @AllowAnonymous()
+    @ApiOperation({ summary: &#x27;Passwordless sign-in with email OTP&#x27; })
+    @ApiBody({ type: SignInWithEmailOtpDto })
+    @ApiResponse({ status: 200, description: &#x27;Session created.&#x27; })
+    @ApiResponse({ status: 401, description: &#x27;OTP invalid or expired.&#x27; })
+    async signIn(
+        @Body() body: SignInWithEmailOtpDto,
+        @Req() req: Request,
+        @Res({ passthrough: true }) res: Response,
+    ) {
+        return this.authResponse.handle(await this.emailOtpService.signIn(body, req), res);
+    }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+@ApiTags(&#x27;Passkeys (WebAuthn)&#x27;)
+@Controller(&#x27;auth/passkey&#x27;)
+@UseFilters(BetterAuthExceptionFilter)
+export class PasskeyController {
+    constructor(
+        private readonly passkeyService: PasskeyService,
+        private readonly authResponse: AuthResponseHelper,
+    ) {}
+
+    @Get(&#x27;register/options&#x27;)
+    @ApiOperation({
+        summary: &#x27;Get PublicKeyCredentialCreationOptions (step 1 of registration)&#x27;,
+    })
+    @ApiResponse({ status: 200 })
+    async getRegistrationOptions(@Req() req: Request) {
+        return this.authResponse.handle(await this.passkeyService.getRegistrationOptions(req));
+    }
+
+    @Post(&#x27;register/verify&#x27;)
+    @ApiOperation({
+        summary: &#x27;Submit navigator.credentials.create() result (step 2 of registration)&#x27;,
+    })
+    @ApiBody({ type: VerifyPasskeyRegistrationDto })
+    @ApiResponse({ status: 200, description: &#x27;Passkey registered.&#x27; })
+    @ApiResponse({ status: 400, description: &#x27;Verification failed.&#x27; })
+    async verifyRegistration(@Body() body: VerifyPasskeyRegistrationDto, @Req() req: Request) {
+        return this.authResponse.handle(await this.passkeyService.verifyRegistration(body, req));
+    }
+
+    @Get(&#x27;authenticate/options&#x27;)
+    @AllowAnonymous()
+    @ApiOperation({
+        summary: &#x27;Get PublicKeyCredentialRequestOptions (step 1 of sign-in)&#x27;,
+    })
+    @ApiResponse({ status: 200 })
+    async getAuthenticationOptions(@Req() req: Request) {
+        return this.authResponse.handle(await this.passkeyService.getAuthenticationOptions(req));
+    }
+
+    @Post(&#x27;authenticate/verify&#x27;)
+    @AllowAnonymous()
+    @ApiOperation({
+        summary: &#x27;Submit navigator.credentials.get() result — creates session (step 2)&#x27;,
+    })
+    @ApiBody({ type: VerifyPasskeyAuthenticationDto })
+    @ApiResponse({ status: 200, description: &#x27;Session created.&#x27; })
+    @ApiResponse({ status: 401, description: &#x27;Authentication failed.&#x27; })
+    async verifyAuthentication(
+        @Body() body: VerifyPasskeyAuthenticationDto,
+        @Req() req: Request,
+        @Res({ passthrough: true }) res: Response,
+    ) {
+        return this.authResponse.handle(
+            await this.passkeyService.verifyAuthentication(body, req),
+            res,
+        );
+    }
+
+    @Get()
+    @ApiOperation({
+        summary: &#x27;List all registered passkeys for the current user&#x27;,
+    })
+    @ApiResponse({ status: 200 })
+    async listPasskeys(@Req() req: Request) {
+        return this.authResponse.handle(await this.passkeyService.listPasskeys(req));
+    }
+
+    @Delete(&#x27;:passkeyId&#x27;)
+    @ApiOperation({ summary: &#x27;Delete a passkey by ID&#x27; })
+    @ApiParam({ name: &#x27;passkeyId&#x27; })
+    @ApiResponse({ status: 200 })
+    async deletePasskey(@Param(&#x27;passkeyId&#x27;) passkeyId: string, @Req() req: Request) {
+        return this.authResponse.handle(
+            await this.passkeyService.deletePasskey({ id: passkeyId }, req),
+        );
+    }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+@ApiTags(&#x27;Username Auth&#x27;)
+@Controller(&#x27;auth/username&#x27;)
+@UseFilters(BetterAuthExceptionFilter)
+export class UsernameController {
+    constructor(
+        private readonly usernameService: UsernameService,
+        private readonly authResponse: AuthResponseHelper,
+    ) {}
+
+    @Post(&#x27;sign-in&#x27;)
+    @AllowAnonymous()
+    @ApiOperation({ summary: &#x27;Sign in with username (or email) + password&#x27; })
+    @ApiBody({ type: SignInUsernameDto })
+    @ApiResponse({ status: 200, description: &#x27;Session created.&#x27; })
+    @ApiResponse({ status: 401, description: &#x27;Invalid credentials.&#x27; })
+    async signIn(
+        @Body() body: SignInUsernameDto,
+        @Req() req: Request,
+        @Res({ passthrough: true }) res: Response,
+    ) {
+        return this.authResponse.handle(await this.usernameService.signIn(body, req), res);
+    }
+
+    @Patch(&#x27;update&#x27;)
+    @ApiOperation({ summary: &#x27;Update username for the current user&#x27; })
+    @ApiBody({ type: UpdateUsernameDto })
+    @ApiResponse({ status: 200 })
+    @ApiResponse({ status: 409, description: &#x27;Username already taken.&#x27; })
+    async update(@Body() body: UpdateUsernameDto, @Req() req: Request) {
+        return this.authResponse.handle(await this.usernameService.updateUsername(body, req));
+    }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+@ApiTags(&#x27;Multi-Session&#x27;)
+@Controller(&#x27;auth/multi-session&#x27;)
+@UseFilters(BetterAuthExceptionFilter)
+export class MultiSessionController {
+    constructor(
+        private readonly multiSessionService: MultiSessionService,
+        private readonly authResponse: AuthResponseHelper,
+    ) {}
+
+    @Get()
+    @ApiOperation({
+        summary: &#x27;List all sessions in the multi-session stack for this device&#x27;,
+    })
+    @ApiResponse({ status: 200 })
+    async listDeviceSessions(@Req() req: Request) {
+        return this.authResponse.handle(await this.multiSessionService.listDeviceSessions(req));
+    }
+
+    @Post(&#x27;set-active&#x27;)
+    @ApiOperation({ summary: &#x27;Switch the active session (account switcher)&#x27; })
+    @ApiBody({ type: SetActiveSessionDto })
+    @ApiResponse({ status: 200 })
+    async setActive(
+        @Body() body: SetActiveSessionDto,
+        @Req() req: Request,
+        @Res({ passthrough: true }) res: Response,
+    ) {
+        return this.authResponse.handle(
+            await this.multiSessionService.setActiveSession(body, req),
+            res,
+        );
+    }
+
+    @Delete(&#x27;:sessionToken&#x27;)
+    @ApiOperation({ summary: &#x27;Remove a session from the multi-session stack&#x27; })
+    @ApiParam({ name: &#x27;sessionToken&#x27; })
+    @ApiResponse({ status: 200 })
+    async revokeDeviceSession(@Param(&#x27;sessionToken&#x27;) sessionToken: string, @Req() req: Request) {
+        return this.authResponse.handle(
+            await this.multiSessionService.revokeDeviceSession({ sessionToken }, req),
+        );
+    }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+@ApiTags(&#x27;API Keys&#x27;)
+@Controller(&#x27;auth/api-keys&#x27;)
+@UseFilters(BetterAuthExceptionFilter)
+export class ApiKeyController {
+    constructor(
+        private readonly apiKeyService: ApiKeyService,
+        private readonly authResponse: AuthResponseHelper,
+    ) {}
+
+    @Get()
+    @ApiOperation({ summary: &#x27;List all API keys for the current user&#x27; })
+    @ApiResponse({ status: 200 })
+    async list(@Req() req: Request) {
+        return this.authResponse.handle(await this.apiKeyService.listApiKeys(req));
+    }
+
+    @Post()
+    @ApiOperation({ summary: &#x27;Create a new API key&#x27; })
+    @ApiBody({ type: CreateApiKeyDto })
+    @ApiResponse({
+        status: 200,
+        description: &#x27;Key returned. The raw key value is only shown once.&#x27;,
+    })
+    async create(@Body() body: CreateApiKeyDto, @Req() req: Request) {
+        return this.authResponse.handle(await this.apiKeyService.createApiKey(body, req));
+    }
+
+    @Get(&#x27;:id&#x27;)
+    @ApiOperation({ summary: &#x27;Get API key metadata by ID&#x27; })
+    @ApiParam({ name: &#x27;id&#x27; })
+    @ApiResponse({ status: 200 })
+    async getOne(@Param(&#x27;id&#x27;) id: string, @Req() req: Request) {
+        return this.authResponse.handle(await this.apiKeyService.getApiKey({ id }, req));
+    }
+
+    @Patch(&#x27;:id&#x27;)
+    @ApiOperation({ summary: &#x27;Update an API key&#x27; })
+    @ApiParam({ name: &#x27;keyId&#x27; })
+    @ApiBody({ type: UpdateApiKeyDto })
+    @ApiResponse({ status: 200 })
+    async update(@Param(&#x27;id&#x27;) keyId: string, @Body() body: UpdateApiKeyDto, @Req() req: Request) {
+        return this.authResponse.handle(
+            await this.apiKeyService.updateApiKey({ keyId, ...body }, req),
+        );
+    }
+
+    @Delete(&#x27;:id&#x27;)
+    @ApiOperation({ summary: &#x27;Delete an API key&#x27; })
+    @ApiParam({ name: &#x27;keyId&#x27; })
+    @ApiResponse({ status: 200 })
+    async remove(@Param(&#x27;id&#x27;) keyId: string, @Req() req: Request) {
+        return this.authResponse.handle(await this.apiKeyService.deleteApiKey({ keyId }, req));
+    }
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'controller';
+            var COMPODOC_CURRENT_PAGE_URL = 'UsernameController.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
