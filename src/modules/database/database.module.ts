@@ -3,6 +3,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import databaseConfig from './database.config';
 import { DatabaseService } from './database.service';
+import { PgPoolService } from './pg-pool.service';
 
 @Module({
     imports: [
@@ -28,7 +29,6 @@ import { DatabaseService } from './database.service';
                         : false,
 
                 // ── Entity discovery ────────────────────────────────────────────────
-                // Glob picks up all *.entity.ts files anywhere in the NX app/libs tree
                 autoLoadEntities: true,
                 entities: [`${__dirname}/../**/*.entity{.ts,.js}`],
 
@@ -38,7 +38,6 @@ import { DatabaseService } from './database.service';
                 migrationsRun: config.get<boolean>('database.migrationsRun', false),
 
                 // ── Dev / Prod behaviour ────────────────────────────────────────────
-                // NEVER use synchronize in production — use migrations instead
                 synchronize: config.get<string>('NODE_ENV') === 'development',
                 dropSchema: false,
 
@@ -59,7 +58,7 @@ import { DatabaseService } from './database.service';
             }),
         }),
     ],
-    providers: [DatabaseService],
-    exports: [DatabaseService],
+    providers: [DatabaseService, PgPoolService],
+    exports: [DatabaseService, PgPoolService],
 })
 export class DatabaseModule {}
