@@ -5,5 +5,12 @@
         "minimap.background": "#00000000",
         "scrollbar.shadow": "#00000000"
     },
-    "typescript.tsdk": "node_modules/typescript/lib"
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "conventionalCommits.scopes": [
+        "modules/queue",
+        "modules/pubsub",
+        "modules/cache",
+        "modules/database",
+        "modules/health"
+    ]
 }

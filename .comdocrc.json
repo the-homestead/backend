@@ -4,5 +4,7 @@
     "theme": "gitbook",
     "tsconfig": "./tsconfig.doc.json",
     "customLogo": "./src/assets/logo_128p.png",
-    "port": 3100
+    "port": 3100,
+    "disableRoutesGraph": true,
+    "disableLifeCycleHooks": true
 }
