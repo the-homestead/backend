@@ -104,7 +104,7 @@
 
 <ol class="breadcrumb">
     <li class="breadcrumb-item">Modules</li>
-    <li class="breadcrumb-item" >ConfigModule</li>
+    <li class="breadcrumb-item" >QueueModule</li>
 </ol>
 
 <div class="text-center module-graph-container">
@@ -132,46 +132,62 @@
 <polygon fill="#fb8072" stroke="transparent" points="406,-10 406,-30 426,-30 426,-10 406,-10"/>
 <text text-anchor="start" x="429.73" y="-15.4" font-family="Times-12" font-size="14.00"> &#160;Exports</text>
 <g id="clust1" class="cluster">
-<title>cluster_ConfigModule</title>
-<polygon fill="none" stroke="black" stroke-dasharray="1,5" points="149,-70 149,-268 347,-268 347,-70 149,-70"/>
+<title>cluster_QueueModule</title>
+<polygon fill="none" stroke="black" stroke-dasharray="1,5" points="100,-70 100,-268 396,-268 396,-70 100,-70"/>
+</g>
+<g id="clust3" class="cluster">
+<title>cluster_QueueModule_imports</title>
+<polygon fill="none" stroke="black" points="262,-78 262,-130 388,-130 388,-78 262,-78"/>
 </g>
 <g id="clust6" class="cluster">
-<title>cluster_ConfigModule_providers</title>
-<polygon fill="none" stroke="black" points="157,-78 157,-130 339,-130 339,-78 157,-78"/>
+<title>cluster_QueueModule_providers</title>
+<polygon fill="none" stroke="black" points="108,-78 108,-130 254,-130 254,-78 108,-78"/>
 </g>
 <g id="clust4" class="cluster">
-<title>cluster_ConfigModule_exports</title>
-<polygon fill="none" stroke="black" points="178,-208 178,-260 318,-260 318,-208 178,-208"/>
+<title>cluster_QueueModule_exports</title>
+<polygon fill="none" stroke="black" points="196,-208 196,-260 310,-260 310,-208 196,-208"/>
 </g>
-<!-- AppConfigService  -->
+<!-- DatabaseModule -->
 <g id="node1" class="node">
-<title>AppConfigService </title>
-<polygon fill="#fb8072" stroke="black" points="310.47,-252 185.53,-252 185.53,-216 310.47,-216 310.47,-252"/>
-<text text-anchor="middle" x="248" y="-229.8" font-family="Times,serif" font-size="14.00">AppConfigService </text>
+<title>DatabaseModule</title>
+<polygon fill="#8dd3c7" stroke="black" points="380.35,-122 377.35,-126 356.35,-126 353.35,-122 269.65,-122 269.65,-86 380.35,-86 380.35,-122"/>
+<text text-anchor="middle" x="325" y="-99.8" font-family="Times,serif" font-size="14.00">DatabaseModule</text>
 </g>
-<!-- ConfigModule -->
+<!-- QueueModule -->
 <g id="node2" class="node">
-<title>ConfigModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="297.44,-187 294.44,-191 273.44,-191 270.44,-187 198.56,-187 198.56,-151 297.44,-151 297.44,-187"/>
-<text text-anchor="middle" x="248" y="-164.8" font-family="Times,serif" font-size="14.00">ConfigModule</text>
+<title>QueueModule</title>
+<polygon fill="#8dd3c7" stroke="black" points="301.09,-187 298.09,-191 277.09,-191 274.09,-187 204.91,-187 204.91,-151 301.09,-151 301.09,-187"/>
+<text text-anchor="middle" x="253" y="-164.8" font-family="Times,serif" font-size="14.00">QueueModule</text>
 </g>
-<!-- ConfigModule&#45;&gt;AppConfigService  -->
+<!-- DatabaseModule&#45;&gt;QueueModule -->
 <g id="edge1" class="edge">
-<title>ConfigModule&#45;&gt;AppConfigService </title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M248,-187.11C248,-187.11 248,-205.99 248,-205.99"/>
-<polygon fill="black" stroke="black" points="244.5,-205.99 248,-215.99 251.5,-205.99 244.5,-205.99"/>
+<title>DatabaseModule&#45;&gt;QueueModule</title>
+<path fill="none" stroke="black" d="M285.31,-122.11C285.31,-122.11 285.31,-140.99 285.31,-140.99"/>
+<polygon fill="black" stroke="black" points="281.81,-140.99 285.31,-150.99 288.81,-140.99 281.81,-140.99"/>
 </g>
-<!-- AppConfigService -->
+<!-- QueueService  -->
 <g id="node3" class="node">
-<title>AppConfigService</title>
-<ellipse fill="#fdb462" stroke="black" cx="248" cy="-104" rx="83.39" ry="18"/>
-<text text-anchor="middle" x="248" y="-99.8" font-family="Times,serif" font-size="14.00">AppConfigService</text>
+<title>QueueService </title>
+<polygon fill="#fb8072" stroke="black" points="302.01,-252 203.99,-252 203.99,-216 302.01,-216 302.01,-252"/>
+<text text-anchor="middle" x="253" y="-229.8" font-family="Times,serif" font-size="14.00">QueueService </text>
 </g>
-<!-- AppConfigService&#45;&gt;ConfigModule -->
+<!-- QueueModule&#45;&gt;QueueService  -->
 <g id="edge2" class="edge">
-<title>AppConfigService&#45;&gt;ConfigModule</title>
-<path fill="none" stroke="black" d="M248,-122.11C248,-122.11 248,-140.99 248,-140.99"/>
-<polygon fill="black" stroke="black" points="244.5,-140.99 248,-150.99 251.5,-140.99 244.5,-140.99"/>
+<title>QueueModule&#45;&gt;QueueService </title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M253,-187.11C253,-187.11 253,-205.99 253,-205.99"/>
+<polygon fill="black" stroke="black" points="249.5,-205.99 253,-215.99 256.5,-205.99 249.5,-205.99"/>
+</g>
+<!-- QueueService -->
+<g id="node4" class="node">
+<title>QueueService</title>
+<ellipse fill="#fdb462" stroke="black" cx="181" cy="-104" rx="65.39" ry="18"/>
+<text text-anchor="middle" x="181" y="-99.8" font-family="Times,serif" font-size="14.00">QueueService</text>
+</g>
+<!-- QueueService&#45;&gt;QueueModule -->
+<g id="edge3" class="edge">
+<title>QueueService&#45;&gt;QueueModule</title>
+<path fill="none" stroke="black" d="M225.58,-117.15C225.58,-117.15 225.58,-140.69 225.58,-140.69"/>
+<polygon fill="black" stroke="black" points="222.08,-140.69 225.58,-150.69 229.08,-140.69 222.08,-140.69"/>
 </g>
 </g>
 </svg>
@@ -209,27 +225,11 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/modules/config/config.module.ts</code>
+            <code>src/modules/queue/queue.module.ts</code>
         </p>
 
 
 
-        <p class="comment">
-            <h3>Description</h3>
-        </p>
-        <p class="comment">
-            <p>ConfigModule</p>
-<p>Marked <code>@Global</code> so every module in the app can inject <code>AppConfigService</code>
-without importing ConfigModule locally. Register this once in AppModule.</p>
-<p>On startup:</p>
-<ol>
-<li>Loads .env / process.env</li>
-<li>Validates all variables against EnvSchema (crashes fast on missing/bad values)</li>
-<li>Maps variables into typed namespaced config objects via <code>registerAs</code></li>
-<li>Provides <code>AppConfigService</code> as the typed accessor across the app</li>
-</ol>
-
-        </p>
 
 
         <div class="container-fluid module">
@@ -239,7 +239,17 @@ without importing ConfigModule locally. Register this once in AppModule.</p>
                             title="Official documentation about module providers"><span class="icon ion-ios-information-circle-outline"></a></h3>
                     <ul class="list-group">
                         <li class="list-group-item">
-                            <a href="../injectables/AppConfigService.html">AppConfigService</a>
+                            <a href="../injectables/QueueService.html">QueueService</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
+                    <h3>Imports<a href="https://angular.io/api/core/NgModule#imports" target="_blank" rel="noopener noreferrer"
+                            title="Official documentation about module imports"><span
+                                class="icon ion-ios-information-circle-outline"></a></h3>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <a href="../modules/DatabaseModule.html">DatabaseModule</a>
                         </li>
                     </ul>
                 </div>
@@ -249,7 +259,7 @@ without importing ConfigModule locally. Register this once in AppModule.</p>
                                 class="icon ion-ios-information-circle-outline"></a></h3>
                     <ul class="list-group">
                         <li class="list-group-item">
-                            <a href="../injectables/AppConfigService.html">AppConfigService</a>
+                            <a href="../injectables/QueueService.html">QueueService</a>
                         </li>
                     </ul>
                 </div>
@@ -261,43 +271,16 @@ without importing ConfigModule locally. Register this once in AppModule.</p>
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Global, Module } from &#x27;@nestjs/common&#x27;;
-import { ConfigModule as NestConfigModule } from &#x27;@nestjs/config&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Module } from &#x27;@nestjs/common&#x27;;
+import { DatabaseModule } from &#x27;../database/database.module&#x27;;
+import { QueueService } from &#x27;./queue.service&#x27;;
 
-import { AppConfigService } from &#x27;./config.service&#x27;;
-import { validateEnv } from &#x27;./env.schema&#x27;;
-import { appConfig } from &#x27;./namespaces/app.config&#x27;;
-import { authConfig } from &#x27;./namespaces/auth.config&#x27;;
-import { bunnyConfig } from &#x27;./namespaces/bunny.config&#x27;;
-import { databaseConfig } from &#x27;./namespaces/database.config&#x27;;
-import { stripeConfig } from &#x27;./namespaces/stripe.config&#x27;;
-
-/**
- * ConfigModule
- *
- * Marked &#x60;@Global&#x60; so every module in the app can inject &#x60;AppConfigService&#x60;
- * without importing ConfigModule locally. Register this once in AppModule.
- *
- * On startup:
- *  1. Loads .env / process.env
- *  2. Validates all variables against EnvSchema (crashes fast on missing/bad values)
- *  3. Maps variables into typed namespaced config objects via &#x60;registerAs&#x60;
- *  4. Provides &#x60;AppConfigService&#x60; as the typed accessor across the app
- */
-@Global()
 @Module({
-    imports: [
-        NestConfigModule.forRoot({
-            isGlobal: true,
-            cache: true,
-            validate: validateEnv,
-            load: [appConfig, authConfig, bunnyConfig, databaseConfig, stripeConfig],
-        }),
-    ],
-    providers: [AppConfigService],
-    exports: [AppConfigService],
+    imports: [DatabaseModule],
+    providers: [QueueService],
+    exports: [QueueService],
 })
-export class ConfigModule {}
+export class QueueModule {}
 </code></pre>
     </div>
 </div>
@@ -344,7 +327,7 @@ export class ConfigModule {}
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'module';
-            var COMPODOC_CURRENT_PAGE_URL = 'ConfigModule.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'QueueModule.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

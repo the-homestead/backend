@@ -22,9 +22,6 @@ export default class ProjectRelationship {
     @ManyToOne(() => ProjectRelease, { nullable: true })
     targetRelease?: ProjectRelease;
 
-    // Fix: plain @Column() on a union type silently stores as text without
-    // DB-level validation. Declaring it as an enum enforces the allowed values
-    // at the database layer and generates a proper PostgreSQL enum type.
     @Column({
         type: 'enum',
         enum: ['dependency', 'conflict', 'load_after', 'load_before'],

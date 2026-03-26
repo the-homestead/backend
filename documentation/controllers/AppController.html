@@ -230,7 +230,7 @@ import { AllowAnonymous } from &#x27;@thallesp/nestjs-better-auth&#x27;;
 import { AppService } from &#x27;./app.service&#x27;;
 
 @ApiTags(&#x27;General&#x27;)
-@Controller()
+@Controller(&#x27;&#x27;)
 @AllowAnonymous()
 export class AppController {
     constructor(private readonly appService: AppService) {}

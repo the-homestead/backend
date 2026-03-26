@@ -320,12 +320,12 @@ export class HealthController {
                 () &#x3D;&gt; this.db.pingCheck(&#x27;database&#x27;),
                 () &#x3D;&gt; this.memory.checkHeap(&#x27;memory_heap&#x27;, 200 * 1024 * 1024),
                 () &#x3D;&gt; this.memory.checkRSS(&#x27;memory_rss&#x27;, 3000 * 1024 * 1024),
-                () &#x3D;&gt;
-                    this.disk.checkStorage(&#x27;storage&#x27;, {
-                        path: &#x27;/&#x27;,
-                        // Warn when less than 25% disk space remains
-                        thresholdPercent: 0.75,
-                    }),
+                // () &#x3D;&gt;
+                //     this.disk.checkStorage(&#x27;storage&#x27;, {
+                //         path: &#x27;/&#x27;,
+                //         // Warn when less than 25% disk space remains
+                //         thresholdPercent: 0.25,
+                //     }),
             ]);
 
             const checks &#x3D; this.buildChecks(result.details);

@@ -283,7 +283,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/entities/project/ProjectRelationships.ts:39</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/entities/project/ProjectRelationships.ts:36</a></div>
                         </td>
                     </tr>
 
@@ -320,7 +320,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/entities/project/ProjectRelationships.ts:48</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/entities/project/ProjectRelationships.ts:45</a></div>
                         </td>
                     </tr>
 
@@ -357,7 +357,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/entities/project/ProjectRelationships.ts:36</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/entities/project/ProjectRelationships.ts:33</a></div>
                         </td>
                     </tr>
 
@@ -394,7 +394,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/entities/project/ProjectRelationships.ts:45</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/entities/project/ProjectRelationships.ts:42</a></div>
                         </td>
                     </tr>
 
@@ -430,7 +430,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/entities/project/ProjectRelationships.ts:42</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/entities/project/ProjectRelationships.ts:39</a></div>
                         </td>
                     </tr>
 
@@ -612,7 +612,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/entities/project/ProjectRelationships.ts:33</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/entities/project/ProjectRelationships.ts:30</a></div>
                         </td>
                     </tr>
 
@@ -648,9 +648,6 @@ export default class ProjectRelationship {
     @ManyToOne(() &#x3D;&gt; ProjectRelease, { nullable: true })
     targetRelease?: ProjectRelease;
 
-    // Fix: plain @Column() on a union type silently stores as text without
-    // DB-level validation. Declaring it as an enum enforces the allowed values
-    // at the database layer and generates a proper PostgreSQL enum type.
     @Column({
         type: &#x27;enum&#x27;,
         enum: [&#x27;dependency&#x27;, &#x27;conflict&#x27;, &#x27;load_after&#x27;, &#x27;load_before&#x27;],

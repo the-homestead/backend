@@ -118,24 +118,132 @@
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
 </p>
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
 <h2>Description</h2>
-<p><a href="https://github.com/nestjs/nest">Nest</a> framework TypeScript starter repository.</p>
+<h3>Current Structure</h3>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-md">.
+├── app
+├── assets
+├── entities
+│   ├── auth
+│   ├── game
+│   ├── modpack
+│   └── project
+├── lib
+└── modules</code></pre></div><h3>Current File List &amp; Descriptions</h3>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-md">.
+├── app
+│   ├── app.context.ts
+│   ├── app.controller.spec.ts
+│   ├── app.controller.ts
+│   ├── app.middleware.tsx
+│   ├── app.module.ts
+│   └── app.service.ts
+├── assets
+│   └── logo.png
+├── entities
+│   ├── auth
+│   │   ├── Account.ts
+│   │   ├── Apikey.ts
+│   │   ├── Invitation.ts
+│   │   ├── Jwks.ts
+│   │   ├── Member.ts
+│   │   ├── OauthAccessToken.ts
+│   │   ├── OauthClient.ts
+│   │   ├── OauthConsent.ts
+│   │   ├── OauthRefreshToken.ts
+│   │   ├── Organization.ts
+│   │   ├── Passkey.ts
+│   │   ├── Session.ts
+│   │   ├── Subscription.ts
+│   │   ├── Team.ts
+│   │   ├── TeamMember.ts
+│   │   ├── TwoFactor.ts
+│   │   ├── User.ts
+│   │   └── Verification.ts
+│   ├── game
+│   │   ├── Category.ts
+│   │   └── Game.ts
+│   ├── modpack
+│   │   ├── Modpack.ts
+│   │   └── ModpackItem.ts
+│   └── project
+│       ├── Endorsement.ts
+│       ├── Project.ts
+│       ├── ProjectComment.ts
+│       ├── ProjectFile.ts
+│       ├── ProjectRelationships.ts
+│       ├── ProjectRelease.ts
+│       └── ProjectTag.ts
+├── lib
+│   └── get-base-domain.ts
+├── main.ts
+└── modules
+    ├── auth
+    │   ├── access
+    │   │   ├── auth.access.ts
+    │   │   └── org.access.ts
+    │   ├── auth.main.ts
+    │   ├── auth.module.ts
+    │   ├── controllers
+    │   │   ├── admin.controller.ts
+    │   │   ├── auth.controller.ts
+    │   │   ├── index.ts
+    │   │   ├── misc.controllers.ts
+    │   │   ├── orgs.controller.ts
+    │   │   └── users.controller.ts
+    │   ├── dto
+    │   │   ├── admin.dto.ts
+    │   │   ├── auth.dto.ts
+    │   │   ├── index.ts
+    │   │   ├── misc.dto.ts
+    │   │   ├── orgs.dto.ts
+    │   │   ├── two-factor.dto.ts
+    │   │   └── users.dto.ts
+    │   ├── filters
+    │   │   └── better-auth-exception.filter.ts
+    │   ├── helpers
+    │   │   ├── auth-response.helper.ts
+    │   │   └── to-request-headers.helper.ts
+    │   ├── PLUGINS.md
+    │   ├── README.md
+    │   └── services
+    │       ├── admin.service.ts
+    │       ├── auth.service.ts
+    │       ├── index.ts
+    │       ├── misc.services.ts
+    │       ├── orgs.service.ts
+    │       └── users.service.ts
+    ├── bunny
+    │   ├── bunny.constants.ts
+    │   ├── bunny.module.ts
+    │   ├── dto
+    │   │   ├── download-file.dto.ts
+    │   │   ├── file-metadata.dto.ts
+    │   │   ├── list-files.dto.ts
+    │   │   └── upload-file.dto.ts
+    │   └── services
+    │       └── storage.service.ts
+    ├── config
+    │   ├── config.module.ts
+    │   ├── config.service.ts
+    │   ├── env.schema.ts
+    │   └── namespaces
+    │       ├── app.config.ts
+    │       ├── auth.config.ts
+    │       ├── bunny.config.ts
+    │       ├── database.config.ts
+    │       └── stripe.config.ts
+    ├── database
+    │   ├── data-source.ts
+    │   ├── database.config.ts
+    │   ├── database.module.ts
+    │   └── database.service.ts
+    └── health
+        ├── health.controller.spec.ts
+        ├── health.controller.ts
+        └── health.module.ts</code></pre></div><!-- [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository. -->
+
 <h2>Project setup</h2>
 <b>Example :</b><div><pre class="line-numbers"><code class="language-bash">$ bun install</code></pre></div><h2>Compile and run the project</h2>
 <b>Example :</b><div><pre class="line-numbers"><code class="language-bash"># development
@@ -154,32 +262,11 @@ $ bun run test:e2e
 
 # test coverage
 $ bun run test:cov</code></pre></div><h2>Deployment</h2>
-<p>When you&#39;re ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the <a href="https://docs.nestjs.com/deployment">deployment documentation</a> for more information.</p>
-<p>If you are looking for a cloud-based platform to deploy your NestJS application, check out <a href="https://mau.nestjs.com">Mau</a>, our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:</p>
-<b>Example :</b><div><pre class="line-numbers"><code class="language-bash">$ bun install -g &#64;nestjs/mau
-$ mau deploy</code></pre></div><p>With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.</p>
 <h2>Resources</h2>
 <p>Check out a few resources that may come in handy when working with NestJS:</p>
 <ul>
 <li>Visit the <a href="https://docs.nestjs.com">NestJS Documentation</a> to learn more about the framework.</li>
-<li>For questions and support, please visit our <a href="https://discord.gg/G7Qnnhy">Discord channel</a>.</li>
-<li>To dive deeper and get more hands-on experience, check out our official video <a href="https://courses.nestjs.com/">courses</a>.</li>
-<li>Deploy your application to AWS with the help of <a href="https://mau.nestjs.com">NestJS Mau</a> in just a few clicks.</li>
-<li>Visualize your application graph and interact with the NestJS application in real-time using <a href="https://devtools.nestjs.com">NestJS Devtools</a>.</li>
-<li>Need help with your project (part-time to full-time)? Check out our official <a href="https://enterprise.nestjs.com">enterprise support</a>.</li>
-<li>To stay in the loop and get updates, follow us on <a href="https://x.com/nestframework">X</a> and <a href="https://linkedin.com/company/nestjs">LinkedIn</a>.</li>
-<li>Looking for a job, or have a job to offer? Check out our official <a href="https://jobs.nestjs.com">Jobs board</a>.</li>
 </ul>
-<h2>Support</h2>
-<p>Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you&#39;d like to join them, please <a href="https://docs.nestjs.com/support">read more here</a>.</p>
-<h2>Stay in touch</h2>
-<ul>
-<li>Author - <a href="https://twitter.com/kammysliwiec">Kamil Myśliwiec</a></li>
-<li>Website - <a href="https://nestjs.com/">https://nestjs.com</a></li>
-<li>Twitter - <a href="https://twitter.com/nestframework">@nestframework</a></li>
-</ul>
-<h2>License</h2>
-<p>Nest is <a href="https://github.com/nestjs/nest/blob/master/LICENSE">MIT licensed</a>.</p>
 
 
 

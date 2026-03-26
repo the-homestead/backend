@@ -157,7 +157,13 @@
                             <a href="#HealthResponse" title="src/modules/health/health.controller.ts" ><b>HealthResponse</b>&nbsp;&nbsp;&nbsp;(src/.../health.controller.ts)</a>
                         </li>
                         <li>
+                            <a href="#LeasedJob" title="src/modules/queue/queue.service.ts" ><b>LeasedJob</b>&nbsp;&nbsp;&nbsp;(src/.../queue.service.ts)</a>
+                        </li>
+                        <li>
                             <a href="#ListFilesDto" title="src/modules/bunny/dto/list-files.dto.ts" ><b>ListFilesDto</b>&nbsp;&nbsp;&nbsp;(src/.../list-files.dto.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#MessageCallback" title="src/modules/pubsub/pubsub.service.ts" ><b>MessageCallback</b>&nbsp;&nbsp;&nbsp;(src/.../pubsub.service.ts)</a>
                         </li>
                         <li>
                             <a href="#Organization" title="src/modules/auth/auth.main.ts" ><b>Organization</b>&nbsp;&nbsp;&nbsp;(src/.../auth.main.ts)</a>
@@ -468,6 +474,31 @@
             </tr>
         </tbody>
     </table>
+</section>    <h3>src/modules/queue/queue.service.ts</h3>
+    <section data-compodoc="block-typealias">
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="LeasedJob"></a>
+                    <span class="name "><b>LeasedJob</b><a href="#LeasedJob"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Job returned from dequeue operations.</p>
+<p>Includes a lock token required to complete, retry, or fail the job.</p>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>    <code>unknown</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </section>    <h3>src/modules/bunny/dto/list-files.dto.ts</h3>
     <section data-compodoc="block-typealias">
     <table class="table table-sm table-bordered">
@@ -481,6 +512,30 @@
             <tr>
                 <td class="col-md-4">
                     <code>    <code>z.infer&lt;unknown&gt;</code>
+</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>src/modules/pubsub/pubsub.service.ts</h3>
+    <section data-compodoc="block-typealias">
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="MessageCallback"></a>
+                    <span class="name "><b>MessageCallback</b><a href="#MessageCallback"><span class="icon ion-ios-link"></span></a></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Callback invoked when a message is received on a channel.</p>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <code>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
 </code>
                 </td>
             </tr>

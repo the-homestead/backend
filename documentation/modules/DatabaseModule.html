@@ -133,61 +133,85 @@
 <text text-anchor="start" x="429.73" y="-15.4" font-family="Times-12" font-size="14.00"> &#160;Exports</text>
 <g id="clust1" class="cluster">
 <title>cluster_DatabaseModule</title>
-<polygon fill="none" stroke="black" stroke-dasharray="1,5" points="96,-70 96,-268 400,-268 400,-70 96,-70"/>
-</g>
-<g id="clust3" class="cluster">
-<title>cluster_DatabaseModule_imports</title>
-<polygon fill="none" stroke="black" points="278,-78 278,-130 392,-130 392,-78 278,-78"/>
+<polygon fill="none" stroke="black" stroke-dasharray="1,5" points="19,-70 19,-268 477,-268 477,-70 19,-70"/>
 </g>
 <g id="clust4" class="cluster">
 <title>cluster_DatabaseModule_exports</title>
-<polygon fill="none" stroke="black" points="193,-208 193,-260 321,-260 321,-208 193,-208"/>
+<polygon fill="none" stroke="black" points="143,-208 143,-260 391,-260 391,-208 143,-208"/>
+</g>
+<g id="clust3" class="cluster">
+<title>cluster_DatabaseModule_imports</title>
+<polygon fill="none" stroke="black" points="355,-78 355,-130 469,-130 469,-78 355,-78"/>
 </g>
 <g id="clust6" class="cluster">
 <title>cluster_DatabaseModule_providers</title>
-<polygon fill="none" stroke="black" points="104,-78 104,-130 270,-130 270,-78 104,-78"/>
+<polygon fill="none" stroke="black" points="27,-78 27,-130 347,-130 347,-78 27,-78"/>
 </g>
 <!-- ConfigModule -->
 <g id="node1" class="node">
 <title>ConfigModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="384.44,-122 381.44,-126 360.44,-126 357.44,-122 285.56,-122 285.56,-86 384.44,-86 384.44,-122"/>
-<text text-anchor="middle" x="335" y="-99.8" font-family="Times,serif" font-size="14.00">ConfigModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="461.44,-122 458.44,-126 437.44,-126 434.44,-122 362.56,-122 362.56,-86 461.44,-86 461.44,-122"/>
+<text text-anchor="middle" x="412" y="-99.8" font-family="Times,serif" font-size="14.00">ConfigModule</text>
 </g>
 <!-- DatabaseModule -->
 <g id="node2" class="node">
 <title>DatabaseModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="312.35,-187 309.35,-191 288.35,-191 285.35,-187 201.65,-187 201.65,-151 312.35,-151 312.35,-187"/>
-<text text-anchor="middle" x="257" y="-164.8" font-family="Times,serif" font-size="14.00">DatabaseModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="319.35,-187 316.35,-191 295.35,-191 292.35,-187 208.65,-187 208.65,-151 319.35,-151 319.35,-187"/>
+<text text-anchor="middle" x="264" y="-164.8" font-family="Times,serif" font-size="14.00">DatabaseModule</text>
 </g>
 <!-- ConfigModule&#45;&gt;DatabaseModule -->
 <g id="edge1" class="edge">
 <title>ConfigModule&#45;&gt;DatabaseModule</title>
-<path fill="none" stroke="black" d="M299.1,-122.11C299.1,-122.11 299.1,-140.99 299.1,-140.99"/>
-<polygon fill="black" stroke="black" points="295.6,-140.99 299.1,-150.99 302.6,-140.99 295.6,-140.99"/>
+<path fill="none" stroke="black" d="M373.09,-122.11C373.09,-141.34 373.09,-169 373.09,-169 373.09,-169 329.5,-169 329.5,-169"/>
+<polygon fill="black" stroke="black" points="329.5,-165.5 319.5,-169 329.5,-172.5 329.5,-165.5"/>
 </g>
 <!-- DatabaseService  -->
 <g id="node3" class="node">
 <title>DatabaseService </title>
-<polygon fill="#fb8072" stroke="black" points="313.28,-252 200.72,-252 200.72,-216 313.28,-216 313.28,-252"/>
-<text text-anchor="middle" x="257" y="-229.8" font-family="Times,serif" font-size="14.00">DatabaseService </text>
+<polygon fill="#fb8072" stroke="black" points="383.28,-252 270.72,-252 270.72,-216 383.28,-216 383.28,-252"/>
+<text text-anchor="middle" x="327" y="-229.8" font-family="Times,serif" font-size="14.00">DatabaseService </text>
 </g>
 <!-- DatabaseModule&#45;&gt;DatabaseService  -->
 <g id="edge2" class="edge">
 <title>DatabaseModule&#45;&gt;DatabaseService </title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M257,-187.11C257,-187.11 257,-205.99 257,-205.99"/>
-<polygon fill="black" stroke="black" points="253.5,-205.99 257,-215.99 260.5,-205.99 253.5,-205.99"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M295.02,-187.11C295.02,-187.11 295.02,-205.99 295.02,-205.99"/>
+<polygon fill="black" stroke="black" points="291.52,-205.99 295.02,-215.99 298.52,-205.99 291.52,-205.99"/>
+</g>
+<!-- PgPoolService  -->
+<g id="node4" class="node">
+<title>PgPoolService </title>
+<polygon fill="#fb8072" stroke="black" points="252.93,-252 151.07,-252 151.07,-216 252.93,-216 252.93,-252"/>
+<text text-anchor="middle" x="202" y="-229.8" font-family="Times,serif" font-size="14.00">PgPoolService </text>
+</g>
+<!-- DatabaseModule&#45;&gt;PgPoolService  -->
+<g id="edge3" class="edge">
+<title>DatabaseModule&#45;&gt;PgPoolService </title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M230.77,-187.11C230.77,-187.11 230.77,-205.99 230.77,-205.99"/>
+<polygon fill="black" stroke="black" points="227.27,-205.99 230.77,-215.99 234.27,-205.99 227.27,-205.99"/>
 </g>
 <!-- DatabaseService -->
-<g id="node4" class="node">
+<g id="node5" class="node">
 <title>DatabaseService</title>
-<ellipse fill="#fdb462" stroke="black" cx="187" cy="-104" rx="75.26" ry="18"/>
-<text text-anchor="middle" x="187" y="-99.8" font-family="Times,serif" font-size="14.00">DatabaseService</text>
+<ellipse fill="#fdb462" stroke="black" cx="264" cy="-104" rx="75.26" ry="18"/>
+<text text-anchor="middle" x="264" y="-99.8" font-family="Times,serif" font-size="14.00">DatabaseService</text>
 </g>
 <!-- DatabaseService&#45;&gt;DatabaseModule -->
-<g id="edge3" class="edge">
+<g id="edge4" class="edge">
 <title>DatabaseService&#45;&gt;DatabaseModule</title>
-<path fill="none" stroke="black" d="M231.98,-118.75C231.98,-118.75 231.98,-140.59 231.98,-140.59"/>
-<polygon fill="black" stroke="black" points="228.48,-140.59 231.98,-150.59 235.48,-140.59 228.48,-140.59"/>
+<path fill="none" stroke="black" d="M264,-122.11C264,-122.11 264,-140.99 264,-140.99"/>
+<polygon fill="black" stroke="black" points="260.5,-140.99 264,-150.99 267.5,-140.99 260.5,-140.99"/>
+</g>
+<!-- PgPoolService -->
+<g id="node6" class="node">
+<title>PgPoolService</title>
+<ellipse fill="#fdb462" stroke="black" cx="103" cy="-104" rx="67.8" ry="18"/>
+<text text-anchor="middle" x="103" y="-99.8" font-family="Times,serif" font-size="14.00">PgPoolService</text>
+</g>
+<!-- PgPoolService&#45;&gt;DatabaseModule -->
+<g id="edge5" class="edge">
+<title>PgPoolService&#45;&gt;DatabaseModule</title>
+<path fill="none" stroke="black" d="M160.97,-113.59C160.97,-131.67 160.97,-169 160.97,-169 160.97,-169 198.56,-169 198.56,-169"/>
+<polygon fill="black" stroke="black" points="198.56,-172.5 208.56,-169 198.56,-165.5 198.56,-172.5"/>
 </g>
 </g>
 </svg>
@@ -241,6 +265,9 @@
                         <li class="list-group-item">
                             <a href="../injectables/DatabaseService.html">DatabaseService</a>
                         </li>
+                        <li class="list-group-item">
+                            <a href="../injectables/PgPoolService.html">PgPoolService</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="col-sm-3">
@@ -261,6 +288,9 @@
                         <li class="list-group-item">
                             <a href="../injectables/DatabaseService.html">DatabaseService</a>
                         </li>
+                        <li class="list-group-item">
+                            <a href="../injectables/PgPoolService.html">PgPoolService</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -276,6 +306,7 @@ import { ConfigModule, ConfigService } from &#x27;@nestjs/config&#x27;;
 import { TypeOrmModule } from &#x27;@nestjs/typeorm&#x27;;
 import databaseConfig from &#x27;./database.config&#x27;;
 import { DatabaseService } from &#x27;./database.service&#x27;;
+import { PgPoolService } from &#x27;./pg-pool.service&#x27;;
 
 @Module({
     imports: [
@@ -301,7 +332,6 @@ import { DatabaseService } from &#x27;./database.service&#x27;;
                         : false,
 
                 // ── Entity discovery ────────────────────────────────────────────────
-                // Glob picks up all *.entity.ts files anywhere in the NX app/libs tree
                 autoLoadEntities: true,
                 entities: [&#x60;${__dirname}/../**/*.entity{.ts,.js}&#x60;],
 
@@ -311,7 +341,6 @@ import { DatabaseService } from &#x27;./database.service&#x27;;
                 migrationsRun: config.get&lt;boolean&gt;(&#x27;database.migrationsRun&#x27;, false),
 
                 // ── Dev / Prod behaviour ────────────────────────────────────────────
-                // NEVER use synchronize in production — use migrations instead
                 synchronize: config.get&lt;string&gt;(&#x27;NODE_ENV&#x27;) &#x3D;&#x3D;&#x3D; &#x27;development&#x27;,
                 dropSchema: false,
 
@@ -332,8 +361,8 @@ import { DatabaseService } from &#x27;./database.service&#x27;;
             }),
         }),
     ],
-    providers: [DatabaseService],
-    exports: [DatabaseService],
+    providers: [DatabaseService, PgPoolService],
+    exports: [DatabaseService, PgPoolService],
 })
 export class DatabaseModule {}
 </code></pre>
