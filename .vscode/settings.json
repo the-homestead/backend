@@ -11,6 +11,7 @@
         "modules/pubsub",
         "modules/cache",
         "modules/database",
-        "modules/health"
+        "modules/health",
+        "docs"
     ]
 }
