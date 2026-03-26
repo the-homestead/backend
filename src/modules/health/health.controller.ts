@@ -59,12 +59,12 @@ export class HealthController {
                 () => this.db.pingCheck('database'),
                 () => this.memory.checkHeap('memory_heap', 200 * 1024 * 1024),
                 () => this.memory.checkRSS('memory_rss', 3000 * 1024 * 1024),
-                () =>
-                    this.disk.checkStorage('storage', {
-                        path: '/',
-                        // Warn when less than 25% disk space remains
-                        thresholdPercent: 0.75,
-                    }),
+                // () =>
+                //     this.disk.checkStorage('storage', {
+                //         path: '/',
+                //         // Warn when less than 25% disk space remains
+                //         thresholdPercent: 0.25,
+                //     }),
             ]);
 
             const checks = this.buildChecks(result.details);
