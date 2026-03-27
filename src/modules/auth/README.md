@@ -1,4 +1,8 @@
 
+
+
+# Better Auth Plugin Docs
+
 ## Route Protection
 
 **Global by default**: An `AuthGuard` is registered globally by this module. All routes are protected unless you explicitly allow access with `@AllowAnonymous()` or mark them as optional with `@OptionalAuth()`.

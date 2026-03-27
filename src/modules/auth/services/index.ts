@@ -1,13 +1,11 @@
-export { AdminService } from './admin.service';
-export { AuthService } from './auth.service';
-export {
-    ApiKeyService,
-    EmailOtpService,
-    MagicLinkService,
-    MultiSessionService,
-    PasskeyService,
-    TwoFactorService,
-    UsernameService,
-} from './misc.services';
-export { OrgsService } from './orgs.service';
-export { UsersService } from './users.service';
+export * from './admin.service';
+export * from './apikey.service';
+export * from './auth.service';
+export * from './email-otp.service';
+export * from './magic-link.service';
+export * from './multi-session.service';
+export * from './orgs.service';
+export * from './passkey.service';
+export * from './two-factor.service';
+export * from './username.service';
+export * from './users.service';

@@ -1,38 +1,29 @@
 import { Global, Module } from '@nestjs/common';
 import { AuthModule as BetterAuthModule } from '@thallesp/nestjs-better-auth';
 import { auth } from './auth.main';
-
-// Controllers — imported directly (not via barrel) so eslint-plugin-nestjs-typed
-// can statically verify each class is registered in a module.
 import { AdminController } from './controllers/admin.controller';
 import { AuthController } from './controllers/auth.controller';
-import {
-    ApiKeyController,
-    EmailOtpController,
-    MagicLinkController,
-    MultiSessionController,
-    PasskeyController,
-    TwoFactorController,
-    UsernameController,
-} from './controllers/misc.controllers';
 import { OrgsController } from './controllers/orgs.controller';
 import { UsersController } from './controllers/users.controller';
-
-// Services — same reason, direct imports only
 import { AdminService } from './services/admin.service';
 import { AuthService } from './services/auth.service';
-import {
-    ApiKeyService,
-    EmailOtpService,
-    MagicLinkService,
-    MultiSessionService,
-    PasskeyService,
-    TwoFactorService,
-    UsernameService,
-} from './services/misc.services';
 import { OrgsService } from './services/orgs.service';
 import { UsersService } from './services/users.service';
 import { AuthResponseHelper } from './helpers/auth-response.helper';
+import { ApiKeyController } from './controllers/apikey.controller';
+import { EmailOtpController } from './controllers/email-otp.controller';
+import { MagicLinkController } from './controllers/magic-link.controller';
+import { MultiSessionController } from './controllers/multi-session.controller';
+import { PasskeyController } from './controllers/passkey.controller';
+import { TwoFactorController } from './controllers/two-factor.controller';
+import { UsernameController } from './controllers/username.controller';
+import { TwoFactorService } from './services/two-factor.service';
+import { MagicLinkService } from './services/magic-link.service';
+import { EmailOtpService } from './services/email-otp.service';
+import { UsernameService } from './services/username.service';
+import { MultiSessionService } from './services/multi-session.service';
+import { ApiKeyService } from './services/apikey.service';
+import { PasskeyService } from './services/passkey.service';
 
 @Global()
 @Module({
@@ -51,7 +42,6 @@ import { AuthResponseHelper } from './helpers/auth-response.helper';
         ApiKeyController,
     ],
     providers: [
-        AdminController,
         AuthService,
         UsersService,
         AdminService,

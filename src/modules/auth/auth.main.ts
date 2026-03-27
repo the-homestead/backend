@@ -152,7 +152,6 @@ export const auth = betterAuth({
     socialProviders,
 
     // ── Database ───────────────────────────────────────────────────────────────
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     database: typeormAdapter(AppDataSource, {
         outputDir: './src/modules/auth',
         entitiesDir: './src/entities',
