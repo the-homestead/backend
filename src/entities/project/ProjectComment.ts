@@ -4,7 +4,7 @@ import { PrimaryGeneratedColumn } from 'typeorm/decorator/columns/PrimaryGenerat
 import { Entity } from 'typeorm/decorator/entity/Entity.js';
 import { ManyToOne } from 'typeorm/decorator/relations/ManyToOne.js';
 import Project from './Project';
-import { VersionColumn } from 'typeorm';
+import { OneToMany, UpdateDateColumn, VersionColumn } from 'typeorm';
 
 @Entity()
 export default class ProjectComment {
@@ -15,6 +15,12 @@ export default class ProjectComment {
     @ManyToOne(() => Project, (p) => p.comments, { onDelete: 'CASCADE' })
     project: Project;
 
+    @ManyToOne(() => ProjectComment, { nullable: true, onDelete: 'CASCADE' })
+    parent?: ProjectComment;
+
+    @OneToMany(() => ProjectComment, (c) => c.parent)
+    replies?: ProjectComment[];
+
     @Column()
     userId: string;
 
@@ -23,6 +29,9 @@ export default class ProjectComment {
 
     @CreateDateColumn()
     createdAt: Date;
+
+    @UpdateDateColumn()
+    updatedAt: Date;
 
     @VersionColumn()
     internalVersion: number;

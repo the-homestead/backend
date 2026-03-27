@@ -14,6 +14,19 @@ import { Category } from '../game/Category';
 import Tag from './ProjectTag';
 import ProjectComment from './ProjectComment';
 
+export enum OwnerType {
+    User = 'user',
+    Organization = 'organization',
+    Team = 'team',
+}
+
+export enum StatusType {
+    Draft = 'draft',
+    Active = 'active',
+    Archived = 'archived',
+    Unlisted = 'unlisted',
+}
+
 /**
  * Project — a mod, addon, or other user-created asset targeting a specific game.
  */
@@ -40,8 +53,17 @@ export default class Project {
     @Column()
     ownerId: string;
 
-    @Column()
-    ownerType: 'user' | 'organization' | 'team';
+    @Column({ type: 'enum', enum: OwnerType, enumName: 'owner_type' })
+    ownerType: OwnerType;
+
+    @Column({ type: 'enum', enum: StatusType, enumName: 'status_type' })
+    status: StatusType;
+
+    @Column({ nullable: true })
+    iconUrl?: string;
+
+    @Column({ nullable: true })
+    bannerUrl?: string;
 
     @Column({ default: 0 })
     endorsementCount: number;

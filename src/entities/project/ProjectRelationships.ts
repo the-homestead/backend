@@ -4,6 +4,14 @@ import { Entity } from 'typeorm/decorator/entity/Entity.js';
 import { ManyToOne } from 'typeorm/decorator/relations/ManyToOne.js';
 import Project from './Project';
 import ProjectRelease from './ProjectRelease';
+import { CreateDateColumn } from 'typeorm';
+
+export enum ProjectRelationType {
+    Dependency = 'dependency',
+    Conflict = 'conflict',
+    LoadAfter = 'load_after',
+    LoadBefore = 'load_before',
+}
 
 @Entity()
 export default class ProjectRelationship {
@@ -24,10 +32,10 @@ export default class ProjectRelationship {
 
     @Column({
         type: 'enum',
-        enum: ['dependency', 'conflict', 'load_after', 'load_before'],
+        enum: ProjectRelationType,
         enumName: 'project_relationship_type',
     })
-    type: 'dependency' | 'conflict' | 'load_after' | 'load_before';
+    type: ProjectRelationType;
 
     @Column({ nullable: true })
     minVersion?: string;
@@ -43,4 +51,7 @@ export default class ProjectRelationship {
 
     @Column('jsonb', { nullable: true })
     metadata?: Record<string, any>;
+
+    @CreateDateColumn()
+    createdAt: Date;
 }

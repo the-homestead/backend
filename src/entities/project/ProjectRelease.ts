@@ -7,6 +7,13 @@ import { OneToMany } from 'typeorm/decorator/relations/OneToMany.js';
 import Project from './Project';
 import ProjectFile from './ProjectFile';
 
+export enum ReleaseType {
+    Release = 'release',
+    Beta = 'beta',
+    Alpha = 'alpha',
+    Testing = 'testing',
+}
+
 @Entity()
 export default class ProjectRelease {
     @PrimaryGeneratedColumn()
@@ -18,17 +25,17 @@ export default class ProjectRelease {
     @Column()
     versionName: string;
 
+    @Column({ type: 'enum', enum: ReleaseType, enumName: 'release_type' })
+    releaseType: ReleaseType;
+
     @Column('text')
     changelog: string;
 
-    @Column({ nullable: true })
-    gameVersion?: string;
+    @Column('simple-array', { nullable: true })
+    gameVersions?: string[];
 
-    @Column({ nullable: true })
-    modLoader?: string;
-
-    @Column({ default: false })
-    isLatest: boolean;
+    @Column('simple-array', { nullable: true })
+    modLoaders?: string[];
 
     @Column({ default: false })
     isHidden: boolean;

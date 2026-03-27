@@ -17,4 +17,7 @@ export default class Tag {
 
     @Column()
     name: string;
+
+    @Column()
+    slug: string;
 }
