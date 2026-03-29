@@ -1,21 +1,19 @@
 import 'reflect-metadata';
 
-import { randomUUID } from 'crypto';
-import { IncomingMessage, ServerResponse } from 'http';
-
-import { Module } from '@nestjs/common';
-import { LoggerModule } from 'nestjs-pino';
-import pino from 'pino';
-
 import { AuthModule } from '@homestead/api/modules/auth/auth.module';
 import { BunnyModule } from '@homestead/api/modules/bunny/bunny.module';
 import { ConfigModule } from '@homestead/api/modules/config/config.module';
 import { DatabaseModule } from '@homestead/api/modules/database/database.module';
+import { Module } from '@nestjs/common';
 import { AuthService } from '@thallesp/nestjs-better-auth';
+import { randomUUID } from 'crypto';
+import { IncomingMessage, ServerResponse } from 'http';
+import { LoggerModule } from 'nestjs-pino';
+import pino from 'pino';
 
+import { HealthModule } from '../modules/health/health.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { HealthModule } from '../modules/health/health.module';
 
 // Safe to read before ConfigModule bootstraps — only used for logger transport
 // selection, not for any business logic or secrets.

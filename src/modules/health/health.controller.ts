@@ -1,3 +1,4 @@
+import { AppConfigService } from '@homestead/api/modules/config/config.service';
 import { Controller, Get } from '@nestjs/common';
 import { ApiOkResponse, ApiServiceUnavailableResponse, ApiTags } from '@nestjs/swagger';
 import {
@@ -11,8 +12,6 @@ import {
 } from '@nestjs/terminus';
 import { AllowAnonymous } from '@thallesp/nestjs-better-auth';
 import { InjectPinoLogger, PinoLogger } from 'nestjs-pino';
-
-import { AppConfigService } from '@homestead/api/modules/config/config.service';
 
 /** Response body when all checks pass. */
 interface HealthUpResponse {
@@ -45,7 +44,6 @@ export class HealthController {
         private readonly disk: DiskHealthIndicator,
         private readonly config: AppConfigService,
     ) {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
         this.baseUrl = this.config.app.host;
     }
 
@@ -59,6 +57,7 @@ export class HealthController {
                 () => this.db.pingCheck('database'),
                 () => this.memory.checkHeap('memory_heap', 200 * 1024 * 1024),
                 () => this.memory.checkRSS('memory_rss', 3000 * 1024 * 1024),
+                () => this.http.pingCheck('dns.homestead.systems', 'https://dns.homestead.systems'),
                 // () =>
                 //     this.disk.checkStorage('storage', {
                 //         path: '/',

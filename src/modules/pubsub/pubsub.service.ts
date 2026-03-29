@@ -3,6 +3,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { Injectable, Logger, OnApplicationShutdown } from '@nestjs/common';
 import type { Notification, PoolClient } from 'pg';
+
 import { PgPoolService } from '../database/pg-pool.service';
 
 /**
@@ -94,7 +95,7 @@ export class PubSubService implements OnApplicationShutdown {
             if (msg.channel !== channel || !msg.payload) return;
 
             try {
-                callback(JSON.parse(msg.payload) as T);
+                callback(JSON.parse(msg.payload as string) as T);
             } catch (error) {
                 this.logger.error(
                     `Failed to parse message on channel "${channel}"`,

@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+
 import databaseConfig from './database.config';
 import { DatabaseService } from './database.service';
 import { PgPoolService } from './pg-pool.service';

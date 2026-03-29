@@ -1,11 +1,12 @@
-import { Controller, UseFilters, Post, Body, Req, Res } from '@nestjs/common';
-import { ApiTags, ApiOperation, ApiBody, ApiResponse } from '@nestjs/swagger';
+import { Body, Controller, Post, Req, Res, UseFilters } from '@nestjs/common';
+import { ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { AllowAnonymous } from '@thallesp/nestjs-better-auth';
-import { SendEmailOtpDto, VerifyEmailOtpDto, SignInWithEmailOtpDto } from '../dto';
+import type { Request, Response } from 'express';
+
+import { SendEmailOtpDto, SignInWithEmailOtpDto, VerifyEmailOtpDto } from '../dto';
 import { BetterAuthExceptionFilter } from '../filters/better-auth-exception.filter';
 import { AuthResponseHelper } from '../helpers/auth-response.helper';
 import { EmailOtpService } from '../services';
-import type { Request, Response } from 'express';
 
 @ApiTags('Email OTP')
 @Controller('auth/email-otp')

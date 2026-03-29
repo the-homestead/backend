@@ -1,10 +1,11 @@
+import { Column } from 'typeorm/decorator/columns/Column.js';
 import { CreateDateColumn } from 'typeorm/decorator/columns/CreateDateColumn.js';
 import { PrimaryGeneratedColumn } from 'typeorm/decorator/columns/PrimaryGeneratedColumn.js';
 import { Entity } from 'typeorm/decorator/entity/Entity.js';
 import { ManyToOne } from 'typeorm/decorator/relations/ManyToOne.js';
-import Project from './Project';
 import { Unique } from 'typeorm/decorator/Unique.js';
-import { Column } from 'typeorm/decorator/columns/Column.js';
+
+import Project from './Project';
 
 @Entity()
 @Unique(['userId', 'project'])

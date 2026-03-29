@@ -1,11 +1,12 @@
-import { Controller, UseFilters, Post, Body, Req, Res, Patch } from '@nestjs/common';
-import { ApiTags, ApiOperation, ApiBody, ApiResponse } from '@nestjs/swagger';
+import { Body, Controller, Patch, Post, Req, Res, UseFilters } from '@nestjs/common';
+import { ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { AllowAnonymous } from '@thallesp/nestjs-better-auth';
+import type { Request, Response } from 'express';
+
 import { SignInUsernameDto, UpdateUsernameDto } from '../dto';
 import { BetterAuthExceptionFilter } from '../filters/better-auth-exception.filter';
 import { AuthResponseHelper } from '../helpers/auth-response.helper';
 import { UsernameService } from '../services';
-import type { Request, Response } from 'express';
 
 @ApiTags('Username Auth')
 @Controller('auth/username')

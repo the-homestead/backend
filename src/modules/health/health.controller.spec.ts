@@ -1,10 +1,8 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { beforeEach, describe, expect, it, jest } from 'bun:test';
+import { AppConfigService } from '@homestead/api/modules/config/config.service';
 import { HealthCheckResult, HealthCheckService, HealthCheckStatus } from '@nestjs/terminus';
 import { Test, TestingModule } from '@nestjs/testing';
+import { beforeEach, describe, expect, it, jest } from 'bun:test';
 import { PinoLogger } from 'nestjs-pino';
-
-import { AppConfigService } from '@homestead/api/modules/config/config.service';
 
 import { HealthController } from './health.controller';
 

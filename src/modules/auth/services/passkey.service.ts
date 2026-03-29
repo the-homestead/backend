@@ -1,7 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import type { Request } from 'express';
+
 import { auth } from '../auth.main';
-import { VerifyPasskeyRegistrationDto, VerifyPasskeyAuthenticationDto } from '../dto';
+import { VerifyPasskeyAuthenticationDto, VerifyPasskeyRegistrationDto } from '../dto';
 import { toRequestHeaders } from '../helpers/to-request-headers.helper';
 
 @Injectable()

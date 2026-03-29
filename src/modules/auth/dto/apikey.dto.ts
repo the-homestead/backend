@@ -1,5 +1,5 @@
-import { ApiPropertyOptional, ApiProperty } from '@nestjs/swagger';
-import { IsOptional, IsString, IsNumber, IsPositive, IsObject, IsBoolean } from 'class-validator';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import { IsBoolean, IsNumber, IsObject, IsOptional, IsPositive, IsString } from 'class-validator';
 
 export class CreateApiKeyDto {
     @ApiPropertyOptional({ required: false, example: 'My API Key' })

@@ -22,16 +22,15 @@
  * https://better-auth.com/docs/plugins/test-utils.mdx
  */
 import 'dotenv/config';
-import { typeormAdapter } from '@hedystia/better-auth-typeorm';
-import { betterAuth } from 'better-auth';
 
 // ── Core plugins (shipped inside better-auth) ──────────────────────────────────
-
 import { apiKey } from '@better-auth/api-key';
 import { i18n } from '@better-auth/i18n';
 import { oauthProvider } from '@better-auth/oauth-provider'; // replaces mcp + oidc
 // ── Separate-package plugins ───────────────────────────────────────────────────
 import { passkey } from '@better-auth/passkey';
+import { typeormAdapter } from '@hedystia/better-auth-typeorm';
+import { betterAuth } from 'better-auth';
 import { captcha, lastLoginMethod, openAPI, testUtils } from 'better-auth/plugins';
 import { admin } from 'better-auth/plugins/admin';
 import { bearer } from 'better-auth/plugins/bearer';
@@ -43,6 +42,7 @@ import { multiSession } from 'better-auth/plugins/multi-session';
 import { organization } from 'better-auth/plugins/organization';
 import { twoFactor } from 'better-auth/plugins/two-factor';
 import { username } from 'better-auth/plugins/username';
+
 import { AppDataSource } from '../database/data-source';
 import {
     adminRole,

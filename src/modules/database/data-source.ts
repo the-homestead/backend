@@ -13,9 +13,10 @@
  *   import { AppDataSource } from './data-source';
  *   typeormAdapter(AppDataSource, { ... })
  */
-import { DataSource } from 'typeorm';
 import 'reflect-metadata';
 import 'dotenv/config'; // Load env vars from .env file into process.env
+
+import { DataSource } from 'typeorm';
 
 export const AppDataSource = new DataSource({
     type: 'postgres',

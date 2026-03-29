@@ -38,6 +38,7 @@ User Clicks Download
 
 ## Notes
 
+- We stopped utilizing Bunny's Storage-SDK deleteDirectory and use our own, in favor of having proper error outputs. a WIP
 - Make sure to do more research on possible already listed file hash/s and url's from previous hack's/virus's used. 
     - Example: https://www.bitdefender.com/en-us/blog/labs/infected-minecraft-mods-lead-to-multi-stage-multi-platform-infostealer-malware
     - https://github.com/trigram-mrp/fractureiser/tree/main

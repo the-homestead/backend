@@ -13,6 +13,7 @@ import {
 import { ApiBody, ApiOperation, ApiQuery, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { AllowAnonymous } from '@thallesp/nestjs-better-auth';
 import type { Request, Response } from 'express';
+
 import {
     ChangeEmailDto,
     ChangePasswordDto,

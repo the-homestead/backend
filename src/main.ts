@@ -2,9 +2,10 @@ import { VersioningType } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { LoggerErrorInterceptor, NativeLogger } from 'nestjs-pino';
+
 import { AppModule } from './app/app.module';
-import { AppDataSource } from './modules/database/data-source';
 import { BetterAuthExceptionFilter } from './modules/auth/filters/better-auth-exception.filter';
+import { AppDataSource } from './modules/database/data-source';
 
 async function bootstrap() {
     // Initialize the shared DataSource before NestJS bootstraps so that

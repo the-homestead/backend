@@ -1,10 +1,11 @@
-import { Controller, UseFilters, Get, Req, Post, Body, Res, Delete, Param } from '@nestjs/common';
-import { ApiTags, ApiOperation, ApiResponse, ApiBody, ApiParam } from '@nestjs/swagger';
+import { Body, Controller, Delete, Get, Param, Post, Req, Res, UseFilters } from '@nestjs/common';
+import { ApiBody, ApiOperation, ApiParam, ApiResponse, ApiTags } from '@nestjs/swagger';
+import type { Request, Response } from 'express';
+
 import { SetActiveSessionDto } from '../dto';
 import { BetterAuthExceptionFilter } from '../filters/better-auth-exception.filter';
 import { AuthResponseHelper } from '../helpers/auth-response.helper';
 import { MultiSessionService } from '../services';
-import type { Request, Response } from 'express';
 
 @ApiTags('Multi-Session')
 @Controller('auth/multi-session')

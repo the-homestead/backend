@@ -22,6 +22,7 @@ import {
 } from '@nestjs/swagger';
 import { AllowAnonymous, OptionalAuth, Roles, Session } from '@thallesp/nestjs-better-auth';
 import type { Request, Response } from 'express';
+
 import {
     BanUserDto,
     CreateUserAdminDto,

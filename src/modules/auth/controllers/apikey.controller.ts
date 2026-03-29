@@ -1,10 +1,11 @@
-import { Controller, UseFilters, Get, Req, Post, Body, Param, Patch, Delete } from '@nestjs/common';
-import { ApiTags, ApiOperation, ApiResponse, ApiBody, ApiParam } from '@nestjs/swagger';
+import { Body, Controller, Delete, Get, Param, Patch, Post, Req, UseFilters } from '@nestjs/common';
+import { ApiBody, ApiOperation, ApiParam, ApiResponse, ApiTags } from '@nestjs/swagger';
+import type { Request } from 'express';
+
 import { CreateApiKeyDto, UpdateApiKeyDto } from '../dto';
 import { BetterAuthExceptionFilter } from '../filters/better-auth-exception.filter';
 import { AuthResponseHelper } from '../helpers/auth-response.helper';
 import { ApiKeyService } from '../services';
-import type { Request } from 'express';
 
 @ApiTags('API Keys')
 @Controller('auth/api-keys')

@@ -1,9 +1,8 @@
+import { ConfigModule } from '@homestead/api/modules/config/config.module';
 import { HttpModule } from '@nestjs/axios';
 import { Module } from '@nestjs/common';
 import { TerminusModule } from '@nestjs/terminus';
 import { LoggerModule } from 'nestjs-pino';
-
-import { ConfigModule } from '@homestead/api/modules/config/config.module';
 
 import { HealthController } from './health.controller';
 

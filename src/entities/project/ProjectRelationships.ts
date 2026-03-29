@@ -1,10 +1,11 @@
+import { CreateDateColumn } from 'typeorm';
 import { Column } from 'typeorm/decorator/columns/Column.js';
 import { PrimaryGeneratedColumn } from 'typeorm/decorator/columns/PrimaryGeneratedColumn.js';
 import { Entity } from 'typeorm/decorator/entity/Entity.js';
 import { ManyToOne } from 'typeorm/decorator/relations/ManyToOne.js';
+
 import Project from './Project';
 import ProjectRelease from './ProjectRelease';
-import { CreateDateColumn } from 'typeorm';
 
 export enum ProjectRelationType {
     Dependency = 'dependency',

@@ -25,7 +25,7 @@ export const bunnyConfig = registerAs(
         storageZone: process.env.BUNNY_STORAGE_ZONE!,
         accessKey: process.env.BUNNY_ACCESS_KEY!,
         publicUrl: process.env.BUNNY_PUBLIC_URL!,
-        region: process.env.BUNNY_REGION ?? 'falkenstein',
+        region: process.env.BUNNY_REGION ?? 'new_york',
         storageRoot: process.env.BUNNY_STORAGE_ROOT,
     }),
 );

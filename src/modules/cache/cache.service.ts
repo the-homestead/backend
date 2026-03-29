@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import type { QueryResultRow } from 'pg';
+
 import { PgPoolService } from '../database/pg-pool.service';
 
 /**

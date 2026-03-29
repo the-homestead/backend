@@ -1,8 +1,9 @@
 import { Injectable } from '@nestjs/common';
+import type { Request } from 'express';
+
 import { auth } from '../auth.main';
 import { SignInUsernameDto, UpdateUsernameDto } from '../dto';
 import { toRequestHeaders } from '../helpers/to-request-headers.helper';
-import type { Request } from 'express';
 
 @Injectable()
 export class UsernameService {

@@ -1,11 +1,12 @@
-import { Controller, UseFilters, Post, Body, Req, Get, Query, Res } from '@nestjs/common';
-import { ApiTags, ApiOperation, ApiBody, ApiResponse, ApiQuery } from '@nestjs/swagger';
+import { Body, Controller, Get, Post, Query, Req, Res, UseFilters } from '@nestjs/common';
+import { ApiBody, ApiOperation, ApiQuery, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { AllowAnonymous } from '@thallesp/nestjs-better-auth';
+import type { Request, Response } from 'express';
+
 import { SendMagicLinkDto } from '../dto';
 import { BetterAuthExceptionFilter } from '../filters/better-auth-exception.filter';
 import { AuthResponseHelper } from '../helpers/auth-response.helper';
 import { MagicLinkService } from '../services';
-import type { Request, Response } from 'express';
 
 @ApiTags('Magic Link')
 @Controller('auth/magic-link')

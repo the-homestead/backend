@@ -8,11 +8,12 @@ import { JoinTable } from 'typeorm/decorator/relations/JoinTable.js';
 import { ManyToMany } from 'typeorm/decorator/relations/ManyToMany.js';
 import { ManyToOne } from 'typeorm/decorator/relations/ManyToOne.js';
 import { OneToMany } from 'typeorm/decorator/relations/OneToMany.js';
-import Game from '../game/Game';
-import ProjectRelease from './ProjectRelease';
+
 import { Category } from '../game/Category';
-import Tag from './ProjectTag';
+import Game from '../game/Game';
 import ProjectComment from './ProjectComment';
+import ProjectRelease from './ProjectRelease';
+import Tag from './ProjectTag';
 
 export enum OwnerType {
     User = 'user',

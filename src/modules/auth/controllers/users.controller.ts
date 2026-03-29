@@ -2,6 +2,8 @@ import { Body, Controller, Get, Post, Req, Res, UseFilters } from '@nestjs/commo
 import { ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { Session } from '@thallesp/nestjs-better-auth';
 import type { Request, Response } from 'express';
+
+import type { Session as BASession } from '../auth.main';
 import {
     LinkSocialDto,
     RevokeSessionDto,
@@ -11,7 +13,6 @@ import {
 import { BetterAuthExceptionFilter } from '../filters/better-auth-exception.filter';
 import { AuthResponseHelper } from '../helpers/auth-response.helper';
 import { UsersService } from '../services/users.service';
-import type { Session as BASession } from '../auth.main';
 
 @ApiTags('Users')
 @Controller('auth/users')

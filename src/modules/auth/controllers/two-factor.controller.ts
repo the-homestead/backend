@@ -1,19 +1,20 @@
-import { Controller, UseFilters, Get, Body, Req, Post, Res } from '@nestjs/common';
-import { ApiTags, ApiOperation, ApiResponse, ApiBody } from '@nestjs/swagger';
+import { Body, Controller, Get, Post, Req, Res, UseFilters } from '@nestjs/common';
+import { ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { AllowAnonymous } from '@thallesp/nestjs-better-auth';
+import type { Request, Response } from 'express';
+
 import {
-    GenerateTotpUriDto,
-    EnableTwoFactorDto,
     DisableTwoFactorDto,
-    VerifyTotpDto,
-    VerifyBackupCodeDto,
-    ViewBackupCodesDTO,
+    EnableTwoFactorDto,
     GenerateBackupCodesDTO,
+    GenerateTotpUriDto,
+    VerifyBackupCodeDto,
+    VerifyTotpDto,
+    ViewBackupCodesDTO,
 } from '../dto';
 import { BetterAuthExceptionFilter } from '../filters/better-auth-exception.filter';
 import { AuthResponseHelper } from '../helpers/auth-response.helper';
 import { TwoFactorService } from '../services';
-import type { Request, Response } from 'express';
 
 @ApiTags('Two-Factor Auth (2FA)')
 @Controller('auth/two-factor')

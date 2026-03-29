@@ -1,14 +1,15 @@
 import { Injectable } from '@nestjs/common';
 import type { Request } from 'express';
+
 import { auth } from '../auth.main';
 import {
-    GenerateTotpUriDto,
-    EnableTwoFactorDto,
     DisableTwoFactorDto,
-    VerifyTotpDto,
-    VerifyBackupCodeDto,
-    ViewBackupCodesDTO,
+    EnableTwoFactorDto,
     GenerateBackupCodesDTO,
+    GenerateTotpUriDto,
+    VerifyBackupCodeDto,
+    VerifyTotpDto,
+    ViewBackupCodesDTO,
 } from '../dto';
 import { toRequestHeaders } from '../helpers/to-request-headers.helper';
 

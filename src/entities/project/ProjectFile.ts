@@ -1,9 +1,10 @@
 import { Column } from 'typeorm/decorator/columns/Column.js';
+import { CreateDateColumn } from 'typeorm/decorator/columns/CreateDateColumn.js';
 import { PrimaryGeneratedColumn } from 'typeorm/decorator/columns/PrimaryGeneratedColumn.js';
 import { Entity } from 'typeorm/decorator/entity/Entity.js';
 import { ManyToOne } from 'typeorm/decorator/relations/ManyToOne.js';
+
 import ProjectRelease from './ProjectRelease';
-import { CreateDateColumn } from 'typeorm/decorator/columns/CreateDateColumn.js';
 
 export enum FileType {
     PRIMARY = 'primary',

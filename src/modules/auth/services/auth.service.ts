@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { AuthService as BAAuthService } from '@thallesp/nestjs-better-auth';
 import type { Request } from 'express';
+
 import type { auth } from '../auth.main';
 import type {
     ChangeEmailDto,

@@ -1,5 +1,6 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { IsEnum, IsNumber, IsOptional, IsPositive, IsString } from 'class-validator';
+
 import { type AppRole, RoleEnum } from '../access/auth.access';
 
 export class CreateUserAdminDto {

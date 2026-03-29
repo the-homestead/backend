@@ -1,7 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { Injectable } from '@nestjs/common';
 import { randomUUID } from 'node:crypto';
+
+import { Injectable } from '@nestjs/common';
 import type { QueryResultRow } from 'pg';
+
 import { PgPoolService } from '../database/pg-pool.service';
 
 /**

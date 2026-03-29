@@ -1,11 +1,12 @@
-import { Controller, UseFilters, Get, Req, Post, Body, Res, Delete, Param } from '@nestjs/common';
-import { ApiTags, ApiOperation, ApiResponse, ApiBody, ApiParam } from '@nestjs/swagger';
+import { Body, Controller, Delete, Get, Param, Post, Req, Res, UseFilters } from '@nestjs/common';
+import { ApiBody, ApiOperation, ApiParam, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { AllowAnonymous } from '@thallesp/nestjs-better-auth';
-import { VerifyPasskeyRegistrationDto, VerifyPasskeyAuthenticationDto } from '../dto';
+import type { Request, Response } from 'express';
+
+import { VerifyPasskeyAuthenticationDto, VerifyPasskeyRegistrationDto } from '../dto';
 import { BetterAuthExceptionFilter } from '../filters/better-auth-exception.filter';
 import { AuthResponseHelper } from '../helpers/auth-response.helper';
 import { PasskeyService } from '../services';
-import type { Request, Response } from 'express';
 
 @ApiTags('Passkeys (WebAuthn)')
 @Controller('auth/passkey')

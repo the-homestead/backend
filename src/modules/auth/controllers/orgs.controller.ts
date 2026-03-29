@@ -13,6 +13,7 @@ import {
 import { ApiBody, ApiOperation, ApiParam, ApiQuery, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { AllowAnonymous, OrgRoles } from '@thallesp/nestjs-better-auth';
 import type { Request } from 'express';
+
 import {
     CreateOrganizationDto,
     CreateTeamDto,
