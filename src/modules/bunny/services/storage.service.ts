@@ -47,10 +47,8 @@ const StoragePathSchema = z.object({
  *
  * @property path       - Destination path within the storage zone, e.g. `"/mods/my-mod/file.zip"`.
  * @property stream     - Readable byte stream of the file content.
- * @property checksum   - Optional SHA-256 hex digest. When provided, Bunny will reject the upload
- *   if the digest does not match, protecting against corruption in transit.
- * @property contentType - Optional MIME type override. If omitted, Bunny stores the file as
- *   `application/octet-stream`.
+ * @property checksum   - Optional SHA-256 hex digest. When provided, Bunny will reject the upload if the digest does not match, protecting against corruption in transit.
+ * @property contentType - Optional MIME type override. If omitted, Bunny stores the file as`application/octet-stream`.
  */
 export interface UploadFileDto {
     readonly path: string;
@@ -75,12 +73,9 @@ const UploadFileSchema = z.object({
 /**
  * Result returned by {@link BunnyStorageService.download}.
  *
- * @property stream   - Raw binary stream of the file content. The caller is
- *   responsible for consuming or cancelling the stream to avoid resource leaks.
- * @property response - The underlying HTTP response, useful for inspecting
- *   additional headers such as `ETag` or `Last-Modified`.
- * @property length   - Content length in bytes, if the server provided a
- *   `Content-Length` header. May be absent for chunked transfers.
+ * @property stream   - Raw binary stream of the file content. The caller is responsible for consuming or cancelling the stream to avoid resource leaks.
+ * @property response - The underlying HTTP response, useful for inspecting additional headers such as `ETag` or `Last-Modified`.
+ * @property length   - Content length in bytes, if the server provided a `Content-Length` header. May be absent for chunked transfers.
  */
 export interface BunnyDownloadResult {
     readonly stream: ReadableStream<Uint8Array>;
@@ -125,11 +120,9 @@ export class BunnyStorageService {
 
     /**
      * @param logger    - Pino logger instance injected by `nestjs-pino`.
-     * @param region    - The Bunny storage region hosting your zone,
-     *   e.g. `BunnyStorageSDK.regions.StorageRegion.Falkenstein`.
+     * @param region    - The Bunny storage region hosting your zone, e.g. `BunnyStorageSDK.regions.StorageRegion.Falkenstein`.
      * @param zoneName  - The name of your Bunny storage zone.
-     * @param accessKey - The access key for the storage zone. Source from an
-     *   environment variable — never hard-code this value.
+     * @param accessKey - The access key for the storage zone. Source from an environment variable — never hard-code this value.
      */
     constructor(
         @InjectPinoLogger(BunnyStorageService.name)
@@ -148,10 +141,8 @@ export class BunnyStorageService {
     /**
      * List all files and directories at the given path.
      *
-     * @param input - An object containing the `path` of the directory to list,
-     *   e.g. `{ path: "/" }`.
-     * @returns An array of {@link BunnyStorageSDK.file.StorageFile} entries. Empty
-     *   directories return an empty array.
+     * @param input - An object containing the `path` of the directory to list, e.g. `{ path: "/" }`.
+     * @returns An array of {@link BunnyStorageSDK.file.StorageFile} entries. Empty directories return an empty array.
      *
      * @throws {NotFoundException} If the path does not exist in the storage zone.
      * @throws {UnauthorizedException} If the access key is invalid or lacks permission.
@@ -174,11 +165,9 @@ export class BunnyStorageService {
     /**
      * Fetch the metadata of a single file or directory without downloading its content.
      *
-     * To stream the file's content, call `.data()` on the returned object, or use
-     * {@link download} directly.
+     * To stream the file's content, call `.data()` on the returned object, or use {@link download} directly.
      *
-     * @param input - An object containing the `path` of the file to describe,
-     *   e.g. `{ path: "/mods/my-mod/file.zip" }`.
+     * @param input - An object containing the `path` of the file to describe,e.g. `{ path: "/mods/my-mod/file.zip" }`.
      * @returns A {@link BunnyStorageSDK.file.StorageFile} populated with metadata.
      *
      * @throws {NotFoundException} If the file does not exist.
@@ -206,13 +195,10 @@ export class BunnyStorageService {
      * metadata request. Prefer this over `get().data()` when you only need the
      * stream, as it saves one round-trip.
      *
-     * The caller is responsible for consuming or cancelling the stream to avoid
-     * resource leaks.
+     * The caller is responsible for consuming or cancelling the stream to avoid resource leaks.
      *
-     * @param input - An object containing the `path` of the file to download,
-     *   e.g. `{ path: "/mods/my-mod/file.zip" }`.
-     * @returns A {@link BunnyDownloadResult} containing the stream, raw HTTP response,
-     *   and optionally the content length in bytes.
+     * @param input - An object containing the `path` of the file to download, e.g. `{ path: "/mods/my-mod/file.zip" }`.
+     * @returns A {@link BunnyDownloadResult} containing the stream, raw HTTP response, and optionally the content length in bytes.
      *
      * @throws {NotFoundException} If the file does not exist.
      * @throws {UnauthorizedException} If the access key is invalid or lacks permission.
@@ -247,13 +233,10 @@ export class BunnyStorageService {
      * Supports optional SHA-256 checksum verification and content-type override.
      * For large files, the stream is piped directly to Bunny without buffering.
      *
-     * @param input - Upload parameters including the destination `path`, the
-     *   `stream` to upload, and optional `checksum` and `contentType` overrides.
-     *   See {@link UploadFileDto} for full field documentation.
+     * @param input - Upload parameters including the destination `path`, the stream` to upload, and optional `checksum` and `contentType` overrides. See {@link UploadFileDto} for full field documentation.
      *
      * @throws {UnauthorizedException} If the access key is invalid or lacks permission.
-     * @throws {InternalServerErrorException} If Bunny rejects the upload (e.g. invalid
-     *   path, checksum mismatch) or on unexpected network failures.
+     * @throws {InternalServerErrorException} If Bunny rejects the upload (e.g. invalid path, checksum mismatch) or on unexpected network failures.
      */
     async upload(input: UploadFileDto): Promise<void> {
         const dto = this.validate(UploadFileSchema, input, 'upload');
@@ -277,11 +260,9 @@ export class BunnyStorageService {
     /**
      * Delete a single file from the storage zone.
      *
-     * This method is **not** recursive. To delete a directory and all its contents,
-     * use {@link deleteDirectory} instead.
+     * This method is **not** recursive. To delete a directory and all its contents, use {@link deleteDirectory} instead.
      *
-     * @param input - An object containing the `path` of the file to delete,
-     *   e.g. `{ path: "/mods/my-mod/file.zip" }`.
+     * @param input - An object containing the `path` of the file to delete, e.g. `{ path: "/mods/my-mod/file.zip" }`.
      *
      * @throws {NotFoundException} If the file does not exist.
      * @throws {UnauthorizedException} If the access key is invalid or lacks permission.
@@ -326,9 +307,7 @@ export class BunnyStorageService {
      * all failures into a boolean, making it impossible to distinguish a 404 from
      * a 401 or a 5xx.
      *
-     * @param input - An object containing the `path` of the directory to delete,
-     *   e.g. `{ path: "/mods/my-mod/" }`. The path must begin with a slash; a
-     *   trailing slash is appended automatically if absent.
+     * @param input - An object containing the `path` of the directory to delete, e.g. `{ path: "/mods/my-mod/" }`. The path must begin with a slash; a  trailing slash is appended automatically if absent.
      *
      * @throws {NotFoundException} If the directory does not exist.
      * @throws {UnauthorizedException} If the access key is invalid or lacks permission.
@@ -369,9 +348,7 @@ export class BunnyStorageService {
      * Creating a directory that already exists is a no-op — Bunny returns a
      * success response without modifying the existing directory or its contents.
      *
-     * @param input - An object containing the `path` of the directory to create,
-     *   e.g. `{ path: "/mods/my-mod/" }`. A trailing slash is appended automatically
-     *   if absent.
+     * @param input - An object containing the `path` of the directory to create, e.g. `{ path: "/mods/my-mod/" }`. A trailing slash is appended automatically if absent.
      *
      * @throws {UnauthorizedException} If the access key is invalid or lacks permission.
      * @throws {InternalServerErrorException} On unexpected SDK or network failures.
@@ -413,8 +390,7 @@ export class BunnyStorageService {
      *
      * @param schema    - The Zod schema to validate against.
      * @param input     - The raw input value to parse.
-     * @param operation - Human-readable name of the calling operation, used in
-     *   the error message.
+     * @param operation - Human-readable name of the calling operation, used in the error message.
      * @returns The parsed, type-narrowed value.
      *
      * @throws {InternalServerErrorException} If validation fails.
@@ -443,11 +419,9 @@ export class BunnyStorageService {
      * Issue a raw `fetch` request against the Bunny storage API, constructing
      * the URL and auth header from the current zone configuration.
      *
-     * Used by operations that need access to the raw HTTP response (e.g.
-     * {@link deleteDirectory}) rather than the boolean the SDK returns.
+     * Used by operations that need access to the raw HTTP response (e.g. {@link deleteDirectory}) rather than the boolean the SDK returns.
      *
-     * @param path    - Absolute path within the storage zone. A leading slash is
-     *   expected and will be appended to the zone's base URL.
+     * @param path    - Absolute path within the storage zone. A leading slash is expected and will be appended to the zone's base URL.
      * @param init    - Standard `RequestInit` options passed to `fetch`.
      * @returns The raw {@link Response} from Bunny's storage API.
      */
@@ -474,8 +448,7 @@ export class BunnyStorageService {
      * prefixes. This method pattern-matches those messages and re-throws a typed
      * NestJS exception so upstream filters receive a meaningful HTTP status code.
      *
-     * If the error cannot be classified, it is wrapped in an
-     * {@link InternalServerErrorException}.
+     * If the error cannot be classified, it is wrapped in an {@link InternalServerErrorException}.
      *
      * @param operation - Human-readable name of the calling operation.
      * @param path      - The storage path involved, included in the error message.
