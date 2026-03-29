@@ -1,7 +1,6 @@
+import { ConfigModule } from '@homestead/api/modules/config/config.module';
 import { Module } from '@nestjs/common';
 import { LoggerModule } from 'nestjs-pino';
-
-import { ConfigModule } from '@homestead/api/modules/config/config.module';
 
 import { BunnyStorageService } from './services/storage.service';
 
@@ -16,9 +15,6 @@ import { BunnyStorageService } from './services/storage.service';
  *   bunny.storageZone  — storage zone name from Bunny dashboard
  *   bunny.accessKey    — storage zone password / access key
  *   bunny.publicUrl    — CDN URL for serving files
- *
- * NOTE: install the SDK first:
- *   pnpm add @bunny.net/storage-sdk
  */
 @Module({
     imports: [

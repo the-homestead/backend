@@ -2,9 +2,9 @@ export const BUNNY_STORAGE_ZONE = 'BUNNY_STORAGE_ZONE' as const;
 export type BunnyRegion = 'de' | 'uk' | 'ny' | 'la' | 'sg' | 'syd' | 'jh' | 'se' | 'br';
 
 export const BUNNY_REGION_MAP: Record<string, BunnyRegion> = {
+    new_york: 'ny',
     falkenstein: 'de',
     london: 'uk',
-    new_york: 'ny',
     los_angeles: 'la',
     singapore: 'sg',
     sydney: 'syd',
