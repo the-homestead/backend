@@ -1,9 +1,9 @@
-// @ts-check
-import eslint from '@eslint/js';
-import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
-import globals from 'globals';
-import tseslint from 'typescript-eslint';
+import eslint from "@eslint/js";
+import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
+import globals from "globals";
+import tseslint from "typescript-eslint";
 import eslintNestJs from "@darraghor/eslint-plugin-nestjs-typed";
+import simpleImportSort from "eslint-plugin-simple-import-sort";
 
 export default tseslint.config(
   {
@@ -26,12 +26,17 @@ export default tseslint.config(
     },
   },
   {
+    plugins: {
+      'simple-import-sort': simpleImportSort,
+    },
     rules: {
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-floating-promises': 'warn',
       '@typescript-eslint/no-unsafe-argument': 'warn',
       "prettier/prettier": ["error", { endOfLine: "auto" }],
+      'simple-import-sort/imports': 'error',
+      'simple-import-sort/exports': 'error',
     },
   },
-    eslintNestJs.configs.flatRecommended
+  eslintNestJs.configs.flatRecommended
 );
