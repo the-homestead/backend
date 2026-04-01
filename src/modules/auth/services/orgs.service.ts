@@ -15,6 +15,13 @@ import type {
 } from '../dto/orgs.dto';
 import { toRequestHeaders } from '../helpers/to-request-headers.helper';
 
+/**
+ * Service for organization and team management flows.
+ *
+ * Integrates with Better Auth to provide organization, team, and membership APIs.
+ *
+ * Note: There is no official Better Auth documentation page for org/team APIs. See related discussion: https://github.com/better-auth/better-auth/discussions/5659
+ */
 @Injectable()
 export class OrgsService {
     listOrganizations(req: Request): Promise<Response> {

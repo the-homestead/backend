@@ -5,15 +5,18 @@ import { BunnyModule } from '@homestead/api/modules/bunny/bunny.module';
 import { ConfigModule } from '@homestead/api/modules/config/config.module';
 import { DatabaseModule } from '@homestead/api/modules/database/database.module';
 import { Module } from '@nestjs/common';
+import { APP_FILTER, APP_INTERCEPTOR, APP_PIPE } from '@nestjs/core';
 import { AuthService } from '@thallesp/nestjs-better-auth';
 import { randomUUID } from 'crypto';
 import { IncomingMessage, ServerResponse } from 'http';
 import { LoggerModule } from 'nestjs-pino';
+import { ZodSerializerInterceptor, ZodValidationPipe } from 'nestjs-zod';
 import pino from 'pino';
 
 import { HealthModule } from '../modules/health/health.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { HttpExceptionFilter } from './http-exception.filter';
 
 // Safe to read before ConfigModule bootstraps — only used for logger transport
 // selection, not for any business logic or secrets.
@@ -93,6 +96,21 @@ const isDev = process.env.NODE_ENV !== 'production';
         HealthModule, // /health endpoint with app + dependency health checks
     ],
     controllers: [AppController],
-    providers: [AppService, AuthService],
+    providers: [
+        AppService,
+        AuthService,
+        {
+            provide: APP_PIPE,
+            useClass: ZodValidationPipe,
+        },
+        {
+            provide: APP_INTERCEPTOR,
+            useClass: ZodSerializerInterceptor,
+        },
+        {
+            provide: APP_FILTER,
+            useClass: HttpExceptionFilter,
+        },
+    ],
 })
 export class AppModule {}

@@ -2,6 +2,7 @@ import { ConfigModule } from '@homestead/api/modules/config/config.module';
 import { Module } from '@nestjs/common';
 import { LoggerModule } from 'nestjs-pino';
 
+import { StorageController } from './bunny.controller';
 import { BunnyStorageService } from './services/storage.service';
 
 /**
@@ -25,5 +26,6 @@ import { BunnyStorageService } from './services/storage.service';
     ],
     providers: [BunnyStorageService],
     exports: [BunnyStorageService],
+    controllers: [StorageController],
 })
 export class BunnyModule {}

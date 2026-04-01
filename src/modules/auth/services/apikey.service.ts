@@ -5,6 +5,13 @@ import { auth } from '../auth.main';
 import { CreateApiKeyDto, UpdateApiKeyDto } from '../dto';
 import { toRequestHeaders } from '../helpers/to-request-headers.helper';
 
+/**
+ * Service for API key management flows.
+ *
+ * Integrates with Better Auth to provide API key creation, update, deletion, and listing.
+ *
+ * @see {@link https://better-auth.com/docs/plugins/api-key/advanced Better Auth: API Key Advanced}
+ */
 @Injectable()
 export class ApiKeyService {
     createApiKey(body: CreateApiKeyDto, req: Request): Promise<Response> {

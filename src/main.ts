@@ -2,6 +2,7 @@ import { VersioningType } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { LoggerErrorInterceptor, NativeLogger } from 'nestjs-pino';
+import { cleanupOpenApiDoc } from 'nestjs-zod';
 
 import { AppModule } from './app/app.module';
 import { BetterAuthExceptionFilter } from './modules/auth/filters/better-auth-exception.filter';
@@ -37,7 +38,7 @@ async function bootstrap() {
         .build();
     const document = SwaggerModule.createDocument(app, swagConfig);
 
-    SwaggerModule.setup('swagger-main', app, document, {
+    SwaggerModule.setup('swagger', app, cleanupOpenApiDoc(document), {
         useGlobalPrefix: true,
     });
 

@@ -5,6 +5,13 @@ import { auth } from '../auth.main';
 import { VerifyPasskeyAuthenticationDto, VerifyPasskeyRegistrationDto } from '../dto';
 import { toRequestHeaders } from '../helpers/to-request-headers.helper';
 
+/**
+ * Service for passkey (WebAuthn) authentication flows.
+ *
+ * Integrates with Better Auth to provide passkey registration, authentication, and management.
+ *
+ * @see {@link https://better-auth.com/docs/plugins/passkey Better Auth: Passkey Plugin}
+ */
 @Injectable()
 export class PasskeyService {
     getRegistrationOptions(req: Request): Promise<Response> {

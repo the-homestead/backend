@@ -63,7 +63,9 @@ export const EnvSchema = z.object({
 
     // ── Bunny CDN ───────────────────────────────────────────────────────────────
     BUNNY_STORAGE_ZONE: z.string().min(1),
+    BUNNY_STORAGE_ZONE_ID: z.coerce.number().int().positive().default(0),
     BUNNY_ACCESS_KEY: z.string().min(1),
+    BUNNY_ACT_API_KEY: z.string().min(1),
     BUNNY_PUBLIC_URL: z.url('BUNNY_PUBLIC_URL must be a valid URL'),
     BUNNY_STORAGE_ROOT: z.string().optional(),
     // NOTE: Add BUNNY_REGION to your .env — see bunny.config.ts for valid values.

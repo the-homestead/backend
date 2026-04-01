@@ -4,7 +4,9 @@ import { type BunnyRegionKey } from '../../bunny/bunny.constants';
 
 export interface BunnyConfig {
     storageZone: string;
+    storageZoneId: number;
     accessKey: string;
+    accountKey: string;
     publicUrl: string;
     /**
      * Region key mapped to a StorageRegion enum in BunnyStorageService.
@@ -23,7 +25,9 @@ export const bunnyConfig = registerAs(
     'bunny',
     (): BunnyConfig => ({
         storageZone: process.env.BUNNY_STORAGE_ZONE!,
+        storageZoneId: Number(process.env.BUNNY_STORAGE_ZONE_ID!),
         accessKey: process.env.BUNNY_ACCESS_KEY!,
+        accountKey: process.env.BUNNY_ACT_API_KEY!,
         publicUrl: process.env.BUNNY_PUBLIC_URL!,
         region: process.env.BUNNY_REGION ?? 'new_york',
         storageRoot: process.env.BUNNY_STORAGE_ROOT,

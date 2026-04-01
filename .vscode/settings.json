@@ -12,6 +12,9 @@
         "modules/cache",
         "modules/database",
         "modules/health",
-        "docs"
+        "docs",
+        "project",
+        "modules/auth",
+        "modules/bunny"
     ]
 }

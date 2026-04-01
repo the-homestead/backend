@@ -10,6 +10,9 @@ import {
 import { InjectPinoLogger, PinoLogger } from 'nestjs-pino';
 import { z } from 'zod';
 
+import { AppConfigService } from '../../config/config.service';
+import { StorageZoneDTO, StorageZoneSchema } from '../bunny.zone.schema';
+
 // ---------------------------------------------------------------------------
 // Region & Zone
 // ---------------------------------------------------------------------------
@@ -117,6 +120,12 @@ export class BunnyStorageService {
      * Constructed once at service initialisation and reused across calls.
      */
     private readonly zone: BunnyStorageSDK.zone.StorageZone;
+    private get zoneName(): string {
+        return this.zone.name;
+    }
+    get isConnected(): boolean {
+        return this.zone !== null && this.zone !== undefined;
+    }
 
     /**
      * @param logger    - Pino logger instance injected by `nestjs-pino`.
@@ -125,18 +134,62 @@ export class BunnyStorageService {
      * @param accessKey - The access key for the storage zone. Source from an environment variable — never hard-code this value.
      */
     constructor(
-        @InjectPinoLogger(BunnyStorageService.name)
-        private readonly logger: PinoLogger,
-        private readonly region: BunnyStorageRegion,
-        private readonly zoneName: string,
-        private readonly accessKey: string,
+        @InjectPinoLogger(BunnyStorageService.name) private readonly logger: PinoLogger,
+        private readonly config: AppConfigService,
     ) {
-        this.zone = BunnyStorageSDK.zone.connect_with_accesskey(region, zoneName, accessKey);
+        const region = this.config.bunny.region;
+        const zoneName = this.config.bunny.storageZone;
+        const accessKey = this.config.bunny.accessKey;
+        this.zone = BunnyStorageSDK.zone.connect_with_accesskey(
+            region as BunnyStorageSDK.StorageRegion,
+            zoneName,
+            accessKey,
+        );
     }
 
     // -------------------------------------------------------------------------
     // Public API
     // -------------------------------------------------------------------------
+
+    /**
+     * Fetch basic information about the storage zone, such as its name, region, and total/used storage capacity.
+     * bunny doesnt provide a way so we have to use fetch on the api directly.
+     * curl --request GET --url https://api.bunny.net/storagezone/{id} --header 'AccessKey: <api-key>'
+     * we have the schema stored in bunny.zone.schema.ts as StorageZoneDTO, PullZoneDTO, HostnameDTO
+     */
+    async getZoneInfo(): Promise<StorageZoneDTO> {
+        const url = new URL(`https://api.bunny.net/storagezone/${this.config.bunny.storageZoneId}`);
+        if (!this.isConnected) {
+            const message = `BunnyStorageService is not connected to a storage zone. Verify the Bunny configuration for zone "${this.zoneName}".`;
+            this.logger.error(message);
+            throw new InternalServerErrorException(message);
+        }
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                ['AccessKey']: this.config.bunny.accountKey,
+            },
+        });
+
+        if (!response.ok) {
+            const message = `Failed to fetch zone info for "${this.zoneName}": HTTP ${response.status} ${response.statusText}`;
+            this.logger.error(message);
+            throw new InternalServerErrorException(message);
+        }
+
+        const data = (await response.json()) as unknown;
+
+        try {
+            return StorageZoneSchema.parse(data);
+        } catch (err) {
+            const message =
+                err instanceof Error
+                    ? `Invalid zone info schema for "${this.zoneName}": ${err.message}`
+                    : `Invalid zone info schema for "${this.zoneName}": ${String(err)}`;
+            this.logger.error(message);
+            throw new InternalServerErrorException(message);
+        }
+    }
 
     /**
      * List all files and directories at the given path.
